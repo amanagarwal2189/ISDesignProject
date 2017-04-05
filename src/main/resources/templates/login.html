@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Login or Register | EventAngels</title>
+<!--<link rel="stylesheet" type="text/css" href="css/style.css"/>-->
+<link rel="stylesheet" type="text/css"
+	href="static/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="static/bootstrap/css/bootstrap-theme.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="static/bootstrap/js/bootstrap.min.js"></script>
+<style>
+.ruleline {
+	height: auto;
+	width: auto;
+}
+
+.ruleline img {
+	height: 2%;
+	width: 100%;
+}
+
+.navbar {
+	min-height: 100px;
+	margin-bottom: 10px;
+}
+
+#menu {
+	margin-top: 2%;
+}
+
+#page {
+	width: auto;
+	height: auto;
+	margin: auto;
+	background-color: #FBFBFF;
+	position: relative;
+}
+
+#page_internal {
+	width: 93.75%; /*=900/960 */
+	height: auto; /*full height */
+	margin: auto;
+}
+
+.header {
+	width: 100%;
+	height: auto;
+}
+
+.header #logo {
+	width: 40%;
+	height: 9.2592592592592%; /*100/1080*/
+	float: left;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+}
+
+.header #logo img {
+	width: 60%;
+	height: 60%;
+}
+
+.menu {
+	height: auto;
+}
+
+.menu li {
+	height: 20%;
+	float: right;
+	padding: 1% 3%;
+	margin: 1%;
+	background-color: green;
+}
+
+.menu li a {
+	text-decoration: none;
+	color: black;
+}
+
+.menu #navbar {
+	height: auto;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.ruleline img {
+	width: 100%;
+}
+
+.main {
+	margin: auto;
+	height: auto;
+	background-image: url("img/party.jpg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+#container-box{
+margin:auto;
+}
+
+.main .mainContainer {
+	text-align: center;
+	float: left;
+	background-color: rgba(0, 0, 0, 0.6);
+	margin: 5%;
+	padding: 2% 5% 2% 5%;
+	box-shadow: 0.2em 0.2em 0.3em #888888;
+	color: white;
+}
+
+.main .mainContainer .title {
+	font-size: 2em;
+	text-decoration: underline;
+	margin: 0% 0% 3% 0%;
+	color: white;
+}
+
+.main .mainContainer form {
+	font-size: 1.5em;
+}
+
+.main .mainContainer form input[type=text] {
+	border-radius: 3px;
+	width: 80%;
+	padding: 2% 3%;
+	margin: 3%;
+	color: black;
+}
+
+.main .mainContainer form input[type=password] {
+	border-radius: 3px;
+	width: 80%;
+	padding: 2% 3%;
+	margin: 3%;
+	color: black;
+}
+
+.main .mainContainer form button {
+	border-radius: 3px;
+	width: 80%;
+	padding: 2% 3%;
+	margin: 3%;
+	background-color: #4CAF50;
+	border: none;
+	color: white;
+}
+
+.main .mainContainer form a {
+	color: white;
+	font-size: 0.7em;
+}
+
+#register .short {
+	color: #FF0000;
+}
+
+#register .weak {
+	color: #E66C2C;
+}
+
+#register .good {
+	color: #2D98F3;
+}
+
+#register .strong {
+	color: #006400;
+}
+
+</style>
+</head>
+<body>
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html"> <img alt="logo"
+					src="img/eventangels.png" />
+				</a>
+			</div>
+
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<div id="menu" class="menu">
+					<ul id="navbar">
+						<li id="login"><a href="login.html">Login</a></li>
+						<li id="howitworks"><a href="howitworks.html">How It
+								Works</a></li>
+						<li id="aboutus"><a href="aboutus.html">About Us</a></li>
+
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<div id="page" class="container">
+		<div id="main" class="row main">
+		<div id="container-box">
+			<div id="login" class="mainContainer col-sm-2 col-md-4">
+				<div class="title" id="loginText">Login</div>
+				<form action="/login" method="post">
+					I am a <input type="radio" name="userType" value="sponsor"
+						checked="checked" />Sponsor <input type="radio" name="userType"
+						value="organizer" />Organizer<br /> <input type="text"
+						name="email_id" id="email_id" placeholder="john@gaver.com"
+						required="required" /><br /> <input type="password" id="password"
+						name="password" placeholder="password" required="required" /><br />
+					<button type="submit" class="button">Login</button>
+					<br /> <a href="forgotPwd.html">Forgot password!</a>
+				</form>
+			</div>
+			<div id="signup" class="mainContainer col-sm-2 col-md-4">
+				<div class="title" id="register">Register</div>
+				<form action="/register" method="post">
+					I am a <input type="radio" name="userType" value="sponsor"
+						checked="checked" />Sponsor <input type="radio" name="userType"
+						value="organizer" />Organizer<br /> <input type="text" id="uname"
+						name="uname" placeholder="john gaver" required="required" /><br />
+					<input type="text" id="email" name="emailId"
+						placeholder="john@gaver.com" required="required" /><br /> <input
+						type="password" id="newPassword" name="newPassword"
+						placeholder="password" required="required" /><br /> <input
+						type="password" id="confpassword" name="confpassword"
+						placeholder="confirm password" required="required" /><br />
+					<button type="submit" class="button">Register</button>
+				</form>
+			</div>
+			</div>
+		</div>
+		<div id="footer" class="footer row"></div>
+
+	</div>
+</body>
+</html>

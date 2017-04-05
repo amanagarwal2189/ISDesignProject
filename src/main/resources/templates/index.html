@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Home page | EventAngels</title>
+<!-- <link rel="stylesheet" type="text/css" href="static/css/header.css"/>-->
+<link rel="stylesheet" type="text/css"
+	href="static/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="static/bootstrap/css/bootstrap-theme.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="static/bootstrap/js/bootstrap.min.js"></script>
+<style>
+
+
+#page {
+	margin: 0% 2% 2% 2%;
+	
+	background-image: url("img/kyle.jpg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+#page_internal {
+	height: auto; /*full height */
+	margin: auto;
+}
+.main .mainContainer {
+	text-align: center;
+
+	background-color: rgba(0, 0, 0, 0.7);
+	float: left;
+	margin: 1%;
+	padding: 2% 5% 2% 5%;
+	color: white;
+}
+
+.main .mainContainer .label1 {
+	text-align: center;
+	margin: 2%;
+	padding: 5% 1% 5% 1%;
+	color: white;
+	font-size: 2em;
+}
+
+.main .mainContainer .text {
+	font-style: italic;
+	text-align: center;
+	padding: 10% 1% 5% 1%;
+}
+
+.row3 .eventThumbnail {
+	background-color: rgba(20, 20, 20, 0.9);
+	margin: 2%;
+	text-align: center;
+	color: white;
+}
+</style>
+</head>
+<body>
+
+	<script type="text/javascript">
+$(document).ready(function(){
+	
+	
+        $.ajax({
+    		type : "GET",
+    		contentType : "application/json",
+    		url : "/displayEvents",
+    		
+    		
+    		timeout : 100000,
+    		success : function(data) {
+    			console.log("SUCCESS: ", data);
+    			container = $('#displayEventsOnLanding');
+    			$.each(data,function(i,doc){
+    			    
+    				//<p><b> 5K for cancer awareness</b> <br/><br/> Venue: Houston, TX <br/>Date: March 11, 2017</p>
+    				
+    				//var elementForIndex = $("<p><b>"+
+    										//doc.title + "</b> <br/><br/>"+doc.city+"<br/>"+doc.state+"</p>");
+    				
+    				 $('#displayEventsOnLanding').append(
+        				'<div  class="col-md-1"></div><div class="col-md-2"><div class="eventThumbnail">'+
+    					 +'<p><b>'+doc.title + '</b> <br/><br/>'+doc.city+'<br/>'+doc.state+'</p>'+
+        				'</div></div>');
+    				
+    			    //var $element3 = $("<div><h1>" +
+    		          //      doc.title + 
+    		            //    "</h1><div>" +
+    		              //  doc.venue +
+    		                //"</div></div>");
+    			    // Append the item to the container
+    			    //container.append(elementForIndex);
+    			});
+    			
+    		},
+    		error : function(e) {
+    			console.log("ERROR: ", e);
+    			//display(e);
+    		},
+    		done : function(e) {
+    			console.log("DONE");
+    		}
+    	});
+});
+
+</script>
+	<!--  <nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html"> <img alt="logo"
+					src="img/eventangels.png" />
+				</a>
+			</div>
+
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<div id="menu" class="menu">
+					<ul id="ulnavbar">
+						<li id="login"><a href="loginPage">Login</a></li>
+						<li id="howitworks"><a href="howitworks.html">How It
+								Works</a></li>
+						<li id="aboutus"><a href="aboutus.html">About Us</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>-->
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"> <img alt="Brand"
+					style="height: 100%; width: auto;" class="img-responsive"
+					src="img\eventangels.png" />
+				</a>
+			</div>
+			<!--https://getbootstrap.com/components/#navbar-->
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a href="#">Event Angels: Your next sponsor</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">About Us</a></li>
+					<li><a href="#">How it works</a></li>
+					<li><a href="/loginPage">Sign-in/Register</a></li>
+					<!--<li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>-->
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+
+	<div id="page" class="container-fluid">
+		<div id="main" class="row main">
+			<div id="organizer" class="mainContainer col-md-5">
+				<div class="label1">
+					<a href="loginPage" style="color: white">I'm the organizer</a>
+				</div>
+				<div class="text">
+					We help you find the <br /> right sponsor to fund <br /> your event
+				</div>
+			</div>
+
+			<div id="sponsor" class="mainContainer col-md-5">
+				<div class="label1">I'm the sponsor</div>
+				<div class="text">
+					We help you find the <br /> right event to connect <br /> with your
+					customers
+				</div>
+			</div>
+		</div>
+
+		<div class="row3" id="displayEventsOnLanding">
+
+
+			<div class="col-md-1"></div>
+			<div class="col-md-2">
+				<div class="eventThumbnail"></div>
+			</div>
+
+
+			<div class="col-md-1"></div>
+			<div class="col-md-2">
+				<div class="eventThumbnail"></div>
+			</div>
+
+
+			<div class="col-md-1"></div>
+			<div class="col-md-2">
+				<div class="eventThumbnail"></div>
+			</div>
+
+
+			<div class="col-md-1"></div>
+			<div class="col-md-2">
+				<div class="eventThumbnail"></div>
+			</div>
+
+		</div>
+
+		
+
+	</div>
+	<div id="footer" class="footer row"></div>
+</body>
+</html>

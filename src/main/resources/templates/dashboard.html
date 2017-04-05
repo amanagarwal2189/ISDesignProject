@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>
+			Dashboard | EventAngels
+		</title>
+		<!--<link rel="stylesheet" type="text/css" href="css/style.css"/>-->
+		<link rel="stylesheet" type="text/css" href="static/bootstrap/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="static/bootstrap/css/bootstrap-theme.min.css"/>
+		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  		<script src="static/bootstrap/js/bootstrap.min.js"></script>
+		<style>
+			.ruleline{
+				height: auto;
+				width:auto;
+			}
+			.ruleline img{
+				height: 2%;
+				width:100%;
+			}
+			.navbar{
+				min-height: 100px;
+    			margin-bottom: 10px;
+			}
+			 #menu{
+				margin-top:2%;
+			}
+			.main #section .section-div{
+				padding: 5%;
+				background-color: rgba(0, 0, 0, 0.6)
+			}
+
+			.main #section .section-div .menu-item{
+				margin-top:10%;
+				margin-bottom:10%;
+				background-color: limegreen;
+				padding: 5%;
+			}
+			.main #section .section-div a{
+				text-decoration: none;
+				color: white;
+			}
+
+			.thumbnail .caption{
+				padding: 2px 9px;
+			}
+
+			.thumbnail .caption h3{
+				margin-top: 5px;
+			}
+
+
+		</style>
+	</head>
+	<body>
+		<nav class="navbar navbar-default">
+  			<div class="container-fluid">
+   				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        				<span class="icon-bar"></span>
+        				<span class="icon-bar"></span>
+        				<span class="icon-bar"></span> 
+      				</button>
+      				<a class="navbar-brand" href="index.html">EventAngels</a>
+    			</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul id="menu" class="nav navbar-nav navbar-right">
+      					<li><a href="#"><span class="glyphicon glyphicon-blackboard"></span> About Us</a></li>
+						<li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> How It Works</a></li>
+      					<li><a href="#"><span class="glyphicon glyphicon-user"></span> User</a></li>
+    				</ul>
+				</div>
+  			</div>
+		</nav>
+		<div id="page" class="container">
+				<div id="main" class="row main">
+					<div  class="col-md-4" id="section">
+						<div class="section-div" id="dashboard-menu">
+							<a href="#"><div class="menu-item" id="menu1"><span class="glyphicon glyphicon-dashboard"></span>  Dashboard</div></a>
+      						<a href="#"><div class="menu-item" id="menu2"><span class="glyphicon glyphicon-plus-sign"></span>  Create New Event</div></a>
+      						<a href="#"><div class="menu-item" id="menu3"><span class="glyphicon glyphicon-envelope"></span>  Notifications</div></a>
+						</div>
+					</div>
+					<div  class="col-md-8" id="box">
+						<div id="wecome-message" class="row message">
+							<div class="col-md-12">
+  								<h1>Hi John! Welcome. <small>Here are your events</small></h1>
+							</div>
+						</div>
+						<div id="org-events" class="row org-events">
+							<div class="col-sm-6 col-md-4">
+    							<div class="thumbnail">
+      								<img src="img/event-thumbnail.jpg" alt="..."/>
+      								<div class="caption">
+        								<h3>Thumbnail label</h3>
+        								<p>...</p>
+        								<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      								</div>
+    							</div>
+  							</div>
+							  <div class="col-sm-6 col-md-4">
+    							<div class="thumbnail">
+      								<img src="img/event-thumbnail.jpg" alt="..."/>
+      								<div class="caption">
+        								<h3>Thumbnail label</h3>
+        								<p>...</p>
+        								<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      								</div>
+    							</div>
+  							</div>
+							  <div class="col-sm-6 col-md-4">
+    							<div class="thumbnail">
+      								<img src="img/event-thumbnail.jpg" alt="..."/>
+      								<div class="caption">
+        								<h3>Thumbnail label</h3>
+        								<p>...</p>
+        								<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      								</div>
+    							</div>
+  							</div>
+							  <div class="col-sm-6 col-md-4">
+    							<div class="thumbnail">
+      								<img src="img/event-thumbnail.jpg" alt="..."/>
+      								<div class="caption">
+        								<h3>Thumbnail label</h3>
+        								<p>...</p>
+        								<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      								</div>
+    							</div>
+  							</div>
+							  <div class="col-sm-6 col-md-4">
+    							<div class="thumbnail">
+      								<img src="img/event-thumbnail.jpg" alt="..."/>
+      								<div class="caption">
+        								<h3>Thumbnail label</h3>
+        								<p>...</p>
+        								<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      								</div>
+    							</div>
+  							</div>
+							  <div class="col-sm-6 col-md-4">
+    							<div class="thumbnail">
+      								<img src="img/text-plus-icon.png" style="height:50%; width:50%; margin:20%" alt="..."/>
+      								
+    							</div>
+  							</div>
+						</div>
+					</div>
+				</div>
+				
+
+				<div id="footer" class="footer row">
+					
+				</div>
+			
+		</div>
+	</body>
+</html>
