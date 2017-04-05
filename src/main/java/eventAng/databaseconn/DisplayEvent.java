@@ -26,7 +26,7 @@ public class DisplayEvent {
 	            String sql = "Select * from tb_event_dtls ORDER BY id DESC LIMIT 0,4";
 	           
 	            rs = stmt.executeQuery(sql);
-	            while (rs.next()) {
+	            while (rs!=null && rs.next()) {
 	            event=new Events();
 	               event.setId(rs.getInt(1));
 	               event.setHost_id(rs.getInt(2));

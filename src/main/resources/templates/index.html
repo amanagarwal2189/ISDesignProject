@@ -35,12 +35,19 @@ background-image: url("img/kyle.jpg");
 	height: auto; /*full height */
 	margin: auto;
 }
+
+.main {
+	margin: auto;
+	height: auto;
+}
+
 .main .mainContainer {
 	text-align: center;
 	background-color: rgba(0, 0, 0, 0.6);
 	float: left;
 	padding: 2% 5% 2% 5%;
 	color: white;
+	margin-bottom: 2%;
 }
 
 .main .mainContainer .label1 {
@@ -200,7 +207,7 @@ $(document).ready(function(){
 
 	<div id="page" class="container">
 		<div id="main" class="row main">
-			<div id="organizer" class="mainContainer col-md-5">
+			<div id="organizer" class="mainContainer col-sm-3 col-md-5">
 				<div class="label1">
 					<a href="loginPage" style="color: white">I'm the organizer</a>
 				</div>
@@ -210,7 +217,7 @@ $(document).ready(function(){
 			</div>
 			<div class="col-md-1"></div>
 			<div class="col-md-1"></div>
-			<div id="sponsor" class="mainContainer col-md-5">
+			<div id="sponsor" class="mainContainer col-sm-3 col-md-5">
 				<div class="label1">I'm the sponsor</div>
 				<div class="text">
 					We help you find the <br /> right event to connect <br /> with your
