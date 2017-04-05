@@ -19,7 +19,7 @@ public class DisplayEvent {
 		try{  
 			Class.forName("com.mysql.jdbc.Driver");  
 			Connection con=(Connection) DriverManager.getConnection(  
-			"jdbc:mysql://localhost/db_eventangels","root","India123!");   
+			"us-cdbr-iron-east-03.cleardb.net/heroku_23ac5692749e275?reconnect=true","b36c61f7d63a44","4a7093b5");   
 			Statement stmt=con.createStatement();  
 			
 			ResultSet rs;
