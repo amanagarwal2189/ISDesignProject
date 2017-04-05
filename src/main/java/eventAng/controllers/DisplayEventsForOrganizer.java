@@ -18,15 +18,17 @@ public class DisplayEventsForOrganizer {
 
 	@ResponseBody
 	@RequestMapping(value = "/displayEventsForOrganizer", method = RequestMethod.GET)
-    public List<Object> displayEvents(HttpServletRequest request) {
+	public List<Object> displayEvents(HttpServletRequest request) {
 		List<Object> eventListForOrg = new ArrayList<Object>();
-		//HttpSession session=request.getSession(); 
-		int hostId = ((Users)request.getSession().getAttribute("users")).getId();
-		System.out.println("Host : "+hostId);
-        DisplayEvent dspEvent1 = new DisplayEvent();
-        eventListForOrg = dspEvent1.displayEventForOrganizer(hostId);
-        
-        return eventListForOrg;
-	      
-    }
+		// HttpSession session=request.getSession();
+		Users usersList = (Users) request.getSession().getAttribute("users");
+		if (null != usersList) {
+			int hostId = usersList.getId();
+			System.out.println("Host : " + hostId);
+			DisplayEvent dspEvent1 = new DisplayEvent();
+			eventListForOrg = dspEvent1.displayEventForOrganizer(hostId);
+		}
+		return eventListForOrg;
+
+	}
 }

@@ -15,7 +15,7 @@ public class HostRegister {
 		try
 	    {
 	      // create a mysql database connection
-			Connection con=DBConnection.getConnection(); 
+		Connection con=DBConnection.getConnection(); 
 	      // create a sql date object so we can use it in our INSERT statement
 	      Calendar calendar = Calendar.getInstance();
 	      java.sql.Date startDate = new java.sql.Date(calendar.getTime().getTime());
@@ -35,7 +35,6 @@ public class HostRegister {
 	      // execute the preparedstatement
 	      preparedStmt.execute();
 	      message="successInsert";
-	      con.close();
 	    }
 	    catch (Exception e)
 	    {

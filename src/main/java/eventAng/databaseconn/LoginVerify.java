@@ -6,17 +6,17 @@ import java.sql.Statement;
 
 import com.mysql.jdbc.Connection;
 
+import eventAng.DBConnection;
+
 public class LoginVerify {
 
 	public String loginVerification(String email_id,String password){  
 		
 		String message = null;
-		try{  
-		Class.forName("com.mysql.jdbc.Driver");  
-		Connection con=(Connection) DriverManager.getConnection(  
-		"jdbc:mysql://localhost/db_eventangels","root","India123!");   
-		Statement stmt=con.createStatement();  
 		
+		try{  
+		Class.forName("com.mysql.jdbc.Driver");   
+		Statement stmt=DBConnection.getConnection().createStatement();
 		ResultSet rs;
 		if (email_id != null && password != null) {
             String sql = "Select * from tb_host_dtls Where email_id='" + email_id + "' and password='" + password + "'";
@@ -35,9 +35,10 @@ public class LoginVerify {
 		else{
 			message = "notAUser";
 		}
-		con.close();  
+		stmt.close();
 		}catch(Exception e){ System.out.println(e);}
 		return message;  
-		}  
+		}
+		
 	}
 

@@ -75,9 +75,7 @@ public class LoginController {
 				users.setRegd_on(lRst.getDate(11));
 				users.setPassword(lRst.getString(12));
 			}
-			if(con!=null){
-			con.close();
-			}
+			
 		}catch(Exception e){
 			System.out.println(e);
 		}
