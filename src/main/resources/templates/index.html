@@ -4,22 +4,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Home page | EventAngels</title>
 <!-- <link rel="stylesheet" type="text/css" href="static/css/header.css"/>-->
+<link rel="stylesheet" type="text/css" href="static/css/footer.css"/>
 <link rel="stylesheet" type="text/css"
 	href="static/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css"
 	href="static/bootstrap/css/bootstrap-theme.min.css" />
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script src="static/bootstrap/js/bootstrap.min.js"></script>
 <style>
 
+.navbar{
+margin-bottom: 0px;
+}
+
+body{
+
+background-image: url("img/kyle.jpg");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
 
 #page {
-	margin: 0% 2% 2% 2%;
-	
-	background-image: url("img/kyle.jpg");
-	background-size: 100%;
-	background-repeat: no-repeat;
+	margin: auto;
+	margin-top:2%;
 }
 
 #page_internal {
@@ -28,10 +37,8 @@
 }
 .main .mainContainer {
 	text-align: center;
-
-	background-color: rgba(0, 0, 0, 0.7);
+	background-color: rgba(0, 0, 0, 0.6);
 	float: left;
-	margin: 1%;
 	padding: 2% 5% 2% 5%;
 	color: white;
 }
@@ -50,12 +57,26 @@
 	padding: 10% 1% 5% 1%;
 }
 
-.row3 .eventThumbnail {
-	background-color: rgba(20, 20, 20, 0.9);
+.row .eventThumbnail {
+	background-color: rgba(20, 20, 20, 0.8);
 	margin: 2%;
 	text-align: center;
 	color: white;
 }
+
+#labelStatementLive{
+background-color: rgba(0, 0, 0, 0.6);
+	color: white;
+	padding:1%;
+	margin:2%;
+	text-align: center;
+}
+
+
+
+@media(){
+}
+
 </style>
 </head>
 <body>
@@ -82,8 +103,8 @@ $(document).ready(function(){
     										//doc.title + "</b> <br/><br/>"+doc.city+"<br/>"+doc.state+"</p>");
     				
     				 $('#displayEventsOnLanding').append(
-        				'<div  class="col-md-1"></div><div class="col-md-2"><div class="eventThumbnail">'+
-    					 +'<p><b>'+doc.title + '</b> <br/><br/>'+doc.city+'<br/>'+doc.state+'</p>'+
+        				'<div class="col-md-3 col-xs-6"><div class="eventThumbnail">'+
+    					 '<p><b>'+doc.title + '</b><br/><br/>'+doc.city+'<br/>'+doc.state+'</p>'+
         				'</div></div>');
     				
     			    //var $element3 = $("<div><h1>" +
@@ -177,7 +198,7 @@ $(document).ready(function(){
 		<!-- /.container-fluid -->
 	</nav>
 
-	<div id="page" class="container-fluid">
+	<div id="page" class="container">
 		<div id="main" class="row main">
 			<div id="organizer" class="mainContainer col-md-5">
 				<div class="label1">
@@ -187,7 +208,8 @@ $(document).ready(function(){
 					We help you find the <br /> right sponsor to fund <br /> your event
 				</div>
 			</div>
-
+			<div class="col-md-1"></div>
+			<div class="col-md-1"></div>
 			<div id="sponsor" class="mainContainer col-md-5">
 				<div class="label1">I'm the sponsor</div>
 				<div class="text">
@@ -196,38 +218,78 @@ $(document).ready(function(){
 				</div>
 			</div>
 		</div>
-
-		<div class="row3" id="displayEventsOnLanding">
-
-
-			<div class="col-md-1"></div>
-			<div class="col-md-2">
-				<div class="eventThumbnail"></div>
+		<div class="row" id="labelStatementLive">
+			<div>
+				<label>We made sponsorship possible at:</label>
 			</div>
-
-
-			<div class="col-md-1"></div>
-			<div class="col-md-2">
-				<div class="eventThumbnail"></div>
-			</div>
-
-
-			<div class="col-md-1"></div>
-			<div class="col-md-2">
-				<div class="eventThumbnail"></div>
-			</div>
-
-
-			<div class="col-md-1"></div>
-			<div class="col-md-2">
-				<div class="eventThumbnail"></div>
-			</div>
-
 		</div>
-
-		
-
+		<div class="row" id="displayEventsOnLanding">
+	<!-- 		<div class="col-md-3">
+				<div class="eventThumbnail"></div>
+			</div>
+			<div class="col-md-3">
+				<div class="eventThumbnail"></div>
+			</div>
+			<div class="col-md-3">
+				<div class="eventThumbnail"></div>
+			</div>
+			<div class="col-md-3">
+				<div class="eventThumbnail"></div>
+			</div> -->
+		</div>
 	</div>
-	<div id="footer" class="footer row"></div>
+	<footer>
+    <div class="footer" id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                    <h3> Lorem Ipsum </h3>
+                    <ul>
+                        <li> <a href="#"> Lorem Ipsum </a> </li>
+                        <li> <a href="#"> Lorem Ipsum </a> </li>
+                        <li> <a href="#"> Lorem Ipsum </a> </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                    <h3> Lorem Ipsum </h3>
+                    <ul>
+                        <li> <a href="#"> Lorem Ipsum </a> </li>
+                        <li> <a href="#"> Lorem Ipsum </a> </li>
+                        <li> <a href="#"> Lorem Ipsum </a> </li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 pull-right">
+                    <h3> Lorem Ipsum </h3>
+                    <ul>
+                        <li>
+                            <div class="input-append newsletter-box text-center">
+                                <input type="text" class="full text-center" placeholder="Email "/>
+                                <button class="btn  bg-gray" type="button"> Subscribe Us! <i class="fa fa-long-arrow-right"> </i> </button>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="social">
+                        <li> <a href="#"> <i class=" fa fa-facebook">   </i> </a> </li>
+                        <li> <a href="#"> <i class="fa fa-twitter">   </i> </a> </li>
+                        <li> <a href="#"> <i class="fa fa-google-plus">   </i> </a> </li>
+                        <li> <a href="#"> <i class="fa fa-pinterest">   </i> </a> </li>
+                        <li> <a href="#"> <i class="fa fa-youtube">   </i> </a> </li>
+                    </ul>
+                </div>
+            </div>
+            <!--/.row--> 
+        </div>
+        <!--/.container--> 
+    </div>
+    <!--/.footer-->
+    
+    <div class="footer-bottom">
+        <div class="container">
+            <p class="pull-left"> Copyright © EventAngels 2017. All right reserved. </p>
+        </div>
+    </div>
+    <!--/.footer-bottom--> 
+</footer>
 </body>
 </html>

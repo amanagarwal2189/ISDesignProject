@@ -4,6 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Login or Register | EventAngels</title>
 <!--<link rel="stylesheet" type="text/css" href="css/style.css"/>-->
+<link rel="stylesheet" type="text/css" href="static/css/footer.css"/>
 <link rel="stylesheet" type="text/css"
 	href="static/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css"
@@ -12,106 +13,38 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script src="static/bootstrap/js/bootstrap.min.js"></script>
 <style>
-.ruleline {
-	height: auto;
-	width: auto;
-}
 
-.ruleline img {
-	height: 2%;
-	width: 100%;
-}
+body{
+	background-image: url("img/party22.jpg");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
 
-.navbar {
-	min-height: 100px;
-	margin-bottom: 10px;
-}
-
-#menu {
-	margin-top: 2%;
 }
 
 #page {
-	width: auto;
 	height: auto;
 	margin: auto;
-	background-color: #FBFBFF;
 	position: relative;
 }
 
 #page_internal {
-	width: 93.75%; /*=900/960 */
 	height: auto; /*full height */
 	margin: auto;
-}
-
-.header {
-	width: 100%;
-	height: auto;
-}
-
-.header #logo {
-	width: 40%;
-	height: 9.2592592592592%; /*100/1080*/
-	float: left;
-	overflow: hidden;
-	display: flex;
-	align-items: center;
-}
-
-.header #logo img {
-	width: 60%;
-	height: 60%;
-}
-
-.menu {
-	height: auto;
-}
-
-.menu li {
-	height: 20%;
-	float: right;
-	padding: 1% 3%;
-	margin: 1%;
-	background-color: green;
-}
-
-.menu li a {
-	text-decoration: none;
-	color: black;
-}
-
-.menu #navbar {
-	height: auto;
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-}
-
-.ruleline img {
-	width: 100%;
 }
 
 .main {
 	margin: auto;
 	height: auto;
-	background-image: url("img/party.jpg");
-	background-size: 100%;
-	background-repeat: no-repeat;
-}
-
-#container-box{
-margin:auto;
 }
 
 .main .mainContainer {
 	text-align: center;
 	float: left;
 	background-color: rgba(0, 0, 0, 0.6);
-	margin: 5%;
 	padding: 2% 5% 2% 5%;
 	box-shadow: 0.2em 0.2em 0.3em #888888;
 	color: white;
+	margin-bottom:2%;
 }
 
 .main .mainContainer .title {
@@ -178,35 +111,52 @@ margin:auto;
 
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#myNavbar">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.html"> <img alt="logo"
-					src="img/eventangels.png" />
+				<a class="navbar-brand" href="#"> <img alt="Brand"
+					style="height: 100%; width: auto;" class="img-responsive"
+					src="img\eventangels.png" />
 				</a>
 			</div>
-
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<div id="menu" class="menu">
-					<ul id="navbar">
-						<li id="login"><a href="login.html">Login</a></li>
-						<li id="howitworks"><a href="howitworks.html">How It
-								Works</a></li>
-						<li id="aboutus"><a href="aboutus.html">About Us</a></li>
-
-					</ul>
-				</div>
+			<!--https://getbootstrap.com/components/#navbar-->
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a href="#">Event Angels: Your next sponsor</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">About Us</a></li>
+					<li><a href="#">How it works</a></li>
+					<li><a href="/loginPage">Sign-in/Register</a></li>
+					<!--<li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>-->
+				</ul>
 			</div>
+			<!-- /.navbar-collapse -->
 		</div>
+		<!-- /.container-fluid -->
 	</nav>
 
 	<div id="page" class="container">
 		<div id="main" class="row main">
 		<div id="container-box">
-			<div id="login" class="mainContainer col-sm-2 col-md-4">
+			<div id="login" class="mainContainer col-sm-3 col-md-5">
 				<div class="title" id="loginText">Login</div>
 				<form action="/login" method="post">
 					I am a <input type="radio" name="userType" value="sponsor"
@@ -219,7 +169,9 @@ margin:auto;
 					<br /> <a href="forgotPwd.html">Forgot password!</a>
 				</form>
 			</div>
-			<div id="signup" class="mainContainer col-sm-2 col-md-4">
+			<div class="col-md-1"></div>
+			<div class="col-md-1"></div>
+			<div id="signup" class="mainContainer col-sm-3 col-md-5">
 				<div class="title" id="register">Register</div>
 				<form action="/register" method="post">
 					I am a <input type="radio" name="userType" value="sponsor"
@@ -237,8 +189,59 @@ margin:auto;
 			</div>
 			</div>
 		</div>
-		<div id="footer" class="footer row"></div>
-
 	</div>
+	<footer>
+    <div class="footer" id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                    <h3> Lorem Ipsum </h3>
+                    <ul>
+                        <li> <a href="#"> Lorem Ipsum </a> </li>
+                        <li> <a href="#"> Lorem Ipsum </a> </li>
+                        <li> <a href="#"> Lorem Ipsum </a> </li>
+                    </ul>
+                </div>
+                <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                    <h3> Lorem Ipsum </h3>
+                    <ul>
+                        <li> <a href="#"> Lorem Ipsum </a> </li>
+                        <li> <a href="#"> Lorem Ipsum </a> </li>
+                        <li> <a href="#"> Lorem Ipsum </a> </li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 pull-right">
+                    <h3> Lorem Ipsum </h3>
+                    <ul>
+                        <li>
+                            <div class="input-append newsletter-box text-center">
+                                <input type="text" class="full text-center" placeholder="Email "/>
+                                <button class="btn  bg-gray" type="button"> Subscribe Us! <i class="fa fa-long-arrow-right"> </i> </button>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="social">
+                        <li> <a href="#"> <i class=" fa fa-facebook">   </i> </a> </li>
+                        <li> <a href="#"> <i class="fa fa-twitter">   </i> </a> </li>
+                        <li> <a href="#"> <i class="fa fa-google-plus">   </i> </a> </li>
+                        <li> <a href="#"> <i class="fa fa-pinterest">   </i> </a> </li>
+                        <li> <a href="#"> <i class="fa fa-youtube">   </i> </a> </li>
+                    </ul>
+                </div>
+            </div>
+            <!--/.row--> 
+        </div>
+        <!--/.container--> 
+    </div>
+    <!--/.footer-->
+    
+    <div class="footer-bottom">
+        <div class="container">
+            <p class="pull-left"> Copyright © EventAngels 2017. All right reserved. </p>
+        </div>
+    </div>
+    <!--/.footer-bottom--> 
+</footer>
 </body>
 </html>

@@ -1,10 +1,11 @@
 package eventAng.databaseconn;
 
-import java.sql.DriverManager;
 import java.util.Calendar;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
+
+import eventAng.DBConnection;
 
 public class HostRegister {
 
@@ -14,9 +15,7 @@ public class HostRegister {
 		try
 	    {
 	      // create a mysql database connection
-			Class.forName("com.mysql.jdbc.Driver");  
-			Connection con=(Connection) DriverManager.getConnection(  
-			"jdbc:mysql://localhost/db_eventangels","root","India123!"); 
+			Connection con=DBConnection.getConnection(); 
 	      // create a sql date object so we can use it in our INSERT statement
 	      Calendar calendar = Calendar.getInstance();
 	      java.sql.Date startDate = new java.sql.Date(calendar.getTime().getTime());
