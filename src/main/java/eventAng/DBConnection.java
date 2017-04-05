@@ -30,7 +30,7 @@ public class DBConnection {
 				try {
 
 					con = (Connection) DriverManager
-							.getConnection("jdbc:mysql://localhost:3306/db_eventangels?" + "user=root&password=India123!");
+							.getConnection("jdbc:mysql://us-cdbr-iron-east-03.cleardb.net/heroku_23ac5692749e275?reconnect=true","b36c61f7d63a44","4a7093b5");
 
 				} catch (SQLException ex) {
 
