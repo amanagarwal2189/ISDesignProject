@@ -15,12 +15,6 @@
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
 <style>
 
-body{
-	background-image: url("img/party22.jpg");
-	background-size: 100% 100%;
-	background-repeat: no-repeat;
-}
-
 #page {
 	height: auto;
 	margin: auto;
@@ -32,78 +26,6 @@ body{
 	margin: auto;
 }
 
-.main {
-	margin: auto;
-	height: auto;
-}
-
-.main .mainContainer {
-	text-align: center;
-	float: left;
-	background-color: rgba(0, 0, 0, 0.6);
-	padding: 2% 5% 2% 5%;
-	box-shadow: 0.2em 0.2em 0.3em #888888;
-	color: white;
-	margin-bottom:2%;
-}
-
-.main .mainContainer .title {
-	font-size: 2em;
-	text-decoration: underline;
-	margin: 0% 0% 3% 0%;
-	color: white;
-}
-
-.main .mainContainer form {
-	font-size: 1.5em;
-}
-
-.main .mainContainer form input[type=text] {
-	border-radius: 3px;
-	width: 80%;
-	padding: 2% 3%;
-	margin: 3%;
-	color: black;
-}
-
-.main .mainContainer form input[type=password] {
-	border-radius: 3px;
-	width: 80%;
-	padding: 2% 3%;
-	margin: 3%;
-	color: black;
-}
-
-.main .mainContainer form button {
-	border-radius: 3px;
-	width: 80%;
-	padding: 2% 3%;
-	margin: 3%;
-	background-color: #4CAF50;
-	border: none;
-	color: white;
-}
-
-.main .mainContainer form a {
-	color: white;
-	font-size: 0.7em;
-}
-
-#register .short {
-	color: #FF0000;
-}
-
-#register .weak {
-	color: #E66C2C;
-}
-
-#register .good {
-	color: #2D98F3;
-}
-
-#register .strong {
-	color: #006400;
-}
 
 </style>
 </head>
@@ -120,7 +42,7 @@ body{
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/indexPage"> <img alt="Brand"
+				<a class="navbar-brand" href="#"> <img alt="Brand"
 					style="height: 100%; width: auto;" class="img-responsive"
 					src="img\eventangels.png" />
 				</a>
@@ -130,7 +52,7 @@ body{
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="/indexPage">Event Angels: Your next sponsor</a></li>
+					<li><a href="#">Event Angels: Your next sponsor</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">About Us</a></li>
@@ -145,39 +67,11 @@ body{
 
 	<div id="page" class="container">
 		<div id="main" class="row main">
-		<div id="container-box">
-			<div id="login" class="mainContainer col-sm-3 col-md-5">
-				<div class="title" id="loginText">Login</div>
-				<form action="/login" method="post">
-					I am a <input type="radio" name="userType" value="sponsor"
-						checked="checked" />Sponsor <input type="radio" name="userType"
-						value="organizer" />Organizer<br /> <input type="text"
-						name="email_id" id="email_id" placeholder="john@gaver.com"
-						required="required" /><br /> <input type="password" id="password"
-						name="password" placeholder="password" required="required" /><br />
-					<button type="submit" class="button">Login</button>
-					<br /> <a href="forgotPwd.html">Forgot password!</a>
-				</form>
-			</div>
-			<div class="col-md-1"></div>
-			<div class="col-md-1"></div>
-			<div id="signup" class="mainContainer col-sm-3 col-md-5">
-				<div class="title" id="register">Register</div>
-				<form action="/register" method="post">
-					I am a <input type="radio" name="userType" value="sponsor"
-						checked="checked" />Sponsor <input type="radio" name="userType"
-						value="organizer" />Organizer<br /> <input type="text" id="uname"
-						name="uname" placeholder="john gaver" required="required" /><br />
-					<input type="text" id="email" name="emailId"
-						placeholder="john@gaver.com" required="required" /><br /> <input
-						type="password" id="newPassword" name="newPassword"
-						placeholder="password" required="required" /><br /> <input
-						type="password" id="confpassword" name="confpassword"
-						placeholder="confirm password" required="required" /><br />
-					<button type="submit" class="button">Register</button>
-				</form>
-			</div>
-			</div>
+			
+			<form action="/submitEvent">
+				<label for="eventTitle">Event Title</label>
+				
+			</form>
 		</div>
 	</div>
 	<footer>

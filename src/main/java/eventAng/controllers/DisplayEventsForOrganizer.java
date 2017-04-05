@@ -21,9 +21,9 @@ public class DisplayEventsForOrganizer {
 	public List<Object> displayEvents(HttpServletRequest request) {
 		List<Object> eventListForOrg = new ArrayList<Object>();
 		// HttpSession session=request.getSession();
-		Users usersList = (Users) request.getSession().getAttribute("users");
-		if (null != usersList) {
-			int hostId = usersList.getId();
+		Users user = (Users) request.getSession().getAttribute("users");
+		if (null != user) {
+			int hostId = user.getId();
 			System.out.println("Host : " + hostId);
 			DisplayEvent dspEvent1 = new DisplayEvent();
 			eventListForOrg = dspEvent1.displayEventForOrganizer(hostId);
