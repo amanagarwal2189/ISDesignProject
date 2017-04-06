@@ -14,11 +14,11 @@ $(document).ready(function()
 		var strength = 0
 		
 		//if the password length is less than 6, return message.
-		if (password.length < 6) { 
+		if ((password.length >1) && (password.length < 6)) { 
 			$('#result').removeClass()
 			
 			$('#result').addClass('short')
-			return 'Too short' 
+			return 'Short' 
 		}
 		
 		//length is ok, lets continue.
@@ -60,4 +60,18 @@ $(document).ready(function()
 			return 'Strong'
 		}
 	}
+	
+
+	$('#confpassword').on('keyup', function () {
+		if($('#newPassword').val() != null)
+		{
+	    if ($('#newPassword').val() == $('#confpassword').val()) {
+	        $('#result2').html('Matching').css('color', 'white');
+	    } else 
+	        $('#result2').html('Not Matching').css('color', 'red');
+		}
+	else{
+			$('#result2').html('Enter password').css('color', 'red');
+	}
+	});
 });

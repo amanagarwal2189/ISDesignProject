@@ -12,4 +12,9 @@ public class HomeController {
         return "index";
     }
     
+    @RequestMapping(value = "/aboutUs", method = RequestMethod.GET)
+    public String aboutUs() {
+        return "aboutus";
+    }
+    
 }
