@@ -4,15 +4,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Dashboard | EventAngels</title>
 <!--<link rel="stylesheet" type="text/css" href="css/style.css"/>-->
-<link rel="stylesheet" type="text/css"
-	href="static/bootstrap/css/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="static/css/footer.css"/>
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
-<link rel="stylesheet" type="text/css"
-	href="static/bootstrap/css/bootstrap-theme.min.css" />
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-<script src="static/bootstrap/js/bootstrap.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
+	<link rel="stylesheet" type="text/css" href="static/css/footer.css"/>
+
 <style>
 .main #section .section-div {
 	padding: 5%;
@@ -67,21 +71,21 @@ margin-bottom:5%;
     			    
     				
     				 $('#org-events').append(
-        				'<div class="col-sm-6 col-md-4"><div class="thumbnail"><img src="img/event-thumbnail.jpg" alt="..."/><div class="caption">'+
-    					 +'<h3>'+doc.title + '</h3>'+'<p><a href="#" class="btn btn-primary" role="button">Update</a></p>'+
+        				'<div class="col-sm-6 col-md-4"><div class="thumbnail"><img src="img/event-thumbnail.jpg" alt="..."/><div class="caption">'
+    					 +'<b>'+doc.title + '</b>'+'<p><a href="#" class="btn btn-primary" role="button">Update</a></p>'+
         				'</div></div></div>');
     				
     			    
     			});
     					$('#org-events').append(
-        				'<div class="col-sm-6 col-md-4"><div class="thumbnail"><img src="img/text-plus-icon.png" style="height:50%; width:50%; margin:25%" alt="..."/>'
+        				'<div class="col-sm-6 col-md-4"><div class="thumbnail"><a href="/createEvent"><img src="img/text-plus-icon.png" style="height:50%; width:50%; margin:25%" alt="..."/></a>'
     					 +'</div></div>');
         				
     		   }
     			else{
     				
     				$('#org-events').append(
-            				'<div class="col-sm-6 col-md-4"><div class="thumbnail"><img src="img/text-plus-icon.png" style="height:50%; width:50%; margin:25%" alt="..."/>'
+            				'<div class="col-sm-6 col-md-4"><div class="thumbnail"><a href="/createEvent"><img src="img/text-plus-icon.png" style="height:50%; width:50%; margin:25%" alt="..."/></a>'
         					 +'</div></div>');
     			}
     		},
@@ -113,15 +117,13 @@ margin-bottom:5%;
 					src="img\eventangels.png" />
 				</a>
 			</div>
-			<!--https://getbootstrap.com/components/#navbar-->
-			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="#">Event Angels: Your next sponsor</a></li>
+					<li><a href="/">Event Angels: Your next sponsor</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span
+					<li><a href="/aboutUs"><span
 							class="glyphicon glyphicon-blackboard"></span> About Us</a></li>
 					<li><a href="#"><span
 							class="glyphicon glyphicon-question-sign"></span> How It Works</a></li>
@@ -147,7 +149,7 @@ margin-bottom:5%;
 				<div class="section-div" id="dashboard-menu">
 					<a href="#"><div class="menu-item" id="menu1">
 							<span class="glyphicon glyphicon-dashboard"></span> Dashboard
-						</div></a> <a href="#"><div class="menu-item" id="menu2">
+						</div></a> <a href="/createEvent"><div class="menu-item" id="menu2">
 							<span class="glyphicon glyphicon-plus-sign"></span> Create New
 							Event
 						</div></a> <a href="#"><div class="menu-item" id="menu3">

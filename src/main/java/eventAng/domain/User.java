@@ -9,7 +9,7 @@ import javax.persistence.Id;
 //import org.springframework.data.annotation.Id;
 
 @Entity
-public class Users {
+public class User {
 
 	@Id @GeneratedValue 
 	private int id;
@@ -30,11 +30,11 @@ public class Users {
 		return id;
 	}
 	
-	public Users() {
+	public User() {
 		super();
 	}
 
-	public Users(int id, String name, String email_id, String phone, String address_line_1, String address_line_2,
+	public User(int id, String name, String email_id, String phone, String address_line_1, String address_line_2,
 			String city, String state, int zip, String is_active, Date regd_on, String password) {
 		super();
 		this.id = id;

@@ -1,66 +1,98 @@
 package eventAng.controllers;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
-import eventAng.DBConnection;
-import eventAng.domain.Users;
+import eventAng.database.connection.DBConnection;
+import eventAng.domain.User;
+
 
 @Controller
 public class LoginController {
 
 	@Autowired 
 	 private HttpSession httpSession;
+	
+	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(HttpServletRequest request, Model model) {
-        String email_id=request.getParameter("email_id");
-        String password=request.getParameter("password");
-        //LoginVerify loginVerify = new LoginVerify();
-        //String message=loginVerify.loginVerification(email_id, password);
-        //System.out.println("Name is"+email_id+" "+ "password:"+password);
-		Users users = new Users();
-		users = fetchOrganizerDetails(email_id);
+	@ResponseBody
+	public void login(@RequestParam String emailId,@RequestParam String password, HttpServletResponse response) throws IOException {
+	
+		//int countUser=0;
+		User users = new User();
+		//System.out.println(emailId);
+		users = fetchOrganizerDetails(emailId);
 		boolean lFlag =validateUsers(password, users.getPassword());
-        
+        System.out.print("Password is "+password);
+       
 		if(lFlag){
 		httpSession.setAttribute("users", users);
+		response.setContentType("text/html;charset=UTF-8");
+        response.getWriter().write("True");
 		
-		
-        return "dashboard";
 		}
 		else{
-			request.setAttribute("error","Invalid user");
-			System.out.println("Invalid");
-			return "dashboard";
+			//request.setAttribute("error","Invalid user");
+			//System.out.println("Invalid");
+			response.setContentType("text/html;charset=UTF-8");
+	        response.getWriter().write("False");
 			
 		}
-    }
+	}
 	
-	public Users fetchOrganizerDetails(String pEmail){
+	
+//	@RequestMapping(value = "/login", method = RequestMethod.POST)
+//    public String login(HttpServletRequest request, Model model) {
+//        String email_id=request.getParameter("email_id");
+//        String password=request.getParameter("password");
+//        //LoginVerify loginVerify = new LoginVerify();
+//        //String message=loginVerify.loginVerification(email_id, password);
+//        //System.out.println("Name is"+email_id+" "+ "password:"+password);
+//		Users users = new Users();
+//		users = fetchOrganizerDetails(email_id);
+//		boolean lFlag =validateUsers(password, users.getPassword());
+//        
+//		if(lFlag){
+//		httpSession.setAttribute("users", users);
+//		
+//		
+//        return "dashboard";
+//		}
+//		else{
+//			request.setAttribute("error","Invalid user");
+//			System.out.println("Invalid");
+//			return "login";
+//			
+//		}
+//    }
+	
+	public User fetchOrganizerDetails(String pEmail){
 		
 		PreparedStatement lPstmnt = null;
 		ResultSet lRst			  = null;
-		Users users 				  = new Users();
+		User users 				  = new User();
 		
 		try{
 			StringBuilder lBuilder = new StringBuilder("select * from tb_host_dtls where email_id=? and is_active='Y'");
 									 
-			Connection con=DBConnection.getConnection();
+			Connection con=DBConnection.getConnection();   
 			lPstmnt = (PreparedStatement) con.prepareStatement(lBuilder.toString());
 			lPstmnt.setString(1, pEmail);
 			lRst=lPstmnt.executeQuery();
-			
+			System.out.println(pEmail);
 			while(lRst.next()){
 				users.setId(lRst.getInt(1));
 				users.setName(lRst.getString(2));

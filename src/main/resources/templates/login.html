@@ -4,40 +4,38 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Login or Register | EventAngels</title>
 <!--<link rel="stylesheet" type="text/css" href="css/style.css"/>-->
-<link rel="stylesheet" type="text/css" href="static/css/footer.css"/>
-<link rel="stylesheet" type="text/css"
-	href="static/bootstrap/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css"
-	href="static/bootstrap/css/bootstrap-theme.min.css" />
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-<script src="static/bootstrap/js/bootstrap.min.js"></script>
-<script src="static/js/passwordStrength.js"></script>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
+<link rel="stylesheet" type="text/css" href="static/css/footer.css"/>
+<script src="static/js/passwordStrength.js"></script>
 <style>
-
 body{
 	background-image: url("img/party22.jpg");
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 }
-
 #page {
 	height: auto;
 	margin: auto;
 	position: relative;
 }
-
 #page_internal {
 	height: auto; /*full height */
 	margin: auto;
 }
-
 .main {
 	margin: auto;
 	height: auto;
 }
-
 .main .mainContainer {
 	text-align: center;
 	float: left;
@@ -47,18 +45,15 @@ body{
 	color: white;
 	margin-bottom:2%;
 }
-
 .main .mainContainer .title {
 	font-size: 2em;
 	text-decoration: underline;
 	margin: 0% 0% 3% 0%;
 	color: white;
 }
-
 .main .mainContainer form {
 	font-size: 1.5em;
 }
-
 .main .mainContainer form input[type=text] {
 	border-radius: 3px;
 	width: 80%;
@@ -66,7 +61,6 @@ body{
 	margin: 3%;
 	color: black;
 }
-
 .main .mainContainer form input[type=password] {
 	border-radius: 3px;
 	width: 80%;
@@ -74,7 +68,6 @@ body{
 	margin: 3%;
 	color: black;
 }
-
 .main .mainContainer form button {
 	border-radius: 3px;
 	width: 80%;
@@ -84,32 +77,64 @@ body{
 	border: none;
 	color: white;
 }
-
 .main .mainContainer form a {
 	color: white;
 	font-size: 0.7em;
 }
-
 #signup .short {
 	color: #FF0000;
 }
-
 #signup .weak {
 	color: #E66C2C;
 }
-
 #signup .good {
 	color: #2D98F3;
 }
-
 #signup .strong {
 	color: #006400;
 }
-
 </style>
 </head>
 <body>
 
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+    $('#loginSubmit').click(function() {
+		
+    	emailId = $("#email_id").val();
+    	
+    	password = $("#password").val()
+    	event.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: '/login',
+            async: true,
+            //dataType:'json',
+        	
+            data:{'emailId':emailId,'password':password},
+            
+            success: function(data)
+            {
+                if (data=='True') {
+                	
+                	window.location.href = '/directToDashboard';
+                }
+                else {
+                	
+                	return false;
+                	
+                	$('#loginError').show();
+                }
+            }
+        });
+
+    });
+
+});
+
+</script>
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -121,7 +146,7 @@ body{
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/indexPage"> <img alt="Brand"
+				<a class="navbar-brand" href="#"> <img alt="Brand"
 					style="height: 100%; width: auto;" class="img-responsive"
 					src="img\eventangels.png" />
 				</a>
@@ -131,10 +156,10 @@ body{
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="/indexPage">Event Angels: Your next sponsor</a></li>
+					<li><a href="#">Event Angels: Your next sponsor</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">About Us</a></li>
+					<li><a href="/aboutUs">About Us</a></li>
 					<li><a href="#">How it works</a></li>
 					<li><a href="/loginPage">Sign-in/Register</a></li>
 				</ul>
@@ -149,14 +174,14 @@ body{
 		<div id="container-box">
 			<div id="login" class="mainContainer col-sm-3 col-md-5">
 				<div class="title" id="loginText">Login</div>
-				<form action="/login" method="post">
+				<form name = "loginSubmit">
 					I am <input type="radio" name="userType"
-						value="organizer" checked="checked" /> an organizer  <input type="radio" name="userType" value="sponsor"
-						/> a sponsor  <br /> <input type="text"
+						value="organizer" checked="checked" /> an Organizer  
+						<input type="radio" name="userType" value="sponsor"/>  a Sponsor <br /> <input type="text"
 						name="email_id" id="email_id" placeholder="john@gaver.com"
 						required="required" /><br /> <input type="password" id="password"
 						name="password" placeholder="password" required="required" /><br />
-					<button type="submit" class="button">Login</button>
+					<button type="submit" class="button" id="loginSubmit">Login</button>
 					<br /> <a href="forgotPwd.html">Forgot password!</a>
 				</form>
 			</div>
@@ -174,14 +199,17 @@ body{
 						type="password" id="newPassword" name="newPassword"
 						placeholder="password" required="required" /><br /><span id="result"></span> <input
 						type="password" id="confpassword" name="confpassword"
-						placeholder="confirm password" required="required" /><br />
+						placeholder="confirm password" required="required"/><br />
 						<span id="result2"></span>
 					<button type="submit" class="button">Register</button>
 				</form>
+				<div id="loginError" style="display: none">Error</div>
 			</div>
 			</div>
 		</div>
 	</div>
+	
+	
 	<footer>
     <div class="footer" id="footer">
         <div class="container">

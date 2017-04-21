@@ -1,12 +1,9 @@
-package eventAng.databaseconn;
+package eventAng.services;
 
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import com.mysql.jdbc.Connection;
-
-import eventAng.DBConnection;
+import eventAng.database.connection.DBConnection;
 
 public class LoginVerify {
 

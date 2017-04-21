@@ -1,4 +1,4 @@
-package eventAng.databaseconn;
+package eventAng.services;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -8,27 +8,30 @@ import java.util.List;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
-import eventAng.DBConnection;
-import eventAng.domain.Events;
+import eventAng.database.connection.DBConnection;
+import eventAng.domain.Event;
+import eventAng.model.EventDao;
 
 public class DisplayEvent {
 
 	
-	public List<Object> displayEventForLanding(){
+	public List<Object> displayEventForLanding(EventDao eventDao){
 		//String message=null;
 		List<Object> eventList = new ArrayList<Object>();
+		eventDao.findAll();
+
 		try{  
 			Connection con=DBConnection.getConnection();  
 			Statement stmt=con.createStatement();  
 			
 			ResultSet rs;
-			Events event;
+			Event event;
 	            String sql = "Select * from tb_event_dtls ORDER BY id DESC LIMIT 0,4";
 	           
 	            rs = stmt.executeQuery(sql);
 	            while (rs!=null && rs.next()) {
-	            event=new Events();
-	               event.setId(rs.getInt(1));
+	            event=new Event();
+	               event.setId(rs.getLong(1));
 	               event.setHost_id(rs.getInt(2));
 	               event.setTitle(rs.getString(3));
 	               event.setCity(rs.getString(8));
@@ -40,23 +43,23 @@ public class DisplayEvent {
 		return eventList;
 	}
 	
-	public List<Object> displayEventForOrganizer(int hostId){
+	public List<Object> displayEventForOrganizer(EventDao eventDao, Long hostId){
 		//String message=null;
 		List<Object> eventListForOrg = new ArrayList<Object>();
 		try{  
 			Connection con=DBConnection.getConnection(); 
 			
 			ResultSet rs;
-			Events event;
+			Event event;
 			PreparedStatement lPstmnt = null;
 			StringBuilder lBuilder = new StringBuilder("Select * from tb_event_dtls where host_id=?");
 	           
 	            lPstmnt = (PreparedStatement) con.prepareStatement(lBuilder.toString());
-	            lPstmnt.setInt(1, hostId);
+	            lPstmnt.setLong(1, hostId);
 	            rs = lPstmnt.executeQuery();
 	            while (rs.next()) {
-	            event=new Events();
-	               event.setId(rs.getInt(1));
+	            event=new Event();
+	               event.setId(rs.getLong(1));
 	               event.setHost_id(rs.getInt(2));
 	               event.setTitle(rs.getString(3));
 	               event.setCity(rs.getString(8));

@@ -11,4 +11,5 @@ public class CreateEventPageController {
     public String directToLogin() {
         return "createEvent";
     }
+	
 }

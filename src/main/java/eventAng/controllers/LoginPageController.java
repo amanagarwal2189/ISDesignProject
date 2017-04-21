@@ -11,4 +11,15 @@ public class LoginPageController {
     public String directToLogin() {
         return "login";
     }
+	
+	@RequestMapping(value = "/directToDashboard", method = RequestMethod.GET)
+    public String directToDashboard() {
+        return "dashboard";
+    }
+	
+	
+	@RequestMapping(value = "/sponsorboard", method = RequestMethod.GET)
+    public String directToSponsorDashboard() {
+        return "sponsorboard";
+    }
 }

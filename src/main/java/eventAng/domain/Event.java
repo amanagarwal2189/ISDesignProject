@@ -1,20 +1,21 @@
 package eventAng.domain;
 
 import java.sql.Time;
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.Table;
 
-import com.mysql.jdbc.Blob;
 
 @Entity
-public class Events {
+@Table(name = "tb_event_dtls")
+public class Event {
 
-	@Id @GeneratedValue 
-	private int id;
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	
 	private int host_id;
 	private String title;
@@ -27,20 +28,22 @@ public class Events {
 	private int zip;
 	private int num_attendees;
 	
-	private String is_active;
+	private boolean is_active;
 	private String created_by;
 	private Date created_on;
 	private String category;
-	private String is_deleted;
-	@Lob
-	private Blob image;
-	@Lob
-	private Blob thumbnail;
+	private boolean is_deleted;
+	//@Lob
+	//private Blob image;
+	//@Lob
+	//private Blob thumbnail;
 	private String fb_link;
-	public int getId() {
+	private String eventbrite_link;
+	
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public int getHost_id() {
@@ -103,10 +106,10 @@ public class Events {
 	public void setNum_attendees(int num_attendees) {
 		this.num_attendees = num_attendees;
 	}
-	public String getIs_active() {
+	public boolean is_active() {
 		return is_active;
 	}
-	public void setIs_active(String is_active) {
+	public void setIs_active(boolean is_active) {
 		this.is_active = is_active;
 	}
 	public String getCreated_by() {
@@ -127,13 +130,13 @@ public class Events {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public String getIs_deleted() {
+	public boolean is_deleted() {
 		return is_deleted;
 	}
-	public void setIs_deleted(String is_deleted) {
+	public void setIs_deleted(boolean is_deleted) {
 		this.is_deleted = is_deleted;
 	}
-	public Blob getImage() {
+	/*public Blob getImage() {
 		return image;
 	}
 	public void setImage(Blob image) {
@@ -144,21 +147,29 @@ public class Events {
 	}
 	public void setThumbnail(Blob thumbnail) {
 		this.thumbnail = thumbnail;
-	}
+	}*/
 	public String getFb_link() {
 		return fb_link;
 	}
 	public void setFb_link(String fb_link) {
 		this.fb_link = fb_link;
 	}
-	public Events() {
+	
+	public String getEventbrite_link() {
+		return eventbrite_link;
+	}
+	
+	public void setEventbrite_link(String eventbrite_link) {
+		this.eventbrite_link = eventbrite_link;
+	}
+	
+	public Event() {
 		super();
 	}
-	public Events(int id, int host_id, String title, Date date, Time time, String address_line_1, String address_line_2,
-			String city, String state, int zip, int num_attendees, String is_active, String created_by, Date created_on,
-			String category, String is_deleted, Blob image, Blob thumbnail, String fb_link) {
+	public Event(int host_id, String title, Date date, Time time, String address_line_1, String address_line_2,
+			String city, String state, int zip, int num_attendees, boolean is_active, String created_by, Date created_on,
+			String category, boolean is_deleted, String fb_link, String eventbrite_link) {
 		super();
-		this.id = id;
 		this.host_id = host_id;
 		this.title = title;
 		this.date = date;
@@ -174,10 +185,10 @@ public class Events {
 		this.created_on = created_on;
 		this.category = category;
 		this.is_deleted = is_deleted;
-		this.image = image;
-		this.thumbnail = thumbnail;
+	/*	this.image = image;
+		this.thumbnail = thumbnail;*/
 		this.fb_link = fb_link;
-		
+		this.eventbrite_link=eventbrite_link;
 		
 	}
 	
