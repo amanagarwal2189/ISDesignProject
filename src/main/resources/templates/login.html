@@ -103,8 +103,8 @@ $(document).ready(function() {
 
     $('#loginSubmit').click(function() {
 		
-    	emailId = $("#email_id").val();
-    	
+    	emailId = $("#emailId").val()
+    	userType = $('input[name=userType]:checked').val()
     	password = $("#password").val()
     	event.preventDefault();
         $.ajax({
@@ -113,7 +113,7 @@ $(document).ready(function() {
             async: true,
             //dataType:'json',
         	
-            data:{'emailId':emailId,'password':password},
+            data:{'emailId':emailId,'password':password, 'userType':userType},
             
             success: function(data)
             {
@@ -178,7 +178,7 @@ $(document).ready(function() {
 					I am <input type="radio" name="userType"
 						value="organizer" checked="checked" /> an Organizer  
 						<input type="radio" name="userType" value="sponsor"/>  a Sponsor <br /> <input type="text"
-						name="email_id" id="email_id" placeholder="john@gaver.com"
+						name="emailId" id="emailId" placeholder="john@gaver.com"
 						required="required" /><br /> <input type="password" id="password"
 						name="password" placeholder="password" required="required" /><br />
 					<button type="submit" class="button" id="loginSubmit">Login</button>
@@ -194,7 +194,7 @@ $(document).ready(function() {
 						value="organizer" checked="checked" /> an organizer  
 						<input type="radio" name="userType" value="sponsor"/>  a sponsor  <br /> <input type="text" id="uname"
 						name="uname" placeholder="john gaver" required="required" /><br />
-					<input type="text" id="email" name="emailId"
+					<input type="text" id="emailId" name="emailId"
 						placeholder="john@gaver.com" required="required" /><br /> <input
 						type="password" id="newPassword" name="newPassword"
 						placeholder="password" required="required" /><br /><span id="result"></span> <input
