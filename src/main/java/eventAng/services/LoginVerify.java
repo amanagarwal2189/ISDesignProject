@@ -7,7 +7,7 @@ import eventAng.database.connection.DBConnection;
 
 public class LoginVerify {
 
-	public String loginVerification(String email_id,String password){  
+	public String loginVerification(String email_id,String password){/*  
 		
 		String message = null;
 		
@@ -35,7 +35,9 @@ public class LoginVerify {
 		stmt.close();
 		}catch(Exception e){ System.out.println(e);}
 		return message;  
-		}
+		*/
+		return "";
+	}
 		
 	}
 

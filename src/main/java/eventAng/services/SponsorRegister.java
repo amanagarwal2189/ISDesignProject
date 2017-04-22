@@ -10,7 +10,7 @@ public class SponsorRegister {
 		sponsor.setName(name);
 		sponsor.setPassword(newPassword);
 		sponsor.setRegd_on(new java.sql.Date(new java.util.Date().getTime()));
-		sponsor.setEmail_id(email_id);
+		sponsor.setEmailId(email_id);
 		sponsor.setIs_active(true);
 		sponsor.setAddress_line_1("");
 		sponsor.setAddress_line_2("");

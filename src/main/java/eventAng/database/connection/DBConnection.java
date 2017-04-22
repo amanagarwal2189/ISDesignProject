@@ -16,8 +16,8 @@ public class DBConnection {
     	try {
     		Class.forName(driverName).newInstance();
 			this.con=(Connection) DriverManager
-					//.getConnection("jdbc:mysql://localhost:3306/db_eventangels?reconnect=true","root","India123!");
-					.getConnection("jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_23ac5692749e275?reconnect=true","b36c61f7d63a44","4a7093b5");
+					.getConnection("jdbc:mysql://localhost:3306/db_eventangels?reconnect=true","root","India123!");
+					//.getConnection("jdbc:mysql://us-cdbr-iron-east-03.cleardb.net:3306/heroku_23ac5692749e275?reconnect=true","b36c61f7d63a44","4a7093b5");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -7,5 +7,6 @@ import eventAng.domain.Sponsor;
 
 @Transactional
 public interface SponsorDao extends CrudRepository<Sponsor, Long> {
-
+	
+	public Sponsor findByEmailId(String emailId);
 }

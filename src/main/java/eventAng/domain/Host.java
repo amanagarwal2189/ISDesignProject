@@ -2,6 +2,7 @@ package eventAng.domain;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +17,8 @@ public class Host {
 	private Long id;
 	
 	private String name;
-	private String email_id;
+	@Column(name = "email_id")
+	private String emailId;
     
 	private String phone;
 	private String address_line_1;
@@ -33,11 +35,11 @@ public class Host {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getEmail_id() {
-		return email_id;
+	public String getEmailId() {
+		return emailId;
 	}
-	public void setEmail_id(String email_id) {
-		this.email_id = email_id;
+	public void setEmailId(String email_id) {
+		this.emailId = email_id;
 	}
 	public String getPhone() {
 		return phone;
@@ -103,7 +105,7 @@ public class Host {
 			String state, int zip, boolean is_active, Date regd_on, String password) {
 		super();
 		this.name = name;
-		this.email_id = email_id;
+		this.emailId = email_id;
 		this.phone = phone;
 		this.address_line_1 = address_line_1;
 		this.address_line_2 = address_line_2;
@@ -125,7 +127,7 @@ public class Host {
 		result = prime * result + ((address_line_1 == null) ? 0 : address_line_1.hashCode());
 		result = prime * result + ((address_line_2 == null) ? 0 : address_line_2.hashCode());
 		result = prime * result + ((city == null) ? 0 : city.hashCode());
-		result = prime * result + ((email_id == null) ? 0 : email_id.hashCode());
+		result = prime * result + ((emailId == null) ? 0 : emailId.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + (is_active ? 1231 : 1237);
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
@@ -160,10 +162,10 @@ public class Host {
 				return false;
 		} else if (!city.equals(other.city))
 			return false;
-		if (email_id == null) {
-			if (other.email_id != null)
+		if (emailId == null) {
+			if (other.emailId != null)
 				return false;
-		} else if (!email_id.equals(other.email_id))
+		} else if (!emailId.equals(other.emailId))
 			return false;
 		if (id == null) {
 			if (other.id != null)

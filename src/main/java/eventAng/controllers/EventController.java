@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import eventAng.domain.Event;
 import eventAng.domain.EventSponsorshipReqDtls;
@@ -29,12 +28,11 @@ public class EventController {
 	 @Autowired
 	  private EventSponsorshipReqDtlsDao eventSponsorshipReqDtlsDao;
 	
-	@ResponseBody
 	@RequestMapping(value = "/submitEvent", method = RequestMethod.POST)
 	public String createEvent(HttpServletRequest request) {
 			
 		Event event = new Event();
-		event.setHost_id(1);
+		event.setHost_id(1L);
 		//event.setHost_id((Integer) request.getSession().getAttribute("userId"));
 		event.setTitle(request.getParameter("title"));
 		try {

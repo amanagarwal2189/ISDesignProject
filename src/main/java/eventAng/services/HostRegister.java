@@ -11,7 +11,7 @@ public class HostRegister {
 		host.setName(name);
 		host.setPassword(newPassword);
 		host.setRegd_on(new java.sql.Date(new java.util.Date().getTime()));
-		host.setEmail_id(email_id);
+		host.setEmailId(email_id);
 		host.setIs_active(true);
 		host.setAddress_line_1("");
 		host.setAddress_line_2("");

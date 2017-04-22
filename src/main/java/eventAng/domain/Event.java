@@ -17,7 +17,7 @@ public class Event {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	private int host_id;
+	private Long host_id;
 	private String title;
 	private Date date;
 	private Time time;
@@ -46,10 +46,10 @@ public class Event {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public int getHost_id() {
+	public Long getHost_id() {
 		return host_id;
 	}
-	public void setHost_id(int host_id) {
+	public void setHost_id(Long host_id) {
 		this.host_id = host_id;
 	}
 	public String getTitle() {
@@ -166,7 +166,7 @@ public class Event {
 	public Event() {
 		super();
 	}
-	public Event(int host_id, String title, Date date, Time time, String address_line_1, String address_line_2,
+	public Event(Long host_id, String title, Date date, Time time, String address_line_1, String address_line_2,
 			String city, String state, int zip, int num_attendees, boolean is_active, String created_by, Date created_on,
 			String category, boolean is_deleted, String fb_link, String eventbrite_link) {
 		super();

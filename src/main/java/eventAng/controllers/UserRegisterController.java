@@ -39,8 +39,5 @@ public class UserRegisterController {
 		sponsorRegister.sponsorRegistration(sponsorDao,name, email_id, newPassword, confPassword);	
 		return "sponsorboard";	
 		}
-		
-		
-		
 	}
 }

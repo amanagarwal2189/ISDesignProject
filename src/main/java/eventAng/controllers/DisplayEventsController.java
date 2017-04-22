@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import eventAng.domain.Event;
-import eventAng.domain.User;
 import eventAng.model.EventDao;
 import eventAng.services.DisplayEvent;
 
@@ -23,33 +22,53 @@ public class DisplayEventsController {
 	@Autowired
 	EventDao eventDao;
 	
+	/**
+	 * 
+	 * Display Events on the landing page: index
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/displayEvents", method = RequestMethod.GET)
-    public List<Object> displayEvents() {
-		List<Object> eventList = new ArrayList<Object>();
+    public List<Event> displayEvents() {
+		//List<Object> eventList = new ArrayList<Object>();
 		System.out.println("Success");
-        DisplayEvent dspEvent = new DisplayEvent();
+		List<Event> eventList = new ArrayList<Event>();
+		eventList= eventDao.findTop4ByOrderByTitleDesc();
+		System.out.println("Success");
+        /*DisplayEvent dspEvent = new DisplayEvent();
         eventList = dspEvent.displayEventForLanding(eventDao);
         //String json = (new JSONArray(eventList)).toString();
-        return eventList;
+*/        return eventList;
 	      
     }
 
+	/**
+	 * Shows the event on the organizer page when the organizer logs in
+	 * @param request
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/displayEventsForOrganizer", method = RequestMethod.GET)
-	public List<Object> displayEvents(HttpServletRequest request) {
-		List<Object> eventListForOrg = new ArrayList<Object>();
+	public List<Event> displayEvents(HttpServletRequest request) {
+		List<Event> eventListForOrg = new ArrayList<Event>();
 		// HttpSession session=request.getSession();
-		User user = (User) request.getSession().getAttribute("users");
-		if (null != user) {
-			int hostId = user.getId();
-			System.out.println("Host : " + hostId);
-			DisplayEvent dspEvent1 = new DisplayEvent();
-			eventListForOrg = dspEvent1.displayEventForOrganizer(eventDao, new Long(hostId));
+		String userId= (String) request.getSession().getAttribute("user_id");
+		if (null != userId) {
+			Long host_id = Long.valueOf(userId);
+			System.out.println("Host : " + host_id);
+			eventListForOrg=eventDao.getEventByHostId(host_id);
+			/*DisplayEvent dspEvent1 = new DisplayEvent();
+			eventListForOrg = dspEvent1.displayEventForOrganizer(eventDao, new Long(hostId));*/
 		}
 		return eventListForOrg;
 	}
 	
+	/**
+	 * Show the detailed page for an event
+	 * @param eventId
+	 * @param request
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/event", method = RequestMethod.GET)
     public String displayOneEvent(@RequestParam String eventId, HttpServletRequest request) {

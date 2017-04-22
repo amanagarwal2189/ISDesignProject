@@ -14,13 +14,13 @@ import eventAng.model.EventDao;
 
 public class DisplayEvent {
 
-	
-	public List<Object> displayEventForLanding(EventDao eventDao){
+	public List<Event> displayEventForLanding(EventDao eventDao){
 		//String message=null;
-		List<Object> eventList = new ArrayList<Object>();
-		eventDao.findAll();
-
-		try{  
+		List<Event> eventList = new ArrayList<Event>();
+		eventList= eventDao.findTop4ByOrderByTitleDesc();
+		
+		
+		/*try{  
 			Connection con=DBConnection.getConnection();  
 			Statement stmt=con.createStatement();  
 			
@@ -39,14 +39,14 @@ public class DisplayEvent {
 	               //message = "FetchSuccess";
 	               eventList.add(event);         	
 	            } 
-			}catch(Exception e){ System.out.println(e);}
+			}catch(Exception e){ System.out.println(e);}*/
 		return eventList;
 	}
 	
 	public List<Object> displayEventForOrganizer(EventDao eventDao, Long hostId){
 		//String message=null;
 		List<Object> eventListForOrg = new ArrayList<Object>();
-		try{  
+		try{/*  
 			Connection con=DBConnection.getConnection(); 
 			
 			ResultSet rs;
@@ -60,14 +60,14 @@ public class DisplayEvent {
 	            while (rs.next()) {
 	            event=new Event();
 	               event.setId(rs.getLong(1));
-	               event.setHost_id(rs.getInt(2));
+	               event.setHost_id(rs.getLong(2));
 	               event.setTitle(rs.getString(3));
 	               event.setCity(rs.getString(8));
 	               event.setState(rs.getString(9));
 	               //message = "FetchSuccess";
 	               eventListForOrg.add(event);           	
 	            } 
-			}catch(Exception e){ System.out.println(e);}
+			*/}catch(Exception e){ System.out.println(e);}
 		return eventListForOrg;
 	}
 }
