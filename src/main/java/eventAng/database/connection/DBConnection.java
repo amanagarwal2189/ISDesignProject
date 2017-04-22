@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import com.mysql.jdbc.Connection;
 
-public class DBConnection {
+public class DBConnection {/*
 
 	private static String driverName = "com.mysql.jdbc.Driver";   
     private static DBConnection dbconn;
@@ -42,4 +42,4 @@ public class DBConnection {
 	}
 	
 	
-}
+*/}
