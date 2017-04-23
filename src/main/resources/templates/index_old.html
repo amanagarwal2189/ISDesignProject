@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="static/css/mainfile.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.css"/> -->
+  
+  <style>
+form {
+    border: 3px solid #f1f1f1;
+}
+
+input[type=text], input[type=password],input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+ <!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://fb.me/react-15.0.1.js"></script>
+<script src="https://fb.me/react-dom-15.0.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.js"></script>
+<!--
+<script>
+    $("#header").load("templates/header.html");
+    $("#footer").load("templates/footer.html");
+</script> -->
+
+<!--
+<script type="text/babel">
+var App = React.createClass({
+
+  getInitialState: function() {
+    return {
+      users: []
+    }
+  },
+
+ componentDidMount: function(){
+var self = this;
+    $.ajax({
+      url: "http://localhost:8080/Users/findAll"
+    }).then(function(data) {
+	console.log(data);
+        this.setState({
+            data:data
+        });
+    }.bind(this)
+
+)},
+
+
+  componentWillUnmount: function() {
+    this.serverRequest.abort();
+  },
+
+  render: function() {
+    	
+		var namesList = data.map(function(name, index){
+console.log(namesList);
+            			return <li key={ index }>{name}</li>;
+          			})
+                    
+        return  <ul>{ namesList }</ul>  
+     
+}
+});
+ReactDOM.render(<App />, document.getElementById('root'));
+</script>
+
+-->
+
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	//var url = '@Url.Action("displayEvents")';
+	
+	//var url = "/displayEvents";
+      //  $.get(url, null, function (data) {
+        //    $("#rData").html(data);
+        //});
+	
+	//var url = "/DisplatEventsController/displayEvents";
+        $.ajax({
+    		type : "GET",
+    		contentType : "application/json",
+    		url : "/displayEvents",
+    		//data : JSON.stringify(eventList),
+    		
+    		timeout : 100000,
+    		success : function(data) {
+    			console.log("SUCCESS: ", data);
+    			container = $('#documents');
+    			$.each(data,function(i,doc){
+    			    
+    			    
+    			    var $element3 = $("<div><h1>" +
+    		                doc.title + 
+    		                "</h1><div>" +
+    		                doc.venue +
+    		                "</div></div>");
+    			    // Append the item to the container
+    			    container.append($element3);
+    			});
+    			
+    		},
+    		error : function(e) {
+    			console.log("ERROR: ", e);
+    			//display(e);
+    		},
+    		done : function(e) {
+    			console.log("DONE");
+    		}
+    	});
+});
+
+</script>
+<h2>Login Form</h2>
+
+
+  
+<form action="/login" method="post">
+  <div class="container">
+    <label><b>Username</b></label>
+    <input type="email" placeholder="Enter Email" name="email_id" id="email_id" required="required"/>
+
+    <label><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required="required"/>
+        
+    <button type="submit">Login</button>
+    
+    <input type="checkbox" checked="checked"/> Remember me
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+  </div>
+
+<h2>Sign up Form</h2>
+</form>
+<form action="/register" method="post">
+  
+
+  <div class="container">
+    <label><b>name</b></label>
+    <input type="text" placeholder="Enter name" name="uname" required="required"/>
+
+	<label><b>email id</b></label>
+    <input type="email" placeholder="Enter email" name="emailId" required="required"/>
+	
+    <label><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="newPassword" required="required"/>
+       
+    <label><b>Confirm Password</b></label>
+    <input type="password" placeholder="Enter Password" name="confPassword" required="required"/>
+     
+    <button type="submit">Submit</button>
+    
+  </div>
+
+<div id="documents"></div>
+  
+</form>
+</body>
+</html>
