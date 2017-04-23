@@ -34,24 +34,23 @@ public class UserRegisterController {
 		String email_id=request.getParameter("emailId");
         String newPassword=request.getParameter("newPassword");
         String confPassword=request.getParameter("confPassword");
-		HostRegister hostRegister = new HostRegister();
-		SponsorRegister sponsorRegister = new SponsorRegister();
-		if(("organizer").equals(userType)){
-		hostRegister.hostRegistration(hostDao, name, email_id, newPassword, confPassword);
-		Host host = hostDao.findByEmailId(email_id);
-		httpSession.setAttribute("user_type", userType);
-		httpSession.setAttribute("user_emailId", email_id);
-		httpSession.setAttribute("user_id", host.getId().toString());
-		httpSession.setAttribute("user_name", name);
-		return "dashboard";
+		if (("organizer").equals(userType)) {
+			HostRegister hostRegister = new HostRegister();
+			Host host = hostRegister.hostRegistration(hostDao, name, email_id, newPassword, confPassword);
+			httpSession.setAttribute("user_type", userType);
+			httpSession.setAttribute("user_emailId", email_id);
+			httpSession.setAttribute("user_id", host.getId().toString());
+			httpSession.setAttribute("user_name", name);
+			return "dashboard";
 		}
 		else{
-			Sponsor sponsor = sponsorDao.findByEmailId(email_id);
+			SponsorRegister sponsorRegister = new SponsorRegister();
+			Sponsor sponsor=sponsorRegister.sponsorRegistration(sponsorDao, name, email_id, newPassword, confPassword);
 			httpSession.setAttribute("user_type", userType);
 			httpSession.setAttribute("user_emailId", email_id);
 			httpSession.setAttribute("user_id", sponsor.getId().toString());
 			httpSession.setAttribute("user_name", name);
-			sponsorRegister.sponsorRegistration(sponsorDao,name, email_id, newPassword, confPassword);	
+			//sponsorRegister.sponsorRegistration(sponsorDao,name, email_id, newPassword, confPassword);	
 		return "sponsorboard";	
 		}
 	}

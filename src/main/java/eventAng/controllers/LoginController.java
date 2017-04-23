@@ -46,14 +46,14 @@ public class LoginController {
 		//userType = request.getParameter("userType");
 		if (userType.equals("organizer")) {
 			Host host = hostDao.findByEmailId(emailId);
-			if (host.isIs_active()) {
+			if (host!=null && host.isIs_active()) {
 				lFlag = validateUser(password, host.getPassword());
 				user_id = String.valueOf(host.getId());
 				user_name = host.getName();
 			}
 		} else {
 			Sponsor sponsor = sponsorDao.findByEmailId(emailId);
-			if (sponsor.getIs_active()) {
+			if (sponsor!=null && sponsor.getIs_active()) {
 				lFlag = validateUser(password, sponsor.getPassword());
 				user_id = String.valueOf(sponsor.getId());
 				user_name = sponsor.getName();
@@ -73,6 +73,7 @@ public class LoginController {
 			response.setContentType("text/html;charset=UTF-8");
 			if (userType.equals("organizer")) {
 			response.getWriter().write("orgTrue");
+			
 			}
 			else if(userType.equals("sponsor")){
 				response.getWriter().write("sponsorTrue");	

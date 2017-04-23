@@ -1,16 +1,13 @@
 package eventAng.controllers;
 
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-import org.springframework.data.repository.query.Param;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Controller;
@@ -37,7 +34,7 @@ public class DisplayEventsForSponsor {
 	@ResponseBody
 	@RequestMapping(value = "/displayEventsForSponsor", method = RequestMethod.GET)
 	public List<Event> displayEventsForSponsor(HttpServletRequest request) {
-		List<Event> eventListForSponsor = new ArrayList<Event>();
+		//List<Event> eventListForSponsor = new ArrayList<Event>();
 		
 		String fromDate=request.getParameter("fromDate");
 		String toDate=request.getParameter("toDate");
@@ -48,19 +45,19 @@ public class DisplayEventsForSponsor {
 		List<Event> eventList = jdbcTemplate.query(constructQuery(fromDate,toDate,city,state,zip), new EventMapper());
 		
 		// HttpSession session=request.getSession();
-		String userId= "1";
+		//String userId= "1";
 		//String userEmailId= (String) request.getSession().getAttribute("user_emailId");
 		//System.out.println("Host is : " + userId);
 		//System.out.println("Host email is : " + userEmailId);
-		if (null != userId) {
+		/*if (null != userId) {
 			Long host_id = Long.valueOf(userId);
 			//System.out.println("Host : " + host_id);
 			//eventListForOrg=eventDao.getEventByHostId(host_id);
 			eventListForSponsor=eventDao.getEventByHostId(host_id);
-			/*DisplayEvent dspEvent1 = new DisplayEvent();
-			eventListForOrg = dspEvent1.displayEventForOrganizer(eventDao, new Long(hostId));*/
-		}
-		return eventListForSponsor;
+			DisplayEvent dspEvent1 = new DisplayEvent();
+			eventListForOrg = dspEvent1.displayEventForOrganizer(eventDao, new Long(hostId));
+		}*/
+		return eventList;
 	}
 	
 	
