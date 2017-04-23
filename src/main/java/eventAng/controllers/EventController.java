@@ -7,8 +7,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +21,7 @@ import eventAng.model.EventDao;
 import eventAng.model.EventSponsorshipReqDtlsDao;
 
 @Controller
+@Scope("session")
 public class EventController {
 	
 	 @Autowired
@@ -26,13 +29,26 @@ public class EventController {
 	
 
 	 @Autowired
+	 private HttpSession httpSession;
+	 
+	 @Autowired
 	  private EventSponsorshipReqDtlsDao eventSponsorshipReqDtlsDao;
 	
+	 @RequestMapping(value = "/organizerProfile", method = RequestMethod.GET)
+		public String switchToProfile(HttpServletRequest request) {
+			return "organizerProfile";
+	 
+	 }
+	 
+	 
 	@RequestMapping(value = "/submitEvent", method = RequestMethod.POST)
 	public String createEvent(HttpServletRequest request) {
-			
+		
+		String user_id= (String) request.getSession().getAttribute("user_id");
+		String userEmailId= (String) request.getSession().getAttribute("user_emailId");
 		Event event = new Event();
-		event.setHost_id(1L);
+		Long userId = Long.valueOf(user_id);
+		event.setHost_id(userId);
 		//event.setHost_id((Integer) request.getSession().getAttribute("userId"));
 		event.setTitle(request.getParameter("title"));
 		try {
@@ -70,7 +86,7 @@ public class EventController {
 		String eventId = String.valueOf(event.getId());
 		System.out.println("Event id created is : "+ eventId );
 		}
-		return "directToDashboard2";
+		return "dashboard";
 		
 	}
 

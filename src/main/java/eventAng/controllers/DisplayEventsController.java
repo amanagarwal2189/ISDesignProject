@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,9 +15,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import eventAng.domain.Event;
 import eventAng.model.EventDao;
-import eventAng.services.DisplayEvent;
+//import eventAng.services.DisplayEvent;
 
 @Controller
+@Scope("session")
 public class DisplayEventsController {
 
 	@Autowired
@@ -53,15 +55,19 @@ public class DisplayEventsController {
 		List<Event> eventListForOrg = new ArrayList<Event>();
 		// HttpSession session=request.getSession();
 		String userId= (String) request.getSession().getAttribute("user_id");
+		String userEmailId= (String) request.getSession().getAttribute("user_emailId");
+		System.out.println("Host is : " + userId);
+		System.out.println("Host email is : " + userEmailId);
 		if (null != userId) {
 			Long host_id = Long.valueOf(userId);
-			System.out.println("Host : " + host_id);
+			//System.out.println("Host : " + host_id);
 			eventListForOrg=eventDao.getEventByHostId(host_id);
 			/*DisplayEvent dspEvent1 = new DisplayEvent();
 			eventListForOrg = dspEvent1.displayEventForOrganizer(eventDao, new Long(hostId));*/
 		}
 		return eventListForOrg;
 	}
+	
 	
 	/**
 	 * Show the detailed page for an event

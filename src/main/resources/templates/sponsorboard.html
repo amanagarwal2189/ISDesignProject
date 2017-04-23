@@ -12,9 +12,11 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
 
 
@@ -54,6 +56,76 @@ margin-bottom:5%;
 </style>
 </head>
 <body>
+
+<script type="text/javascript">
+
+function callForEvent(){
+	$('#sponsor-events').empty();
+	 $.ajax({
+ 		type : "GET",
+ 		contentType : "application/json",
+ 		url : "/displayEventsForSponsor",
+ 		
+ 		 data:{'fromDate':fromDate,'toDate':toDate,'city':city,'state':state, 'zip':zip},
+ 		
+ 		timeout : 100000,
+ 		success : function(data) {
+ 			
+ 			if(data!=null){
+ 			$.each(data,function(i,doc){
+ 				if (i > 5) {
+ 	               return false;
+ 	        }
+ 				
+ 				 $('#sponsor-events').append(
+     				'<div class="col-sm-6 col-md-4"><div class="thumbnail"><img src="img/event-thumbnail.jpg" alt="..."/><div class="caption">'
+ 					 +'<b>'+doc.title + '</b>'+'<p><a href="/displaySelectedEvent?eventId='+doc.id+'" class="btn btn-primary" role="button">View</a></p>'+
+     				'</div></div></div>');
+ 				
+ 			    
+ 			});
+ 					
+     				
+ 		   }
+ 			else{
+ 				
+ 				//$('#welcome-message span').text('Welcome!!'+ '<small>'+'Create your first event'+'</small>');
+ 				$('#sponsor-events').append(
+         				"No event to display");
+ 			}
+ 		},
+ 		error : function(e) {
+ 			console.log("ERROR: ", e);
+ 			//display(e);
+ 		},
+ 		done : function(e) {
+ 			console.log("DONE");
+ 		}
+ 	});
+	
+}
+
+function clickSearch(){
+	var fromDate = document.getElementById('fromDate').value;
+	var toDate = document.getElementById('toDate').value;
+	var city = document.getElementById('city').value;
+	var state = document.getElementById('state').value;
+	var zip = document.getElementById('zip').value;
+	
+callForEvent(fromDate,toDate,city,state,zip);	
+}
+
+	  $(document).ready(function(){
+	
+		  fromDate = $("#fromDate").val()
+	    	toDate = $("#toDate").val()
+	    	city = $("#city").val()
+	    	state = $("#state").val()
+	    	zip = $("#zip").val()
+	    	//event.preventDefault();
+	    	callForEvent();
+		});
+</script>
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -76,7 +148,10 @@ margin-bottom:5%;
 					<li><a href="/">Event Angels: Your next sponsor</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/aboutUs"><span
+				<li class="active"><a href="/backToDashHome"><span
+							class="glyphicon glyphicon-blackboard"></span> Home</a></li>
+					
+					<li><a href="/aboutUsInside"><span
 							class="glyphicon glyphicon-blackboard"></span> About Us</a></li>
 					<li><a href="#"><span
 							class="glyphicon glyphicon-question-sign"></span> How It Works</a></li>
@@ -85,7 +160,7 @@ margin-bottom:5%;
 						aria-expanded="false"><span class="glyphicon glyphicon-user"></span>
 							User</a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Profile</a></li>
+							<li><a href="/">Profile</a></li>
 							<li><a href="#">Account Settings</a></li>
 							<li role="separator" class="divider"></li>
 							<li><a href="/logout">Logout</a></li>
@@ -99,26 +174,63 @@ margin-bottom:5%;
 	<div id="page" class="container">
 		<div id="main" class="row main">
 			<div class="col-md-4" id="section">
-				<div class="section-div" id="dashboard-menu">
-					<a href="#"><div class="menu-item" id="menu1">
-							<span class="glyphicon glyphicon-dashboard"></span> Dashboard
-						</div></a> <a href="/createEvent"><div class="menu-item" id="menu2">
-							<span class="glyphicon glyphicon-plus-sign"></span> Create New
-							Event
-						</div></a> <a href="#"><div class="menu-item" id="menu3">
-							<span class="glyphicon glyphicon-envelope"></span> Notifications
-						</div></a>
+				<div class="section-div" id="filter-menu">
+				
+					<div class="row form-group">
+						<div class="col-md-4 col-sm-12">
+							<label for="date">From Date</label>
+						</div>
+						<div class="col-md-8 col-sm-12">
+							<input type="date" class="form-control" name="fromDate" id="fromDate"/>
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-md-4 col-sm-12">
+							<label for="date">To Date</label>
+						</div>
+						<div class="col-md-8 col-sm-12">
+							<input type="date" class="form-control" name="toDate" id="toDate"/>
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-md-4 col-sm-12">
+							<label for="city">City</label>
+						</div>
+						<div class="col-md-8 col-sm-12">
+							<input type="text" class="form-control" name="city" id="city"/>
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-md-4 col-sm-12">
+							<label for="state">State</label>
+						</div>
+						<div class="col-md-8 col-sm-12">
+							<select id="state" name="state" class="form-control"><option value="---">---</option><option value="Alabama">Alabama</option><option value="Alaska">Alaska</option><option value="Arizona">Arizona</option><option value="Arkansas">Arkansas</option><option value="California">California</option><option value="Colorado">Colorado</option><option value="Connecticut">Connecticut</option><option value="Delaware">Delaware</option><option value="District of Columbia">District of Columbia</option><option value="Florida">Florida</option><option value="Georgia">Georgia</option><option value="Guam">Guam</option><option value="Hawaii">Hawaii</option><option value="Idaho">Idaho</option><option value="Illinois">Illinois</option><option value="Indiana">Indiana</option><option value="Iowa">Iowa</option><option value="Kansas">Kansas</option><option value="Kentucky">Kentucky</option><option value="Louisiana">Louisiana</option><option value="Maine">Maine</option><option value="Maryland">Maryland</option><option value="Massachusetts">Massachusetts</option><option value="Michigan">Michigan</option><option value="Minnesota">Minnesota</option><option value="Mississippi">Mississippi</option><option value="Missouri">Missouri</option><option value="Montana">Montana</option><option value="Nebraska">Nebraska</option><option value="Nevada">Nevada</option><option value="New Hampshire">New Hampshire</option><option value="New Jersey">New Jersey</option><option value="New Mexico">New Mexico</option><option value="New York">New York</option><option value="North Carolina">North Carolina</option><option value="North Dakota">North Dakota</option><option value="Northern Marianas Islands">Northern Marianas Islands</option><option value="Ohio">Ohio</option><option value="Oklahoma">Oklahoma</option><option value="Oregon">Oregon</option><option value="Pennsylvania">Pennsylvania</option><option value="Puerto Rico">Puerto Rico</option><option value="Rhode Island">Rhode Island</option><option value="South Carolina">South Carolina</option><option value="South Dakota">South Dakota</option><option value="Tennessee">Tennessee</option><option value="Texas">Texas</option><option value="Utah">Utah</option><option value="Vermont">Vermont</option><option value="Virginia">Virginia</option><option value="Virgin Islands">Virgin Islands</option><option value="Washington">Washington</option><option value="West Virginia">West Virginia</option><option value="Wisconsin">Wisconsin</option><option value="Wyoming">Wyoming</option></select>
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-md-4 col-sm-12">
+							<label for="zip">Zip</label>
+						</div>
+						<div class="col-md-8 col-sm-12">
+							<input type="text" class="form-control" name="zip" id="zip"/>
+						</div>
+					</div>
+					
+					<input type="reset" class="btn" value="Clear form" />
+       				 <input type="submit" class="btn" id="searchEvents" value="Search" onclick="clickSearch()"/>
+       				
 				</div>
 			</div>
 			<div class="col-md-8" id="box">
 				<div id="wecome-message" class="row message">
 					<div class="col-md-12">
 						<h1>
-							Welcome. <small>Here are your events</small>
+							Welcome. <small>Here are the events</small>
 						</h1>
 					</div>
 				</div>
-				<div id="org-events" class="row org-events"></div>
+				<div id="sponsor-events" class="row sponsor-events"></div>
 			</div>
 		</div>
 	</div>
@@ -128,25 +240,26 @@ margin-bottom:5%;
     <div class="footer" id="footer">
         <div class="container">
             <div class="row">
-                <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
-                    <h3> Lorem Ipsum </h3>
+                <div class="col-md-4">
+                    <h3> About EventAngels </h3>
                     <ul>
-                        <li> <a href="#"> Lorem Ipsum </a> </li>
-                        <li> <a href="#"> Lorem Ipsum </a> </li>
-                        <li> <a href="#"> Lorem Ipsum </a> </li>
+                        <li> <a href="#"> Blog </a> </li>
+                        <li> <a href="#"> News </a> </li>
+                        <li> <a href="#"> Contact Us </a> </li>
+                        <li> <a href="#"> Offices </a> </li>
                     </ul>
                 </div>
-                <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
-                    <h3> Lorem Ipsum </h3>
+                <div class="col-md-4">
+                    <h3> Careers </h3>
                     <ul>
-                        <li> <a href="#"> Lorem Ipsum </a> </li>
-                        <li> <a href="#"> Lorem Ipsum </a> </li>
-                        <li> <a href="#"> Lorem Ipsum </a> </li>
+                        <li> <a href="#"> Recruiting </a> </li>
+                        <li> <a href="#"> Apply now </a> </li>
+                        <li> <a href="#"> Benefits </a> </li>
                     </ul>
                 </div>
                 
                 <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 pull-right">
-                    <h3> Lorem Ipsum </h3>
+                    <h3> Follow us  </h3>
                     <ul>
                         <li>
                             <div class="input-append newsletter-box text-center">

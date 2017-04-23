@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +20,7 @@ import eventAng.model.HostDao;
 import eventAng.model.SponsorDao;
 
 @Controller
+@Scope("session")
 public class LoginController {
 
 	@Autowired
@@ -64,11 +66,17 @@ public class LoginController {
 
 		if (lFlag) {
 			// httpSession.setAttribute("userid", users);
+			httpSession.setAttribute("user_type", userType);
 			httpSession.setAttribute("user_emailId", emailId);
 			httpSession.setAttribute("user_id", user_id);
 			httpSession.setAttribute("user_name", user_name);
 			response.setContentType("text/html;charset=UTF-8");
-			response.getWriter().write("True");
+			if (userType.equals("organizer")) {
+			response.getWriter().write("orgTrue");
+			}
+			else if(userType.equals("sponsor")){
+				response.getWriter().write("sponsorTrue");	
+			}
 		} else {
 			// request.setAttribute("error","Invalid user");
 			// System.out.println("Invalid");
