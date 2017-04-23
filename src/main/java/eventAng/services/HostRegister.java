@@ -5,7 +5,7 @@ import eventAng.model.HostDao;
 
 public class HostRegister {
 
-	public String hostRegistration(HostDao hostDao, String name, String email_id, String newPassword, String confPassword) {
+	public Host hostRegistration(HostDao hostDao, String name, String email_id, String newPassword, String confPassword) {
 
 		Host host = new Host();
 		host.setName(name);
@@ -23,7 +23,7 @@ public class HostRegister {
 		hostDao.save(host);
 		String hostId = String.valueOf(host.getId());
 		System.out.println("Event id created is : " + hostId);
-		return "successInsert";
+		return host;
 
 	}
 }

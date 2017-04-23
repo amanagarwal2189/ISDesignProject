@@ -1,10 +1,5 @@
 package eventAng.services;
 
-import java.sql.ResultSet;
-import java.sql.Statement;
-
-import eventAng.database.connection.DBConnection;
-
 public class LoginVerify {
 
 	public String loginVerification(String email_id,String password){/*  

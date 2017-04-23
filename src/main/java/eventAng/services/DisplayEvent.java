@@ -1,14 +1,8 @@
 package eventAng.services;
 
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
-
-import eventAng.database.connection.DBConnection;
 import eventAng.domain.Event;
 import eventAng.model.EventDao;
 

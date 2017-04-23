@@ -5,7 +5,7 @@ import eventAng.model.SponsorDao;
 
 public class SponsorRegister {
 
-	public String sponsorRegistration(SponsorDao sponsorDao, String name,String email_id,String newPassword, String confPassword){  
+	public Sponsor sponsorRegistration(SponsorDao sponsorDao, String name,String email_id,String newPassword, String confPassword){  
 		Sponsor sponsor= new Sponsor();
 		sponsor.setName(name);
 		sponsor.setPassword(newPassword);
@@ -22,6 +22,6 @@ public class SponsorRegister {
 		sponsorDao.save(sponsor);
 		String sponsorId = String.valueOf(sponsor.getId());
 		System.out.println("Event id created is : "+ sponsorId );
-		return "successInsert";
+		return sponsor;
 	}  
 }
