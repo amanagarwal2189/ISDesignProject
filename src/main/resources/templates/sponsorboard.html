@@ -52,7 +52,12 @@ margin-bottom:5%;
 	margin-top: 5px;
 }
 
-
+.truncate {
+	font-size:1.3em;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 </style>
 </head>
 <body>
@@ -78,9 +83,9 @@ function callForEvent(fromDate,toDate,city,state,zip){
  	        }
  				
  				 $('#sponsor-events').append(
-     				'<div class="col-sm-6 col-md-4"><div class="thumbnail"><img src="img/event-thumbnail.jpg" alt="..."/><div class="caption">'
- 					 +'<b>'+doc.title + '</b>'+'<p><a href="/displaySelectedEvent?eventId='+doc.id+'" class="btn btn-primary" role="button">View</a></p>'+
-     				'</div></div></div>');
+     				'<div class="col-sm-6 col-md-4"><div class="thumbnail"><img src="img/event-thumbnail.jpg" alt="..."/><div class="caption" style="text-align:center;">'
+     				+'<div class="truncate"><b>'+doc.title + '</b></div>'+'<div> <a href="/displaySelectedEvent?eventId='+doc.id+'" class="btn btn-primary" role="button">View</a></div>'+
+        				'</div></div></div>');
  				
  			    
  			});
