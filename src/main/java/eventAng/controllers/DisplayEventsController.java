@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -23,6 +24,9 @@ public class DisplayEventsController {
 
 	@Autowired
 	EventDao eventDao;
+	
+	@Autowired
+	private HttpSession httpSession;
 	
 	/**
 	 * 
@@ -78,14 +82,17 @@ public class DisplayEventsController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/organizerViewEvent", method = RequestMethod.GET)
-    public Event displayOneEvent(@RequestParam String eventId, HttpServletRequest request) {
+    public Event displayOneEvent(HttpServletRequest request) {
+		String eventId= (String) request.getSession().getAttribute("eventId");
 		Event event=eventDao.getById(Long.parseLong(eventId));
+		System.out.println("event id is: "+eventId);
         return event;
 	      
     }
 	
 	@RequestMapping(value = "/displayEvent", method = RequestMethod.GET)
-    public String displayEvent() {
+    public String displayEvent(@RequestParam String eventId, HttpServletRequest request) {
+		httpSession.setAttribute("eventId", eventId);
         return "displayEvent";
     }
 

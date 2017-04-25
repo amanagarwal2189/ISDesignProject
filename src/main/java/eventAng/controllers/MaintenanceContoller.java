@@ -9,6 +9,6 @@ public class MaintenanceContoller {
 
 	@RequestMapping(value = "/maintenancePage", method = RequestMethod.GET)
     public String directToLogin() {
-        return "maintenance";
+        return "maintainance";
     }
 }

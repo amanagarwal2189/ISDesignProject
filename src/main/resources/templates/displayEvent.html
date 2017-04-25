@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Login or Register | EventAngels</title>
+<title>View Event | EventAngels</title>
 <!--<link rel="stylesheet" type="text/css" href="css/style.css"/>-->
 
 <script
@@ -55,6 +55,43 @@
 </style>
 </head>
 <body>
+
+
+<script type="text/javascript">
+	  $(document).ready(function(){
+        $.ajax({
+    		type : "GET",
+    		contentType : "application/json",
+    		url : "/organizerViewEvent",
+    		timeout : 100000,
+    		success : function(data) {
+    			if(data!=null){
+    				
+				$('#title').val(data.title);
+				$('#date').val(data.date);
+				$('#time').val(data.time);
+				$('#address_line_1').val(data.address_line_1);
+				$('#address_line_2').val(data.address_line_2);
+				$('#city').val(data.city);
+				$('#state').val(data.state);
+				$('#zip').val(data.zip);
+				$('#num_attendees').val(data.num_attendees);
+				$('#category').val(data.category);
+				$('#fb_link').val(data.fb_link);
+				$('#eventbrite_link').val(data.eventbrite_link);
+    		   }
+    		},
+    		error : function(e) {
+    			console.log("ERROR: ", e);
+    			//display(e);
+    		},
+    		done : function(e) {
+    			console.log("DONE");
+    		}
+    	});
+});
+
+</script>
 <nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -108,10 +145,10 @@
 				<div id="left-side-form" class="col-md-6 col-sm-12">
 					<div class="row form-group">
 						<div class="col-md-4 col-sm-12">
-							<label for="title">Title</label>
+							<label for="title">Title*</label>
 						</div>
-						<div class="controls col-md-8 col-sm-12">
-  							<p class="form-control-static">Lorem Ipsum and then some</p>
+						<div class="col-md-8 col-sm-12">
+							<input type="text" class="form-control" name="title" id="title" disabled="disabled"/>
 						</div>
 					</div>
 					<div class="row form-group">
@@ -119,7 +156,7 @@
 							<label for="date">Event Date</label>
 						</div>
 						<div class="col-md-8 col-sm-12">
-							<input type="date" class="form-control" name="date" id="date"/>
+							<input type="date" class="form-control" name="date" id="date" disabled="disabled"/>
 						</div>
 					</div>
 					<div class="row form-group">
@@ -127,7 +164,7 @@
 							<label for="time">Event time</label>
 						</div>
 						<div class="col-md-8 col-sm-12">
-							<input type="time" class="form-control" name="time" id="time"/>
+							<input type="time" class="form-control" name="time" id="time" disabled="disabled"/>
 						</div>
 					</div>
 					<div class="row form-group">
@@ -135,7 +172,7 @@
 							<label for="address_line_1">Venue Address Line 1</label>
 						</div>
 						<div class="col-md-8 col-sm-12">
-							<input type="text" class="form-control" name="address_line_1" id="address_line_1"/>
+							<input type="text" class="form-control" name="address_line_1" id="address_line_1" disabled="disabled"/>
 						</div>
 					</div>
 					<div class="row form-group">
@@ -143,7 +180,7 @@
 							<label for="address_line_2">Address Line 2</label>
 						</div>
 						<div class="col-md-8 col-sm-12">
-							<input type="text" class="form-control" name="address_line_2" id="address_line_2"/>
+							<input type="text" class="form-control" name="address_line_2" id="address_line_2" disabled="disabled"/>
 						</div>
 					</div>
 					<div class="row form-group">
@@ -151,7 +188,7 @@
 							<label for="city">City</label>
 						</div>
 						<div class="col-md-8 col-sm-12">
-							<input type="text" class="form-control" name="city" id="city"/>
+							<input type="text" class="form-control" name="city" id="city" disabled="disabled"/>
 						</div>
 					</div>
 					<div class="row form-group">
@@ -159,7 +196,7 @@
 							<label for="state">State</label>
 						</div>
 						<div class="col-md-8 col-sm-12">
-							<input type="text" class="form-control" name="state" id="state"/>
+							<input type="text" class="form-control" name="state" id="state" disabled="disabled"/>
 						</div>
 					</div>
 					<div class="row form-group">
@@ -167,7 +204,7 @@
 							<label for="zip">Zip</label>
 						</div>
 						<div class="col-md-8 col-sm-12">
-							<input type="text" class="form-control" name="zip" id="zip"/>
+							<input type="text" class="form-control" name="zip" id="zip" disabled="disabled"/>
 						</div>
 					</div>
 				</div><!--id=left-side-form-->
@@ -178,7 +215,7 @@
 							<label for="num_attendees">Expected Attendees</label>
 						</div>
 						<div class="col-md-8 col-sm-12">
-							<input type="range" min="0" max="500" value="250" class="form-control" name="num_attendees" id="num_attendees"/>
+							<input type="range" min="0" max="500" value="250" class="form-control" name="num_attendees" id="num_attendees" disabled="disabled"/>
 						</div>
 					</div>
 					<div class="row form-group">
@@ -186,7 +223,7 @@
 							<label for="category">Category</label>
 						</div>
 						<div class="col-md-8 col-sm-12">
-							<input type="text" class="form-control" name="category" id="category"/>
+							<input type="text" class="form-control" name="category" id="category" disabled="disabled"/>
 						</div>
 					</div>
 					<div class="row form-group">
@@ -194,7 +231,7 @@
 							<label for="image">Event Image</label>
 						</div>
 						<div class="col-md-8 col-sm-12">
-							<input type="file" class="form-control" name="image" id="image"/>
+							<input type="file" class="form-control" name="image" id="image" disabled="disabled"/>
 						</div>
 					</div>
 					<div class="row form-group">
@@ -202,7 +239,7 @@
 							<label for="thumbnail">Event Thumbnail</label>
 						</div>
 						<div class="col-md-8 col-sm-12">
-							<input type="file" class="form-control" name="thumbnail" id="thumbnail"/>
+							<input type="file" class="form-control" name="thumbnail" id="thumbnail" disabled="disabled"/>
 						</div>
 					</div>
 					<div class="row form-group">
@@ -210,7 +247,7 @@
 							<label for="fb_link">Facebook Link</label>
 						</div>
 						<div class="col-md-8 col-sm-12">
-							<input type="text" class="form-control" name="fb_link" id="fb_link"/>
+							<input type="text" class="form-control" name="fb_link" id="fb_link" disabled="disabled"/>
 						</div>
 					</div>
 					<div class="row form-group">
@@ -218,119 +255,16 @@
 							<label for="eventbrite_link">Eventbrite Link</label>
 						</div>
 						<div class="col-md-8 col-sm-12">
-							<input type="text" class="form-control" name="eventbrite_link" id="eventbrite_link"/>
+							<input type="text" class="form-control" name="eventbrite_link" id="eventbrite_link" disabled="disabled"/>
 						</div>
 					</div>
 				</div><!--id=right-side-form-->
 			</div><!--class="row"-->
 			
-			<div class="row data-headers"><div class="col-md-12 col-sm-12">Sponsorship Details</div></div>
-			<div class="row sponsor-tier-title"><div class="col-md-12 col-sm-12">Sponsorship Tier 1</div></div>
-			<div class="row">
-				<div class="col-md-6 col-sm-12">
-					<div class="row form-group">
-						<div class="col-md-4 col-sm-12">
-							<label for="sponsorship_type1">Sponsorship Type</label>
-						</div>
-						<div class="col-md-8 col-sm-12">
-							<input type="text" class="form-control" name="sponsorship_type1" id="sponsorship_type1"/>
-						</div>
-					</div>
-					<div class="row form-group">
-						<div class="col-md-4 col-sm-12">
-							<label for="sponsorship_amt1">Sponsorship Amount</label>
-						</div>
-						<div class="col-md-8 col-sm-12">
-							<input type="text" class="form-control" placeholder="0.00" name="sponsorship_amt1" id="sponsorship_amt1"/>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-sm-6">
-					<div class="row form-group">
-						<div class="col-md-4 col-sm-12">
-							<label for="is_partial_allowed1">Is Partial Sponsorship Allowed? (Y/N)</label>
-						</div>
-						<div class="col-md-8 col-sm-12">
-							<input type="text" class="form-control" name="is_partial_allowed1" id="is_partial_allowed1"/>
-						</div>
-					</div>
-				</div>
-			
-			</div>
-
-			<div class="row sponsor-tier-title"><div class="col-md-12 col-sm-12">Sponsorship Tier 2</div></div>
-			<div class="row">
-				<div class="col-md-6 col-sm-12">
-					<div class="row form-group">
-						<div class="col-md-4 col-sm-12">
-							<label for="sponsorship_type2">Sponsorship Type</label>
-						</div>
-						<div class="col-md-8 col-sm-12">
-							<input type="text" class="form-control" name="sponsorship_type2" id="sponsorship_type2"/>
-						</div>
-					</div>
-					<div class="row form-group">
-						<div class="col-md-4 col-sm-12">
-							<label for="sponsorship_amt2">Sponsorship Amount</label>
-						</div>
-						<div class="col-md-8 col-sm-12">
-							<input type="text" class="form-control" placeholder="0.00" name="sponsorship_amt2" id="sponsorship_amt2"/>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-sm-6">
-					<div class="row form-group">
-						<div class="col-md-4 col-sm-12">
-							<label for="is_partial_allowed2">Is Partial Sponsorship Allowed? (Y/N)</label>
-						</div>
-						<div class="col-md-8 col-sm-12">
-							<input type="text" class="form-control" name="is_partial_allowed2" id="is_partial_allowed2"/>
-						</div>
-					</div>
-				</div>
-			
-			</div>
-			
-			<div class="row sponsor-tier-title"><div class="col-md-12 col-sm-12">Sponsorship Tier 3</div></div>
-			<div class="row">
-				
-				<div class="col-md-6 col-sm-12">
-					<div class="row form-group">
-						<div class="col-md-4 col-sm-12">
-							<label for="sponsorship_type3">Sponsorship Type</label>
-						</div>
-						<div class="col-md-8 col-sm-12">
-							<input type="text" class="form-control" name="sponsorship_type3" id="sponsorship_type3"/>
-						</div>
-					</div>
-					<div class="row form-group">
-						<div class="col-md-4 col-sm-12">
-							<label for="sponsorship_amt3">Sponsorship Amount</label>
-						</div>
-						<div class="col-md-8 col-sm-12">
-							<input type="text" class="form-control" placeholder="0.00" name="sponsorship_amt3" id="sponsorship_amt3"/>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-sm-6">
-					<div class="row form-group">
-						<div class="col-md-4 col-sm-12">
-							<label for="is_partial_allowed3">Is Partial Sponsorship Allowed? (Y/N)</label>
-						</div>
-						<div class="col-md-8 col-sm-12">
-							<input type="text" class="form-control" name="is_partial_allowed3" id="is_partial_allowed3"/>
-						</div>
-					</div>
-				</div>
-			
-			</div>
-				
+							
 			<div class="row form-actions">
-				<div class="col-md-6 col-sm-6" style="margin-bottom:3%">
-        			<button class="form-control" style="background-color: limegreen" type="submit">Contact Organizer</button>
-				</div>
 				<div class="col-md-6 col-sm-6">
-       				<button class="form-control col-md-6 col-sm-6" type="button">Cancel</button>
+       				<div style="text-align: center;"><a href="directToDashboard" class="form-control col-md-6 col-sm-6 button" type="button">Return</a></div>
 				</div>
     		</div><!--class="form-actions"-->
 		</form>

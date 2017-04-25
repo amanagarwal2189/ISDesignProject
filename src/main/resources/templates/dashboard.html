@@ -116,7 +116,8 @@ margin-bottom:5%;
 	  
 function viewEvent(eventId){
 	
-	$.ajax({
+	window.location.href = '/displayEvent?eventId='+eventId;
+	/* $.ajax({
 		type : "GET",
 		contentType : "application/json",
 		url : "/organizerViewEvent?eventId="+eventId,
@@ -125,7 +126,7 @@ function viewEvent(eventId){
 			if(data!=null){
 				console.log(data);
 				alert(data.id);
-				window.location.href = '/displayEvent';
+				window.location.href = '/displayEvent?eventId='+eventId;
 		   }
 			else{
 			}
@@ -137,7 +138,7 @@ function viewEvent(eventId){
 		done : function(e) {
 			console.log("DONE");
 		}
-	});
+	}); */
 }
 	  
 	  
