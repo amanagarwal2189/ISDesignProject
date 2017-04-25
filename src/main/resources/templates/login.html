@@ -12,12 +12,14 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	
+  
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
 <link rel="stylesheet" type="text/css" href="static/css/footer.css"/>
-<script src="static/js/passwordStrength.js"></script>
+
 <style>
 body{
 	background-image: url("img/party22.jpg");
@@ -74,10 +76,27 @@ body{
 	width: 80%;
 	padding: 2% 3%;
 	margin: 3%;
-	background-color: #4CAF50;
+	/*background-color: #4CAF50;*/
 	border: none;
 	color: white;
 }
+
+.main .mainContainer form .regButton {
+	
+	background-color: grey;
+	
+}
+.main .mainContainer form .loginSubmit {
+	
+	background-color: #4CAF50;
+	
+}
+.main .mainContainer form .successButton {
+	
+	background-color: #4CAF50;
+	
+}
+
 .main .mainContainer form a {
 	color: white;
 	font-size: 0.7em;
@@ -94,6 +113,34 @@ body{
 #signup .strong {
 	color: #006400;
 }
+
+#loginError{
+	display: none;
+}
+
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-device-width : 321px) and (max-device-width : 580px) {
+body{
+
+background-image: url("img/indexBg.jpg");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+body{
+
+background-image: url("img/indexBgportraint.jpg");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+}
+
+
+
 </style>
 </head>
 <body>
@@ -101,7 +148,6 @@ body{
 <script type="text/javascript">
 
 $(document).ready(function() {
-
     $('#loginSubmit').click(function() {
 		
     	emailId = $("#emailId").val()
@@ -134,7 +180,7 @@ $(document).ready(function() {
                 }
             },
             error: function (xhr, ajaxOptions, thrownError) {
-            	$('#loginError').innerHTML("Incorrect credentials");
+            	$('#loginError').show();
             	//alert('Hi');
               }
         });
@@ -190,15 +236,20 @@ $(document).ready(function() {
 						name="emailId" id="emailId" placeholder="john@gaver.com"
 						required="required" /><br /> <input type="password" id="password"
 						name="password" placeholder="password" required="required" /><br />
-					<button type="submit" class="button" id="loginSubmit">Login</button>
+					<button type="submit" class="loginSubmit" id="loginSubmit">Login</button>
 					<br /> <a href="forgotPwd.html">Forgot password!</a>
 				</form>
+				
+				<div id="loginError"><img alt="loginErrorMessage"
+					style="height: 50%; width: auto;" class="img-responsive"
+					src="img/incorretCred.png" /></div>
+				
 			</div>
 			<div class="col-md-1"></div>
 			<div class="col-md-1"></div>
 			<div id="signup" class="mainContainer col-sm-3 col-md-5">
 				<div class="title" id="register">Register</div>
-				<form action="/register" method="post">
+				<form action="/register" id="register" method="post">
 					I am <input type="radio" name="userType"
 						value="organizer" checked="checked" /> an organizer  
 						<input type="radio" name="userType" value="sponsor"/>  a sponsor  <br /> <input type="text" id="uname"
@@ -210,13 +261,13 @@ $(document).ready(function() {
 						type="password" id="confpassword" name="confpassword"
 						placeholder="confirm password" required="required"/><br />
 						<span id="result2"></span>
-					<button type="submit" class="button">Register</button>
+					<button type="submit" class="regButton" id="registerbtn" disabled="disabled">Register</button>
 				</form>
 				
 			</div>
 			</div>
 		</div>
-	<div id="loginError">Incorrect credentials</div>
+	
 	</div>
 	
 	
@@ -274,5 +325,6 @@ $(document).ready(function() {
     </div>
     <!--/.footer-bottom--> 
 </footer>
+<script src="static/js/passwordStrength.js"></script>
 </body>
 </html>

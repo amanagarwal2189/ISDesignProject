@@ -44,26 +44,38 @@ background-image: url("img/kyle.jpg");
 
 .main .mainContainer {
 	text-align: center;
-	background-color: rgba(0, 0, 0, 0.6);
+	/*background-color: rgba(0, 255, 0, 0.6);*/
 	float: left;
-	padding: 2% 5% 2% 5%;
+	padding: 2% 5% 3% 5%;
 	color: white;
 	margin-right:5%;
-	margin-bottom: 2%;
+	margin-bottom: 3%;
 }
+
+#organizer{
+	background-color: rgba(0, 255, 0, 0.7);
+}
+
+#sponsor{
+	background-color: rgba(255,165,0, 0.7);
+}
+
 
 .main .mainContainer .label1 {
 	text-align: center;
 	margin: 2%;
 	padding: 5% 1% 5% 1%;
 	color: white;
-	font-size: 2em;
+	font-weight:bold;
+	font-size: 2.2em;
 }
 
 .main .mainContainer .text {
 	font-style: italic;
 	text-align: center;
 	padding: 10% 1% 5% 1%;
+	font-size: 1.3em;
+	font-weight:bold;
 }
 
 .row .eventThumbnail {
@@ -79,12 +91,49 @@ background-color: rgba(0, 0, 0, 0.6);
 	padding:1%;
 	margin:2%;
 	text-align: center;
+	font-style: italic;
+    font-size: 1.125em;
+}
+
+.eventThumbnail .eventtitle {
+	font-size: 1.5em;
+	text-decoration: underline;
+	font-weight: bold;
+	padding-left: 5%;
+	padding-right: 5%;
+}
+.eventThumbnail .eventPlace{
+	font-size: 1.3em;
 }
 
 
-
-@media(){
+.truncate {
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
+
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-device-width : 321px) and (max-device-width : 580px) {
+body{
+
+background-image: url("img/indexBg.jpg");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+body{
+
+background-image: url("img/indexBgportraint.jpg");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+}
+
 
 </style>
 </head>
@@ -102,25 +151,21 @@ $(document).ready(function(){
     		success : function(data) {
     			console.log("SUCCESS: ", data);
     			container = $('#displayEventsOnLanding');
-    			$.each(data,function(i,doc){
-    			    
-    				//<p><b> 5K for cancer awareness</b> <br/><br/> Venue: Houston, TX <br/>Date: March 11, 2017</p>
+    			$.each(data,function(i,doc){    	
+    				var date1=doc.date
     				
-    				//var elementForIndex = $("<p><b>"+
-    										//doc.title + "</b> <br/><br/>"+doc.city+"<br/>"+doc.state+"</p>");
+    				var monthNames = ["January", "February", "March", "April", "May", "June",
+    					  "July", "August", "September", "October", "November", "December"
+    					];
+
+    				res=date1.split("-");
     				
     				 $('#displayEventsOnLanding').append(
         				'<div class="col-md-3 col-xs-6"><div class="eventThumbnail">'+
-    					 '<p><b>'+doc.title + '</b><br/><br/>'+doc.city+'<br/>'+doc.state+'</p>'+
+    					'<div class="truncate eventtitle">'+doc.title + '</div><br/>' + 
+    					'<div class="truncate eventPlace">'+doc.city+', '+doc.state+'</div><br/>'+
+    					'<div class="truncate eventTime"> on '+monthNames[parseInt(res[1])-1]+' '+res[2]+', ' +res[0] +'</div>'+
         				'</div></div>');
-    				
-    			    //var $element3 = $("<div><h1>" +
-    		          //      doc.title + 
-    		            //    "</h1><div>" +
-    		              //  doc.venue +
-    		                //"</div></div>");
-    			    // Append the item to the container
-    			    //container.append(elementForIndex);
     			});
     			
     		},
@@ -160,7 +205,7 @@ $(document).ready(function(){
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="/aboutUs">About Us</a></li>
-					<li><a href="#">How it works</a></li>
+					<li><a href="/maintenancePage">How it works</a></li>
 					<li><a href="/loginPage">Sign-in/Register</a></li>
 				</ul>
 			</div>
@@ -171,27 +216,26 @@ $(document).ready(function(){
 
 	<div id="page" class="container">
 		<div id="main" class="row main">
-			<div id="organizer" class="mainContainer  col-xs-12 col-sm-5 col-md-5">
-				<div class="label1">
-					<a href="loginPage" style="color: white">I'm the organizer</a>	
+			<a href="loginPage"><div id="organizer" class="mainContainer  col-xs-12 col-sm-5 col-md-5">
+				<div class="label1" style="color: white">I'm the organizer
 				</div>
 				<div class="text">
 					We help you find the <br /> right sponsor to fund <br /> your event
 				</div>
-			</div>
+			</div></a>
 			<div class="col-md-1"></div>
 			<div class="col-md-1"></div>
-			<div id="sponsor" class="mainContainer col-xs-12 col-sm-5 col-md-5">
-				<div class="label1"><a href="loginPage" style="color: white">I'm the sponsor</a></div>
+			<a href="sponsorOutside" ><div id="sponsor" class="mainContainer col-xs-12 col-sm-5 col-md-5">
+				<div class="label1" style="color: white">I'm the sponsor</div>
 				<div class="text">
 					We help you find the <br /> right event to connect <br /> with your
 					customers
 				</div>
-			</div>
+			</div></a>
 		</div>
 		<div class="row" id="labelStatementLive">
 			<div>
-				<label>We made sponsorship possible at:</label>
+				<label style="text-decoration: underline;">We made sponsorship possible at these events</label>
 			</div>
 		</div>
 		<div class="row" id="displayEventsOnLanding">

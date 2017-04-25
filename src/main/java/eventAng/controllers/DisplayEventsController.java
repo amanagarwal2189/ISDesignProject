@@ -69,6 +69,7 @@ public class DisplayEventsController {
 	}
 	
 	
+	
 	/**
 	 * Show the detailed page for an event
 	 * @param eventId
@@ -76,11 +77,16 @@ public class DisplayEventsController {
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping(value = "/event", method = RequestMethod.GET)
-    public String displayOneEvent(@RequestParam String eventId, HttpServletRequest request) {
+	@RequestMapping(value = "/organizerViewEvent", method = RequestMethod.GET)
+    public Event displayOneEvent(@RequestParam String eventId, HttpServletRequest request) {
 		Event event=eventDao.getById(Long.parseLong(eventId));
-        return "displayEvent";
+        return event;
 	      
+    }
+	
+	@RequestMapping(value = "/displayEvent", method = RequestMethod.GET)
+    public String displayEvent() {
+        return "displayEvent";
     }
 
 }

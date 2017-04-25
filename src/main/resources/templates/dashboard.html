@@ -49,46 +49,55 @@ margin-bottom:5%;
 }
 
 
+.truncate {
+	font-size:1.3em;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-device-width : 321px) and (max-device-width : 580px) {
+#dashboard-menu{
+	display:none;
+}
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+#dashboard-menu{
+	display:none;
+}
+}
+
+
+
 </style>
 </head>
 <body>
 
 	<script type="text/javascript">
 	  $(document).ready(function(){
-	
-	
         $.ajax({
     		type : "GET",
     		contentType : "application/json",
     		url : "/displayEventsForOrganizer",
-    		
-    		
     		timeout : 100000,
     		success : function(data) {
-    			//console.log("SUCCESS: ", data);
-    			//container = $('#org-events');
     			if(data!=null){
     			$.each(data,function(i,doc){
-    			    
-    				if (i > 4) {
-    	 	               return false;
-    	 	        }
     				
     				 $('#org-events').append(
-        				'<div class="col-sm-6 col-md-4"><div class="thumbnail"><img src="img/event-thumbnail.jpg" alt="..."/><div class="caption">'
-    					 +'<b>'+doc.title + '</b>'+'<p><a href="#" class="btn btn-primary" role="button">Update</a></p>'+
+        				'<div class="col-sm-6 col-md-4"><div class="thumbnail"><img src="img/event-thumbnail.jpg" alt="..."/><div class="caption" style="text-align:center;">'
+    					 +'<div class="truncate"><b>'+doc.title + '</b></div>'+'<div><button class="btn btn-primary" onclick="viewEvent('+doc.id+')">View</button></div>'+
         				'</div></div></div>');
-    				
-    			    
     			});
     					$('#org-events').append(
         				'<div class="col-sm-6 col-md-4"><div class="thumbnail"><a href="/createEvent"><img src="img/text-plus-icon.png" style="height:50%; width:50%; margin:25%" alt="..."/></a>'
     					 +'</div></div>');
-        				
     		   }
     			else{
-    				
-    				//$('#welcome-message span').text('Welcome!!'+ '<small>'+'Create your first event'+'</small>');
     				$('#org-events').append(
             				'<div class="col-sm-6 col-md-4"><div class="thumbnail"><a href="/createEvent"><img src="img/text-plus-icon.png" style="height:50%; width:50%; margin:25%" alt="..."/></a>'
         					 +'</div></div>');
@@ -104,6 +113,34 @@ margin-bottom:5%;
     	});
 });
 
+	  
+function viewEvent(eventId){
+	
+	$.ajax({
+		type : "GET",
+		contentType : "application/json",
+		url : "/organizerViewEvent?eventId="+eventId,
+		timeout : 100000,
+		success : function(data) {
+			if(data!=null){
+				console.log(data);
+				alert(data.id);
+				window.location.href = '/displayEvent';
+		   }
+			else{
+			}
+		},
+		error : function(e) {
+			console.log("ERROR: ", e);
+			//display(e);
+		},
+		done : function(e) {
+			console.log("DONE");
+		}
+	});
+}
+	  
+	  
 </script>
 
 	<nav class="navbar navbar-default">

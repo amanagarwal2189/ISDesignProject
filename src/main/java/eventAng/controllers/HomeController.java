@@ -38,6 +38,12 @@ public class HomeController {
         
     }
     
+    @RequestMapping(value = "/sponsorOutside", method = RequestMethod.GET)
+    public String sponsorOutside() {
+        return "sponsorBoardOutside";
+    }
+
+    
     @RequestMapping(value = "/aboutUsInside", method = RequestMethod.GET)
     public String aboutUsInside() {
         return "aboutus_inside";

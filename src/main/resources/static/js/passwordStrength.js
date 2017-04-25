@@ -44,13 +44,13 @@ $(document).ready(function()
 		if (strength < 2 )
 		{
 			$('#result').removeClass()
-			$('#result').addClass('weak').doTimeout( 5000, 'remove' );
+			$('#result').addClass('weak')//.doTimeout( 5000, 'remove' );
 			return 'Weak'			
 		}
 		else if (strength == 2 )
 		{
 			$('#result').removeClass()
-			$('#result').addClass('good').doTimeout( 5000, 'remove' );
+			$('#result').addClass('good')//.doTimeout( 5000, 'remove' );
 			return 'Good'		
 		}
 		else
@@ -67,6 +67,9 @@ $(document).ready(function()
 		{
 	    if ($('#newPassword').val() == $('#confpassword').val()) {
 	        $('#result2').html('Matching').css('color', 'white');
+	        $('#registerbtn').prop('disabled', false);
+	        $('#registerbtn').removeClass();
+	        $('#registerbtn').addClass('successButton');
 	    } else 
 	        $('#result2').html('Not Matching').css('color', 'red');
 		}
@@ -75,3 +78,4 @@ $(document).ready(function()
 	}
 	});
 });
+
