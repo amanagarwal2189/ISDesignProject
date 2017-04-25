@@ -84,10 +84,12 @@ function callForEvent(){
  	        }
  				
  				 $('#sponsor-events').append(
-     				'<div class="col-sm-6 col-md-4"><div class="thumbnail"><img src="img/event-thumbnail.jpg" alt="..."/><div class="caption" style="text-align:center;">'
+     				/* '<div class="col-sm-6 col-md-4"><div class="thumbnail"><img src="img/event-thumbnail.jpg" alt="..."/><div class="caption" style="text-align:center;">'
  					 +'<div class="truncate"><b>'+doc.title + '</b></div>'+'<div><button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#sponsorModal">View</button></div>'+
+     				'</div></div></div>'); */
+ 				'<div class="col-sm-6 col-md-4"><div class="thumbnail"><img src="img/event-thumbnail.jpg" alt="..."/><div class="caption" style="text-align:center;">'
+  				+'<div class="truncate"><b>'+doc.title + '</b></div>'+'<div> <a href="/displaySelectedEvent?eventId='+doc.id+'" class="btn btn-primary" role="button">View</a></div>'+
      				'</div></div></div>');
- 			    
  			});
  					
      				
