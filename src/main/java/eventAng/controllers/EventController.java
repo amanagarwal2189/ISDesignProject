@@ -71,7 +71,7 @@ public class EventController {
 		event.setZip(Integer.parseInt(request.getParameter("zip")));
 		event.setNum_attendees(Integer.parseInt(request.getParameter("num_attendees")));
 		event.setIs_active(false);//request.getParameter("is_active").equals("true")?true:false);//converttoboolean
-		event.setCreated_by(request.getParameter("created_by"));
+		event.setCreated_by(user_id);
 		
 		event.setCategory(request.getParameter("category"));
 		event.setIs_deleted(false);//request.getParameter("is_deleted").equals("true")?true:false);//converttoboolean
