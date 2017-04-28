@@ -17,10 +17,10 @@
     					class_publish='eventPublish'
     				}
     				 $('#org-events').append(
-        				'<div class="col-sm-6 col-md-4"><div class="thumbnail"><img src="img/event-thumbnail.jpg" alt="..."/><div class="caption" style="text-align:center;">'
+        				'<div class="col-sm-6 col-md-4"><div id = "event_'+doc.id+'" class="thumbnail"><img src="img/event-thumbnail.jpg" alt="..."/><div class="caption" style="text-align:center;">'
     					 +'<div class="truncate"><b>'+doc.title + '</b></div>'
     					 +'<div><button class="btn btn-primary" onclick="viewEvent('+doc.id+')">View</button>&nbsp;&nbsp;'
-    					 +'<button id="event_'+doc.id+'" class="'+class_publish+' btn" onclick="changeEventStatus('+doc.id+','+doc._active+')">'+publishButton+'</button></div>'
+    					 +'<button id="publishButton_event_'+doc.id+'" class="'+class_publish+' btn" onclick="changeEventStatus('+doc.id+','+doc._active+')">'+publishButton+'</button></div>'
     					 +'</div></div></div>');
     			});
     					$('#org-events').append(

@@ -18,14 +18,17 @@ function changeEventStatus(eventId,currStatus){
     				    
     				});*/
     				
-    				if($('#event_'+eventId).hasClass('eventUnpublish')){
-				        $('#event_'+eventId).removeClass('eventUnpublish')
-				        $('#event_'+eventId).addClass('eventPublish')
-				        $('#event_'+eventId).html('Publish')
+    				if($('#publishButton_event_'+eventId).hasClass('eventUnpublish')){
+				        $('#publishButton_event_'+eventId).removeClass('eventUnpublish')
+				        $('#publishButton_event_'+eventId).addClass('eventPublish')
+				        $('#publishButton_event_'+eventId).html('Publish')
+				        $('#event_'+eventId).removeClass('publishedEvent')
+				        
 				    } else {
-				    	$('#event_'+eventId).removeClass('eventPublish')
-				    	$('#event_'+eventId).addClass('eventUnpublish')
-				         $('#event_'+eventId).html('Unpublish')
+				    	$('#publishButton_event_'+eventId).removeClass('eventPublish')
+				    	$('#publishButton_event_'+eventId).addClass('eventUnpublish')
+				         $('#publishButton_event_'+eventId).html('Unpublish')
+				         $('#event_'+eventId).addClass('publishedEvent')
 				    }
     		   }
     		},
