@@ -11,16 +11,18 @@
     			if(data!=null){
     			$.each(data,function(i,doc){
     				var publishButton='Unpublish'
-    				var class_publish='eventUnpublish'	
+    				var class_publish_button='eventUnpublish'
+				var class_publish_event	= 'publishedEvent'
     				if(doc._active==false){
     					publishButton='Publish'
-    					class_publish='eventPublish'
+    					class_publish_button='eventPublish'
+					class_publish_event= ''
     				}
     				 $('#org-events').append(
-        				'<div class="col-sm-6 col-md-4"><div id = "event_'+doc.id+'" class="thumbnail"><img src="img/event-thumbnail.jpg" alt="..."/><div class="caption" style="text-align:center;">'
+        				'<div class="col-sm-6 col-md-4"><div id = "event_'+doc.id+'" class="thumbnail '+class_publish_event+'"><img src="img/event-thumbnail.jpg" alt="..."/><div class="caption" style="text-align:center;">'
     					 +'<div class="truncate"><b>'+doc.title + '</b></div>'
     					 +'<div><button class="btn btn-primary" onclick="viewEvent('+doc.id+')">View</button>&nbsp;&nbsp;'
-    					 +'<button id="publishButton_event_'+doc.id+'" class="'+class_publish+' btn" onclick="changeEventStatus('+doc.id+','+doc._active+')">'+publishButton+'</button></div>'
+    					 +'<button id="publishButton_event_'+doc.id+'" class="'+class_publish_button+' btn" onclick="changeEventStatus('+doc.id+','+doc._active+')">'+publishButton+'</button></div>'
     					 +'</div></div></div>');
     			});
     					$('#org-events').append(
