@@ -79,7 +79,6 @@ public class EventController {
 		storeSponsorDetails(event.getId(), request);
 		}
 		return "dashboard";
-		
 	}
 
 	/**

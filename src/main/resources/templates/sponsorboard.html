@@ -63,25 +63,13 @@ margin-bottom:5%;
 <body>
 
 <script type="text/javascript">
-
-
-
-/* function clickSearch(){
-	var fromDate = document.getElementById('fromDate').value;
-	var toDate = document.getElementById('toDate').value;
-	var city = document.getElementById('city').value;
-	var state = document.getElementById('state').value;
-	var zip = document.getElementById('zip').value;
-	callForEvents(fromDate,toDate,city,state,zip);	
-} */
-
 	  $(document).ready(function(){
 		  	fromDate = $("#fromDate").val()
 	    	toDate = $("#toDate").val()
 	    	city = $("#city").val()
 	    	state = $("#state").val()
 	    	zip = $("#zip").val()
-	    	callForEvents("inside");
+	    	callForEvents(fromDate,toDate,city,state,zip,"inside");
 		});
 </script>
 	<nav class="navbar navbar-default">

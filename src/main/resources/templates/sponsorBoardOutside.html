@@ -67,52 +67,13 @@ margin-bottom:5%;
 <body>
 
 <script type="text/javascript">
-
-/* function callForEvent(){
-	$('#sponsor-events').empty();
-	 $.ajax({
- 		type : "GET",
- 		contentType : "application/json",
- 		url : "/displayEventsForSponsor",
-		data:{'fromDate':fromDate,'toDate':toDate,'city':city,'state':state, 'zip':zip},
- 		timeout : 100000,
- 		success : function(data) {
- 			if(data!=null &amp;&amp; data.length>0){
- 				$.each(data,function(i,doc){ 				
- 					 $('#sponsor-events').append(
-     					'<div class="col-sm-6 col-md-4"><div class="thumbnail"><img src="static/img/event-thumbnail.jpg" alt="..."/><div class="caption" style="text-align:center;">'
- 					 	+'<div class="truncate"><b>'+doc.title + '</b></div>'+'<div><button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#sponsorModal">View</button></div>'+
-     					'</div></div></div>');  
- 				});
- 		   }
- 			else{
- 				$('#sponsor-events').append('<div id="noEventsFound" class="col-sm-6 col-md-4">No Events Found!</div>');
- 			}
- 		},
- 		error : function(e) {
- 			console.log("ERROR: ", e);
- 		},
- 		done : function(e) {
- 			console.log("DONE");
- 		}
- 	});
-}
-
-function clickSearch(){
-	var fromDate = document.getElementById('fromDate').value;
-	var toDate = document.getElementById('toDate').value;
-	var city = document.getElementById('city').value;
-	var state = document.getElementById('state').value;
-	var zip = document.getElementById('zip').value;
-	callForEvent(fromDate,toDate,city,state,zip);	
-} */
 	  $(document).ready(function(){
 		  fromDate = $("#fromDate").val()
 	    	toDate = $("#toDate").val()
 	    	city = $("#city").val()
 	    	state = $("#state").val()
 	    	zip = $("#zip").val()
-	    	callForEvents("outside");
+	    	callForEvents(fromDate,toDate,city,state,zip,"outside");
 		});
 </script>
 	<nav class="navbar navbar-default">
@@ -126,7 +87,7 @@ function clickSearch(){
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"> <img alt="Brand"
+				<a class="navbar-brand" href="/indexPage"> <img alt="Brand"
 					style="height: 100%; width: auto;" class="img-responsive"
 					src="static\img\eventangels.png" />
 				</a>
