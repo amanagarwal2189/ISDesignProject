@@ -4,6 +4,14 @@ $(document).ready(function()
 	$('#newPassword').keyup(function()
 	{
 		$('#result').html(checkStrength($('#newPassword').val()))
+		
+    	$("#confpassword").val('');
+
+    	$('#result2').empty();
+    	//$('#result').empty('');
+    	$('#registerbtn').prop('disabled', true);
+    	$('#registerbtn').removeClass();
+        $('#registerbtn').addClass('regButton');
 	})	
 	
 	
@@ -14,11 +22,15 @@ $(document).ready(function()
 		var strength = 0
 		
 		//if the password length is less than 6, return message.
+		if(password.length==0){
+			$('#result').empty()
+		}
+		
 		if ((password.length >1) && (password.length < 6)) { 
 			$('#result').removeClass()
 			
 			$('#result').addClass('short')
-			return 'Short' 
+			return 'Short password' 
 		}
 		
 		//length is ok, lets continue.
@@ -45,36 +57,39 @@ $(document).ready(function()
 		{
 			$('#result').removeClass()
 			$('#result').addClass('weak')//.doTimeout( 5000, 'remove' );
-			return 'Weak'			
+			return 'Weak password'			
 		}
 		else if (strength == 2 )
 		{
 			$('#result').removeClass()
 			$('#result').addClass('good')//.doTimeout( 5000, 'remove' );
-			return 'Good'		
+			return 'Good password'		
 		}
 		else
 		{
 			$('#result').removeClass()
 			$('#result').addClass('strong')
-			return 'Strong'
+			return 'Strong password'
 		}
 	}
 	
 
 	$('#confpassword').on('keyup', function () {
-		if($('#newPassword').val() != null)
+		if(($('#newPassword').val() != null)&& ($('#newPassword').val() != ''))
 		{
 	    if ($('#newPassword').val() == $('#confpassword').val()) {
 	        $('#result2').html('Matching').css('color', 'white');
+	        $('#result2').html('Matching').css('font-size','0.7em');
 	        $('#registerbtn').prop('disabled', false);
 	        $('#registerbtn').removeClass();
 	        $('#registerbtn').addClass('successButton');
 	    } else 
 	        $('#result2').html('Not Matching').css('color', 'red');
+	    	$('#result2').css('font-size','0.7em');
 		}
 	else{
 			$('#result2').html('Enter password').css('color', 'red');
+			$('#result2').css('font-size','0.7em');
 	}
 	});
 });

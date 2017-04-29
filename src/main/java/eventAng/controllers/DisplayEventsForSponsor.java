@@ -1,3 +1,11 @@
+/**
+ * DisplayEventsForSponsor controller for the fetching events for sponsor
+ * 
+* @author  Aman Agarwal
+* @version 1.0
+* @since   2017-04-28 
+*/
+
 package eventAng.controllers;
 
 import java.sql.ResultSet;
@@ -30,6 +38,11 @@ public class DisplayEventsForSponsor {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
+	/**
+	 * fetches events based on the query parameters set on the sponsor page
+	 * @param request
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/displayEventsForSponsor", method = RequestMethod.GET)
 	public List<Event> displayEventsForSponsor(HttpServletRequest request) {
@@ -43,13 +56,19 @@ public class DisplayEventsForSponsor {
 		return eventList;
 	}
 
+	/**
+	 * shows the detailed page of the event ot the sponsor
+	 * @param request
+	 * @param eventId
+	 * @return
+	 */
 	@RequestMapping(value = "/displaySelectedEvent", method = RequestMethod.GET)
 	public String displaySelectedEvent(HttpServletRequest request, @RequestParam String eventId) {
 		return "selectEvent";
 	}
 
 	/**
-	 * Show the detailed page for an event
+	 * constructs the query based on the param provided in the search query
 	 * 
 	 * @param eventId
 	 * @param request
@@ -58,39 +77,30 @@ public class DisplayEventsForSponsor {
 	private String constructQuery(String fromDate, String toDate, String city, String state, String zip) {
 		String queryString = "";
 		StringBuffer query = new StringBuffer("Select * from tb_event_dtls where ");
-		if (fromDate != null && !fromDate.isEmpty()) {
+		if (fromDate != null && !fromDate.isEmpty()) 
 			query.append("date >='" + fromDate + "' and ");
-		}
-		if (toDate != null && !toDate.isEmpty()) {
+		if (toDate != null && !toDate.isEmpty()) 
 			query.append("date <='" + toDate + "' and ");
-		}
-
-		if (city != null && !city.isEmpty()) {
+		if (city != null && !city.isEmpty()) 
 			query.append("city ='" + city + "' and ");
-		}
-
-		if (state != null && !state.equals("---")) {
+		if (state != null && !state.equals("---")) 
 			query.append("state ='" + state + "' and ");
-		}
-
-		if (zip != null && !zip.isEmpty()) {
+		if (zip != null && !zip.isEmpty()) 
 			query.append("zip=" + zip + " and ");
-		}
-
 		query.append(" is_active=true");
-
 		queryString = query.toString();
-		/*if (queryString.endsWith(" and ")) {
-			queryString = queryString.substring(0, queryString.length() - 5);
-			System.out.println("Query is" + queryString);
-		}*/
-
 		return queryString;
 	}
-
 }
 
+/**
+ * @author Aman
+ *
+ */
 class EventMapper implements RowMapper<Event> {
+	/* (non-Javadoc)
+	 * @see org.springframework.jdbc.core.RowMapper#mapRow(java.sql.ResultSet, int)
+	 */
 	public Event mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Event event = new Event();
 		event.setId(rs.getLong("id"));

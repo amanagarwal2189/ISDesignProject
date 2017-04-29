@@ -3,24 +3,15 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Sponsor Dashboard | EventAngels</title>
-<!--<link rel="stylesheet" type="text/css" href="css/style.css"/>-->
 
-<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
-
-<!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
-
-<!-- Latest compiled and minified JavaScript -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
-
-
-	<link rel="stylesheet" type="text/css" href="static/css/footer.css"/>
+<link rel="stylesheet" type="text/css" href="static/css/footer.css"/>
+<script src="static/js/eventActions.js"></script>
 	
 <style>
 .main #section .section-div {
@@ -52,6 +43,16 @@ margin-bottom:5%;
 	margin-top: 5px;
 }
 
+.filter-header{
+	text-align: center;
+	font-size: 1.5em;
+	font-weight: bold;
+	text-decoration: underline;
+}
+.search-button-row{
+	text-align: center;
+}
+
 
 .truncate {
 	font-size:1.3em;
@@ -67,48 +68,34 @@ margin-bottom:5%;
 
 <script type="text/javascript">
 
-function callForEvent(){
+/* function callForEvent(){
 	$('#sponsor-events').empty();
 	 $.ajax({
  		type : "GET",
  		contentType : "application/json",
  		url : "/displayEventsForSponsor",
- 		
- 		 data:{'fromDate':fromDate,'toDate':toDate,'city':city,'state':state, 'zip':zip},
- 		
+		data:{'fromDate':fromDate,'toDate':toDate,'city':city,'state':state, 'zip':zip},
  		timeout : 100000,
  		success : function(data) {
- 			
- 			if(data!=null){
- 			$.each(data,function(i,doc){
- 				if (i > 5) {
- 	               return false;
- 	        }
- 				
- 				 $('#sponsor-events').append(
-     				'<div class="col-sm-6 col-md-4"><div class="thumbnail"><img src="img/event-thumbnail.jpg" alt="..."/><div class="caption" style="text-align:center;">'
- 					 +'<div class="truncate"><b>'+doc.title + '</b></div>'+'<div><button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#sponsorModal">View</button></div>'+
-     				'</div></div></div>');  
- 			});
- 					
-     				
+ 			if(data!=null &amp;&amp; data.length>0){
+ 				$.each(data,function(i,doc){ 				
+ 					 $('#sponsor-events').append(
+     					'<div class="col-sm-6 col-md-4"><div class="thumbnail"><img src="static/img/event-thumbnail.jpg" alt="..."/><div class="caption" style="text-align:center;">'
+ 					 	+'<div class="truncate"><b>'+doc.title + '</b></div>'+'<div><button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#sponsorModal">View</button></div>'+
+     					'</div></div></div>');  
+ 				});
  		   }
  			else{
- 				
- 				//$('#welcome-message span').text('Welcome!!'+ '<small>'+'Create your first event'+'</small>');
- 				$('#sponsor-events').append(
-         				"No event to display");
+ 				$('#sponsor-events').append('<div id="noEventsFound" class="col-sm-6 col-md-4">No Events Found!</div>');
  			}
  		},
  		error : function(e) {
  			console.log("ERROR: ", e);
- 			//display(e);
  		},
  		done : function(e) {
  			console.log("DONE");
  		}
  	});
-	
 }
 
 function clickSearch(){
@@ -117,19 +104,15 @@ function clickSearch(){
 	var city = document.getElementById('city').value;
 	var state = document.getElementById('state').value;
 	var zip = document.getElementById('zip').value;
-	
-callForEvent(fromDate,toDate,city,state,zip);	
-}
-
+	callForEvent(fromDate,toDate,city,state,zip);	
+} */
 	  $(document).ready(function(){
-	
 		  fromDate = $("#fromDate").val()
 	    	toDate = $("#toDate").val()
 	    	city = $("#city").val()
 	    	state = $("#state").val()
 	    	zip = $("#zip").val()
-	    	//event.preventDefault();
-	    	callForEvent();
+	    	callForEvents("outside");
 		});
 </script>
 	<nav class="navbar navbar-default">
@@ -145,7 +128,7 @@ callForEvent(fromDate,toDate,city,state,zip);
 				</button>
 				<a class="navbar-brand" href="#"> <img alt="Brand"
 					style="height: 100%; width: auto;" class="img-responsive"
-					src="img\eventangels.png" />
+					src="static\img\eventangels.png" />
 				</a>
 			</div>
 			<!--https://getbootstrap.com/components/#navbar-->
@@ -170,7 +153,11 @@ callForEvent(fromDate,toDate,city,state,zip);
 		<div id="main" class="row main">
 			<div class="col-md-4" id="section">
 				<div class="section-div" id="filter-menu">
-				
+					<div class="row form-group">
+						<div class="col-md-12 col-sm-12 filter-header">
+							<label>Filter your events</label>
+						</div>
+					</div>
 					<div class="row form-group">
 						<div class="col-md-4 col-sm-12">
 							<label for="date">From Date</label>
@@ -211,17 +198,20 @@ callForEvent(fromDate,toDate,city,state,zip);
 							<input type="text" class="form-control" name="zip" id="zip"/>
 						</div>
 					</div>
-					
-					<input type="reset" class="btn" value="Clear form" />
-       				 <input type="submit" class="btn" id="searchEvents" value="Search" onclick="clickSearch()"/>
-       				
+					<div class="row form-group search-button-row">
+						<div class="col-md-4">
+       					</div>
+       					<div class="col-md-8 col-sm-6">	 
+       						 <input type="submit" class="btn btn-primary" id="searchEvents" value="Search" onclick="clickSearch('outside')"/>
+       					</div>
+       				</div>	
 				</div>
 			</div>
 			<div class="col-md-8" id="box">
 				<div id="wecome-message" class="row message">
 					<div class="col-md-12">
 						<h1>
-							Welcome. <small>Here are the events</small>
+							Howdy, Mr. Sponsor!! <small>Find the events worth your money here!! </small>
 						</h1>
 					</div>
 				</div>
@@ -238,7 +228,7 @@ callForEvent(fromDate,toDate,city,state,zip);
         <div class="modal-body">
           <img alt="sponsorCred"
 					style="height: 50%; width: auto;" class="img-responsive"
-					src="img/sponsorCred.JPG" />
+					src="static/img/sponsorCred.JPG" />
         </div>
         <div class="modal-footer">
           <a href="/loginPage" class="btn btn-default">Go</a>

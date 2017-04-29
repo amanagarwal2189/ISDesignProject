@@ -95,14 +95,15 @@ public class DisplayEventsController {
 		httpSession.setAttribute("eventId", eventId);
         return "displayEvent";
     }
-	
-	@RequestMapping(value = "/changeEventStatus", method = RequestMethod.POST)
-    public String changeEventStatus(@RequestParam String eventId, @RequestParam String currStatus, HttpServletRequest request) {
-		Event event=eventDao.getById(Long.parseLong(eventId));
-		event.setIs_active(currStatus.equals("false")?true:false);
+	@ResponseBody
+	@RequestMapping(value = "/changeEventStatus", method = RequestMethod.GET)
+    public Event changeEventStatus(HttpServletRequest request) {
+		Event event=eventDao.getById(Long.parseLong(request.getParameter("eventId")));
+		//System.out.println("Look at the "+eventId +"  with "+ currStatus);
+		event.setIs_active(request.getParameter("currStatus").equals("false")?true:false);
 		eventDao.save(event);
 		
-        return "displayEvent";
+        return event;
     }
 
 }
