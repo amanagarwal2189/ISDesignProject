@@ -75,7 +75,7 @@ function callForEvents(fromDate,toDate,city,state,zip, loc){
  				}
  			}
  			else{
- 				$('#sponsor-events').append('<div id="noEventsFound" class="col-sm-12 col-md-12">No events found! Why don\'t you try a different search criteria...</div>');
+ 				$('#sponsor-events').append('<div class="row"><div id="noEventsFound" class=" img-fluid col-xs-12 col-sm-12 col-md-12" style="width:100%; height: auto;"><img src="static/img/notfound.jpeg" alt="Not found"/></div>');
  			}
  		},
  		error : function(e) {
