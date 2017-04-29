@@ -26,118 +26,78 @@ public class DisplayEventsForSponsor {
 
 	@Autowired
 	EventDao eventDao;
-	
+
 	@Autowired
 	JdbcTemplate jdbcTemplate;
-	
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/displayEventsForSponsor", method = RequestMethod.GET)
 	public List<Event> displayEventsForSponsor(HttpServletRequest request) {
-		//List<Event> eventListForSponsor = new ArrayList<Event>();
-		
-		String fromDate=request.getParameter("fromDate");
-		String toDate=request.getParameter("toDate");
-		String city=request.getParameter("city");
-		String state=request.getParameter("state");
-		String zip=request.getParameter("zip");
-		
-		List<Event> eventList = jdbcTemplate.query(constructQuery(fromDate,toDate,city,state,zip), new EventMapper());
-		
-		// HttpSession session=request.getSession();
-		//String userId= "1";
-		//String userEmailId= (String) request.getSession().getAttribute("user_emailId");
-		//System.out.println("Host is : " + userId);
-		//System.out.println("Host email is : " + userEmailId);
-		/*if (null != userId) {
-			Long host_id = Long.valueOf(userId);
-			//System.out.println("Host : " + host_id);
-			//eventListForOrg=eventDao.getEventByHostId(host_id);
-			eventListForSponsor=eventDao.getEventByHostId(host_id);
-			DisplayEvent dspEvent1 = new DisplayEvent();
-			eventListForOrg = dspEvent1.displayEventForOrganizer(eventDao, new Long(hostId));
-		}*/
+		String fromDate = request.getParameter("fromDate");
+		String toDate = request.getParameter("toDate");
+		String city = request.getParameter("city");
+		String state = request.getParameter("state");
+		String zip = request.getParameter("zip");
+		List<Event> eventList = jdbcTemplate.query(constructQuery(fromDate, toDate, city, state, zip),
+				new EventMapper());
 		return eventList;
 	}
-	
-	
-	
+
 	@RequestMapping(value = "/displaySelectedEvent", method = RequestMethod.GET)
-    public String displaySelectedEvent(HttpServletRequest request, @RequestParam String eventId) {
-		//String eventID = request.getAttribute("eventId").toString();
-		System.out.println("Event Id is "+eventId);
-		
+	public String displaySelectedEvent(HttpServletRequest request, @RequestParam String eventId) {
 		return "selectEvent";
-    }
-	
+	}
+
 	/**
 	 * Show the detailed page for an event
+	 * 
 	 * @param eventId
 	 * @param request
 	 * @return
 	 */
-	private String constructQuery(String fromDate, String toDate, String city,
-			String state, String zip){
-		String queryString="";
-		StringBuffer query= new StringBuffer("Select * from tb_event_dtls ");
-		boolean whereFlag=false;
-		if(fromDate!=null && !fromDate.isEmpty()){
-			if(!whereFlag)
-				query.append(" where ");
-			whereFlag=true;
-			query.append("date >='" +fromDate+"' and " );
+	private String constructQuery(String fromDate, String toDate, String city, String state, String zip) {
+		String queryString = "";
+		StringBuffer query = new StringBuffer("Select * from tb_event_dtls where ");
+		if (fromDate != null && !fromDate.isEmpty()) {
+			query.append("date >='" + fromDate + "' and ");
 		}
-		if(toDate!=null && !toDate.isEmpty()){
-			if(!whereFlag)
-				query.append(" where ");
-			whereFlag=true;
-			query.append("date <='" +toDate+"' and " );
+		if (toDate != null && !toDate.isEmpty()) {
+			query.append("date <='" + toDate + "' and ");
 		}
-		
-		if(city!=null && !city.isEmpty()){
-			if(!whereFlag)
-				query.append(" where ");
-			whereFlag=true;
-			query.append("city ='" +city+"' and " );
+
+		if (city != null && !city.isEmpty()) {
+			query.append("city ='" + city + "' and ");
 		}
-		
-		if(state!=null && !state.equals("---")){
-			if(!whereFlag)
-				query.append(" where ");
-			whereFlag=true;
-			query.append("state ='" +state+"' and " );
+
+		if (state != null && !state.equals("---")) {
+			query.append("state ='" + state + "' and ");
 		}
-		
-		if(zip!=null && !zip.isEmpty()){
-			if(!whereFlag)
-				query.append(" where ");
-			whereFlag=true;
-			query.append("zip=" +zip+" and " );
+
+		if (zip != null && !zip.isEmpty()) {
+			query.append("zip=" + zip + " and ");
 		}
-		
-		
-		
-		queryString=query.toString();
-		if(queryString.endsWith(" and ")){
-			queryString=queryString.substring(0, queryString.length()-5);
-			System.out.println("Query is"+queryString);
-		}
-		
+
+		query.append(" is_active=true");
+
+		queryString = query.toString();
+		/*if (queryString.endsWith(" and ")) {
+			queryString = queryString.substring(0, queryString.length() - 5);
+			System.out.println("Query is" + queryString);
+		}*/
+
 		return queryString;
 	}
 
 }
 
-
- class EventMapper implements RowMapper<Event> {
-	   public Event mapRow(ResultSet rs, int rowNum) throws SQLException {
-		   Event event = new Event();
-		   event.setId(rs.getLong("id"));
-		   event.setTitle(rs.getString("title"));
-		   event.setDate(rs.getDate("date"));
-	      //set all others
-	      return event;
-	   }
+class EventMapper implements RowMapper<Event> {
+	public Event mapRow(ResultSet rs, int rowNum) throws SQLException {
+		Event event = new Event();
+		event.setId(rs.getLong("id"));
+		event.setTitle(rs.getString("title"));
+		event.setDate(rs.getDate("date"));
+		event.setTime(rs.getTime("time"));
+		// set all others
+		return event;
 	}
-
-
+}
