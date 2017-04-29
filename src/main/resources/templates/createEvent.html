@@ -148,7 +148,7 @@ function isNumberKey(txt, evt) {
 							<label for="title">Title*</label>
 						</div>
 						<div class="col-md-8 col-sm-12">
-							<input type="text" class="form-control" name="title" id="title" required="required"/>
+							<input type="text" class="form-control" name="title" id="title" maxlength="29" required="required"/>
 						</div>
 					</div>
 					<div class="row form-group">
@@ -172,7 +172,7 @@ function isNumberKey(txt, evt) {
 							<label for="address_line_1">Venue Address Line 1*</label>
 						</div>
 						<div class="col-md-8 col-sm-12">
-							<input type="text" class="form-control" name="address_line_1" id="address_line_1" required="required"/>
+							<input type="text" class="form-control" name="address_line_1" id="address_line_1" maxlength="44" required="required"/>
 						</div>
 					</div>
 					<div class="row form-group">
@@ -180,7 +180,7 @@ function isNumberKey(txt, evt) {
 							<label for="address_line_2">Address Line 2</label>
 						</div>
 						<div class="col-md-8 col-sm-12">
-							<input type="text" class="form-control" name="address_line_2" id="address_line_2"/>
+							<input type="text" class="form-control" name="address_line_2" id="address_line_2" maxlength="19"/>
 						</div>
 					</div>
 					<div class="row form-group">
@@ -188,7 +188,7 @@ function isNumberKey(txt, evt) {
 							<label for="city">City*</label>
 						</div>
 						<div class="col-md-8 col-sm-12">
-							<input type="text" class="form-control" name="city" id="city" required="required"/>
+							<input type="text" class="form-control" name="city" id="city" required="required" maxlength="19"/>
 						</div>
 					</div>
 					<div class="row form-group">
@@ -204,7 +204,7 @@ function isNumberKey(txt, evt) {
 							<label for="zip">Zip*</label>
 						</div>
 						<div class="col-md-8 col-sm-12">
-							<input type="text" class="form-control number-only" name="zip" id="zip" required="required"/>
+							<input type="text" class="form-control number-only" name="zip" id="zip" required="required" maxlength="6"/>
 						</div>
 					</div>
 				</div><!--id=left-side-form-->
@@ -223,7 +223,7 @@ function isNumberKey(txt, evt) {
 							<label for="category">Category*</label>
 						</div>
 						<div class="col-md-8 col-sm-12">
-							<input type="text" class="form-control" name="category" id="category" required="required"/>
+							<input type="text" class="form-control" name="category" id="category" required="required" maxlength="29"/>
 						</div>
 					</div>
 					<div class="row form-group">
@@ -247,7 +247,7 @@ function isNumberKey(txt, evt) {
 							<label for="fb_link">Facebook Link</label>
 						</div>
 						<div class="col-md-8 col-sm-12">
-							<input type="text" class="form-control" name="fb_link" id="fb_link"/>
+							<input type="text" class="form-control" name="fb_link" id="fb_link" maxlength="99"/>
 						</div>
 					</div>
 					<div class="row form-group">
@@ -255,7 +255,7 @@ function isNumberKey(txt, evt) {
 							<label for="eventbrite_link">Eventbrite Link</label>
 						</div>
 						<div class="col-md-8 col-sm-12">
-							<input type="text" class="form-control" name="eventbrite_link" id="eventbrite_link"/>
+							<input type="text" class="form-control" name="eventbrite_link" id="eventbrite_link"maxlength="99"/>
 						</div>
 					</div>
 				</div><!--id=right-side-form-->
