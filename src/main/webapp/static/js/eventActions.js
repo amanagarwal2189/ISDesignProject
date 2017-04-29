@@ -59,7 +59,7 @@ function callForEvents(fromDate,toDate,city,state,zip, loc){
  			if(data!=null && data.length>0){
  				if(loc=="inside"){
  					$.each(data,function(i,doc){
- 						$('#sponsor-events').append('<div class="result-title-mini row"><div class="col-xs-12">Results</div></div>'+
+ 						$('#sponsor-events').append('<div class="result-title-mini col-xs-12"><div class="result-title-mini row"><div class="col-xs-12">Results</div></div></div>'+
  							'<div class="col-sm-6 col-md-4"><div class="thumbnail"><img src="static/img/event-thumbnail.jpg" alt="..."/><div class="caption" style="text-align:center;">'
  							+'<div class="truncate"><b>'+doc.title + '</b></div>'+'<div> <a href="/displaySelectedEvent?eventId='+doc.id+'" class="btn btn-primary" role="button">View</a></div>'+
  							'</div></div></div>'); 			    
@@ -67,7 +67,7 @@ function callForEvents(fromDate,toDate,city,state,zip, loc){
  				}
  				else{
  					$.each(data,function(i,doc){ 				
- 	 					 $('#sponsor-events').append('<div class="result-title-mini row"><div class="col-xs-12">Results</div></div>'+
+ 	 					 $('#sponsor-events').append('<div class="result-title-mini col-xs-12"><div class="result-title-mini row"><div class="col-xs-12">Results</div></div></div>'+
  	     					'<div class="col-sm-6 col-md-4"><div class="thumbnail"><img src="static/img/event-thumbnail.jpg" alt="..."/><div class="caption" style="text-align:center;">'
  	 					 	+'<div class="truncate"><b>'+doc.title + '</b></div>'+'<div><button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#sponsorModal">View</button></div>'+
  	     					'</div></div></div>');  
@@ -75,7 +75,7 @@ function callForEvents(fromDate,toDate,city,state,zip, loc){
  				}
  			}
  			else{
- 				$('#sponsor-events').append('<div class="row"><div id="noEventsFound" class=" img-fluid col-xs-12 col-sm-12 col-md-12" style="width:100%; height: auto;"><img src="static/img/notfound.jpeg" alt="Not found"/></div>');
+ 				$('#sponsor-events').append('<div class="col-xs-12"><div class="row"><div id="noEventsFound" class=" img-fluid col-xs-12 col-sm-12 col-md-12" style="width:100%; height: auto;"><img src="static/img/notfound.jpeg" width=100% alt="Not found"/></div></div>');
  			}
  		},
  		error : function(e) {
