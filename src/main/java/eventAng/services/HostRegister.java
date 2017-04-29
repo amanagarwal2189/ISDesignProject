@@ -21,8 +21,6 @@ public class HostRegister {
 		host.setZip(0);
 
 		hostDao.save(host);
-		String hostId = String.valueOf(host.getId());
-		System.out.println("Event id created is : " + hostId);
 		return host;
 
 	}

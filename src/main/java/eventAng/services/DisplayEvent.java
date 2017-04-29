@@ -1,12 +1,6 @@
 package eventAng.services;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import eventAng.domain.Event;
-import eventAng.model.EventDao;
-
-public class DisplayEvent {
+public class DisplayEvent {/*
 
 	public List<Event> displayEventForLanding(EventDao eventDao){
 		//String message=null;
@@ -14,7 +8,7 @@ public class DisplayEvent {
 		eventList= eventDao.findTop4ByOrderByTitleDesc();
 		
 		
-		/*try{  
+		try{  
 			Connection con=DBConnection.getConnection();  
 			Statement stmt=con.createStatement();  
 			
@@ -33,14 +27,14 @@ public class DisplayEvent {
 	               //message = "FetchSuccess";
 	               eventList.add(event);         	
 	            } 
-			}catch(Exception e){ System.out.println(e);}*/
+			}catch(Exception e){ System.out.println(e);}
 		return eventList;
 	}
 	
 	public List<Object> displayEventForOrganizer(EventDao eventDao, Long hostId){
 		//String message=null;
 		List<Object> eventListForOrg = new ArrayList<Object>();
-		try{/*  
+		try{  
 			Connection con=DBConnection.getConnection(); 
 			
 			ResultSet rs;
@@ -61,7 +55,7 @@ public class DisplayEvent {
 	               //message = "FetchSuccess";
 	               eventListForOrg.add(event);           	
 	            } 
-			*/}catch(Exception e){ System.out.println(e);}
+			}catch(Exception e){ System.out.println(e);}
 		return eventListForOrg;
 	}
-}
+*/}

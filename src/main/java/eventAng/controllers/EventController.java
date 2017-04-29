@@ -7,7 +7,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -26,10 +25,6 @@ public class EventController {
 	
 	 @Autowired
 	  private EventDao eventDao;
-	
-
-	 @Autowired
-	 private HttpSession httpSession;
 	 
 	 @Autowired
 	  private EventSponsorshipReqDtlsDao eventSponsorshipReqDtlsDao;
@@ -45,7 +40,7 @@ public class EventController {
 	public String createEvent(HttpServletRequest request) {
 		
 		String user_id= (String) request.getSession().getAttribute("user_id");
-		String userEmailId= (String) request.getSession().getAttribute("user_emailId");
+		//String userEmailId= (String) request.getSession().getAttribute("user_emailId");
 		Event event = new Event();
 		Long userId = Long.valueOf(user_id);
 		event.setHost_id(userId);
