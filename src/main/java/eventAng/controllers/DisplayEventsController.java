@@ -39,7 +39,7 @@ public class DisplayEventsController {
 		//List<Object> eventList = new ArrayList<Object>();
 		System.out.println("Success");
 		List<Event> eventList = new ArrayList<Event>();
-		eventList= eventDao.findTop4ByOrderByTitleDesc();
+		eventList= eventDao.findTop8ByOrderByTitleDesc();
 		System.out.println("Success");
         /*DisplayEvent dspEvent = new DisplayEvent();
         eventList = dspEvent.displayEventForLanding(eventDao);

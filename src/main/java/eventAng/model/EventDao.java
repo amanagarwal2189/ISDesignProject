@@ -16,7 +16,7 @@ public interface EventDao extends CrudRepository<Event, Long> {
 	public Event getById(Long id);
 	
 	//@Query(value="SELECT * FROM Event e LIMIT 0,4",  nativeQuery=true) 
-	public List<Event> findTop4ByOrderByTitleDesc();
+	public List<Event> findTop8ByOrderByTitleDesc();
 	
 	@Query("SELECT e FROM Event e where e.host_id=:host_id") 
 	public List<Event> getEventByHostId(@Param("host_id") Long host_id);
