@@ -9,6 +9,46 @@ html {
   box-sizing: inherit;
 }
 
+
+.navbar{
+margin-bottom: 0px;
+}
+
+#page {
+	margin: auto;
+	margin-top:2%;
+}
+
+.main {
+	margin: auto;
+	height: auto;
+}
+
+.main .mainContainer {
+	text-align: center;
+	/*background-color: rgba(0, 0, 0, 0.6);*/
+	float: left;
+	padding: 2% 5% 2% 5%;
+	color: white;
+	margin-bottom: 2%;
+}
+
+.main .mainContainer .label1 {
+	text-align: center;
+	margin: 2%;
+	padding: 5% 1% 5% 1%;
+	color: white;
+	font-size: 2em;
+}
+
+.main .mainContainer .text {
+	font-style: italic;
+	text-align: center;
+	padding: 10% 1% 5% 1%;
+}
+
+
+
 .column {
     float: left;
     width: 25%;
@@ -16,7 +56,7 @@ html {
     padding: 0 8px;
 }
 
-/* Display the columns below each other instead of side by side on small screens */
+/* if resolution is below 600 px, column occupies whole width of the device */
 @media (max-width: 600px) {
     .column {
         width: 100%;
@@ -24,17 +64,16 @@ html {
     }
 }
 
-/* Add some shadows to create a card effect */
+/* shadow */
 .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 255, 0, 0.2);
 }
 
-/* Some left and right padding inside the container */
+/*padding inside the container*/
 .container {
-    padding: 0 16px;
+    padding: 5px 16px;
 }
 
-/* Clear floats */
 .container::after, .row::after {
     content: "";
     clear: both;
@@ -44,3 +83,21 @@ html {
 .title {
     color: grey;
 }
+
+
+#ourteam {
+	text-align: center;
+	text-decoration: underline;
+	color: maroon;
+	font-size: 3em;
+	font-weight: bold;
+	color: maroon;
+	margin-bottom: 2%;
+}
+
+@media(max-width:600px){
+	#ourteam {
+		font-size: 1.75em;
+	}
+}
+
