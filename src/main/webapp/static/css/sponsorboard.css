@@ -1,0 +1,137 @@
+@CHARSET "ISO-8859-1";
+
+.main #section .section-div {
+	padding: 5%;
+	background-color: rgba(0, 0, 0, 0.6)
+}
+
+#page{
+margin-bottom:5%;
+}
+
+.main #section .section-div .menu-item {
+	margin-top: 10%;
+	margin-bottom: 10%;
+	background-color: limegreen;
+	padding: 5%;
+}
+
+.main #section .section-div a {
+	text-decoration: none;
+	color: white;
+}
+
+.thumbnail .caption {
+	padding: 2px 9px;
+}
+
+.thumbnail .caption h3 {
+	margin-top: 5px;
+}
+
+.filter-header{
+	text-align: center;
+	font-size: 1.5em;
+	font-weight: bold;
+	text-decoration: underline;
+}
+.search-button-row{
+	text-align: center;
+}
+.truncate {
+	font-size:1.3em;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.more-show{
+	display: block;
+}
+
+.more-hide{
+	display: none;
+}
+
+.search-title-mini{
+	font-weight: bold;
+	text-align:center;
+	font-size: 1em;
+}
+
+#more-options{
+	margin:3% 0%;
+	text-align:center;
+	text-decoration: underline;
+	font-size: 1em;
+	color: #aaaaaa;
+}
+
+#small-search-box{
+	margin-bottom:5%;
+}
+
+
+@media screen and (min-width:721px){
+	#filter-menu{
+		display: block;
+	}
+	#welcome-message{
+		display: block;
+	}
+	#small-search-box{
+		display: none;
+	}
+	#welcome-message-mini{
+			display: none;
+	}
+	
+	.result-title-mini{
+		display:none;
+	}
+}
+
+@media screen and (min-width:500px) and (max-width:720px){
+	#filter-menu{
+		display: none;
+	}
+	#welcome-message{
+		display: none;
+	}
+	#small-search-box{
+		display: block;
+	}
+	#welcome-message-mini{
+			display: block;
+	}
+}
+
+@media screen and (min-width:0px) and (max-width:499px){
+	#filter-menu{
+		display: none;
+	}
+	#small-search-box{
+		display: block;
+		text-align: center;
+	}
+	#welcome-message{
+		display: none;
+	}
+	#welcome-message-mini{
+		display: block;
+		font-size: 1.3em;
+	}
+	#welcome-message-mini h1{
+		font-size: 1.3em;
+	}
+	#welcome-message-mini h1 small{
+		display: none;
+	}
+	.result-title-mini{
+		display:block;
+		text-align:center;
+		color:#777777;
+		font-size: 1.5em;
+		margin-bottom: 2%;
+	}
+}

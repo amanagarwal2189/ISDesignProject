@@ -11,18 +11,6 @@ function changeEventStatus(eventId,currStatus){
     		timeout : 100000,
     		success : function(data) {
     			if(data!=null){    		
-    				/*if($('#publishButton_event_'+eventId).hasClass('eventUnpublish')){
-				        $('#publishButton_event_'+eventId).removeClass('eventUnpublish')
-				        $('#publishButton_event_'+eventId).addClass('eventPublish')
-				        $('#publishButton_event_'+eventId).html('Publish')
-				        $('#event_'+eventId).removeClass('publishedEvent')
-				        
-				    } else {
-				    	$('#publishButton_event_'+eventId).removeClass('eventPublish')
-				    	$('#publishButton_event_'+eventId).addClass('eventUnpublish')
-				         $('#publishButton_event_'+eventId).html('Unpublish')
-				         $('#event_'+eventId).addClass('publishedEvent')
-				    }*/
     				var class_publish_event=''
     				var class_publish_button=''
     				var publishButton=''
@@ -71,7 +59,7 @@ function callForEvents(fromDate,toDate,city,state,zip, loc){
  			if(data!=null && data.length>0){
  				if(loc=="inside"){
  					$.each(data,function(i,doc){
- 						$('#sponsor-events').append(
+ 						$('#sponsor-events').append('<div class="result-title-mini row"><div class="col-xs-12">Results</div></div>'+
  							'<div class="col-sm-6 col-md-4"><div class="thumbnail"><img src="static/img/event-thumbnail.jpg" alt="..."/><div class="caption" style="text-align:center;">'
  							+'<div class="truncate"><b>'+doc.title + '</b></div>'+'<div> <a href="/displaySelectedEvent?eventId='+doc.id+'" class="btn btn-primary" role="button">View</a></div>'+
  							'</div></div></div>'); 			    
@@ -79,7 +67,7 @@ function callForEvents(fromDate,toDate,city,state,zip, loc){
  				}
  				else{
  					$.each(data,function(i,doc){ 				
- 	 					 $('#sponsor-events').append(
+ 	 					 $('#sponsor-events').append('<div class="result-title-mini row"><div class="col-xs-12">Results</div></div>'+
  	     					'<div class="col-sm-6 col-md-4"><div class="thumbnail"><img src="static/img/event-thumbnail.jpg" alt="..."/><div class="caption" style="text-align:center;">'
  	 					 	+'<div class="truncate"><b>'+doc.title + '</b></div>'+'<div><button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#sponsorModal">View</button></div>'+
  	     					'</div></div></div>');  
@@ -110,4 +98,28 @@ function clickSearch(loc){
 	var state = document.getElementById('state').value;
 	var zip = document.getElementById('zip').value;
 	callForEvents(fromDate,toDate,city,state,zip, loc);
+}
+
+function clickSearchMini(loc){
+	var fromDate = document.getElementById('from-date-mini').value;
+	var toDate = document.getElementById('to-date-mini').value;
+	var city = document.getElementById('city-mini').value;
+	var state = document.getElementById('state-mini').value;
+	callForEvents(fromDate,toDate,city,state,"", loc);
+}
+
+function showOptions(){
+	if($('#text-show').text()=="show"){
+		$('.more').removeClass("more-hide");
+		$('.more').addClass("more-show");
+		$('#arrow').removeClass("glyphicon-chevron-down")
+		$('#arrow').addClass("glyphicon-chevron-up")
+		$('#text-show').html("hide")
+	} else {
+		$('.more').removeClass("more-show");
+		$('.more').addClass("more-hide");
+		$('#arrow').removeClass("glyphicon-chevron-up")
+		$('#arrow').addClass("glyphicon-chevron-down")
+		$('#text-show').html("show")
+	}
 }

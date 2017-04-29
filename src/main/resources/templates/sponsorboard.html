@@ -3,75 +3,41 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Sponsor Dashboard | EventAngels</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
+<link
+	href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+	rel="stylesheet" />
 <script src="static/js/eventActions.js"></script>
-<link rel="stylesheet" type="text/css" href="static/css/footer.css"/>
-	
-<style>
-.main #section .section-div {
-	padding: 5%;
-	background-color: rgba(0, 0, 0, 0.6)
-}
-
-#page{
-margin-bottom:5%;
-}
-
-.main #section .section-div .menu-item {
-	margin-top: 10%;
-	margin-bottom: 10%;
-	background-color: limegreen;
-	padding: 5%;
-}
-
-.main #section .section-div a {
-	text-decoration: none;
-	color: white;
-}
-
-.thumbnail .caption {
-	padding: 2px 9px;
-}
-
-.thumbnail .caption h3 {
-	margin-top: 5px;
-}
-
-.filter-header{
-	text-align: center;
-	font-size: 1.5em;
-	font-weight: bold;
-	text-decoration: underline;
-}
-.search-button-row{
-	text-align: center;
-}
-
-.truncate {
-	font-size:1.3em;
-    white-space: nowrap; 
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="static/css/footer.css" />
+<link rel="stylesheet" type="text/css"
+	href="static/css/sponsorboard.css" />
 </head>
 <body>
 
-<script type="text/javascript">
-	  $(document).ready(function(){
-		  	fromDate = $("#fromDate").val()
-	    	toDate = $("#toDate").val()
-	    	city = $("#city").val()
-	    	state = $("#state").val()
-	    	zip = $("#zip").val()
-	    	callForEvents(fromDate,toDate,city,state,zip,"inside");
+	<script type="text/javascript">
+		$(document).ready(function() {
+			fromDate = $("#fromDate").val()
+			toDate = $("#toDate").val()
+			city = $("#city").val()
+			state = $("#state").val()
+			zip = $("#zip").val()
+			callForEvents(fromDate, toDate, city, state, zip, "inside");
 		});
-</script>
+	</script>
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -94,9 +60,9 @@ margin-bottom:5%;
 					<li><a href="/">Event Angels: Your next sponsor</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-				<li class="active"><a href="/backToDashHome"><span
+					<li class="active"><a href="/backToDashHome"><span
 							class="glyphicon glyphicon-blackboard"></span> Home</a></li>
-					
+
 					<li><a href="/aboutUsInside"><span
 							class="glyphicon glyphicon-blackboard"></span> About Us</a></li>
 					<li><a href="#"><span
@@ -118,6 +84,57 @@ margin-bottom:5%;
 		<!-- /.container-fluid -->
 	</nav>
 	<div id="page" class="container">
+	
+		<!-- the minified view of the search tool bar -->
+		<div id="welcome-message-mini" class="row message">
+			<div class="col-md-12">
+				<h1>
+					Howdy, Mr. Sponsor!! <small>Find the events worth your
+						money here!! </small>
+				</h1>
+			</div>
+		</div>
+		<div id="small-search-box" class="row">
+			
+			<div class="row"><div class="search-title-mini col-xs-12">Search and find the best events</div></div>
+			<div class="row">
+				<div class="col-xs-12" style="padding:2% 10% 0% 10%;">
+					<input type="text" class="form-control" placeholder="City" name="city" id="city-mini" />
+				</div>
+			</div>
+			<div class="row more more-hide ">
+				<div class="col-xs-12" style="padding:2% 10% 0% 10%;">
+					<input type="text" class="form-control" placeholder="State" name="state" id="state-mini" />
+				</div>
+			</div>
+			<div class="row more more-hide ">
+				<div class="col-xs-4" style="padding:2% 0% 0% 10%;text-align: left">
+					<label for="from-date-mini">From Date</label>
+				</div>
+				<div class="col-xs-8" style="padding:2% 10% 0% 0%;">
+					<input type="date" class="form-control" placeholder="From Date (mm/dd/yyy)" name="from-date" id="from-date-mini" />
+				</div>
+			</div>
+			<div class="row more more-hide ">
+				<div class="col-xs-4" style="padding:2% 0% 0% 10%;text-align: left">
+					<label for="to-date-mini">To Date</label>
+				</div>
+				<div class="col-xs-8" style="padding:2% 10% 0% 0%;">
+					<input type="date" class="form-control" placeholder="To Date (mm/dd/yyy)" name="to-date" id="to-date-mini" />
+				</div>
+			</div>
+			
+			<div id="more-options" onclick="showOptions()" class="col-md-2 col-sm-2 col-xs-12">
+				FILTERS <span id="arrow" class="glyphicon glyphicon-chevron-down"> </span>
+				<div id="text-show" style="display:none">show</div>
+			</div>
+			<div class="col-md-2 col-sm-2 col-xs-12" style="text-align:center; margin-bottom:2%;">
+			<button class="btn" id="searchEvents-mini"
+								value="Search" onclick="clickSearchMini('inside')" ><span class="glyphicon glyphicon-search"></span> Search</button>
+			</div>
+		</div><!-- end of minified version of search and page -->
+		
+		<!-- the normal view page begins-->
 		<div id="main" class="row main">
 			<div class="col-md-4" id="section">
 				<div class="section-div" id="filter-menu">
@@ -131,7 +148,8 @@ margin-bottom:5%;
 							<label for="date">From Date</label>
 						</div>
 						<div class="col-md-8 col-sm-12">
-							<input type="date" class="form-control" name="fromDate" id="fromDate"/>
+							<input type="date" class="form-control" name="fromDate"
+								id="fromDate" />
 						</div>
 					</div>
 					<div class="row form-group">
@@ -139,7 +157,7 @@ margin-bottom:5%;
 							<label for="date">To Date</label>
 						</div>
 						<div class="col-md-8 col-sm-12">
-							<input type="date" class="form-control" name="toDate" id="toDate"/>
+							<input type="date" class="form-control" name="toDate" id="toDate" />
 						</div>
 					</div>
 					<div class="row form-group">
@@ -147,7 +165,7 @@ margin-bottom:5%;
 							<label for="city">City</label>
 						</div>
 						<div class="col-md-8 col-sm-12">
-							<input type="text" class="form-control" name="city" id="city"/>
+							<input type="text" class="form-control" name="city" id="city" />
 						</div>
 					</div>
 					<div class="row form-group">
@@ -155,7 +173,65 @@ margin-bottom:5%;
 							<label for="state">State</label>
 						</div>
 						<div class="col-md-8 col-sm-12">
-							<select id="state" name="state" class="form-control"><option value="---">---</option><option value="Alabama">Alabama</option><option value="Alaska">Alaska</option><option value="Arizona">Arizona</option><option value="Arkansas">Arkansas</option><option value="California">California</option><option value="Colorado">Colorado</option><option value="Connecticut">Connecticut</option><option value="Delaware">Delaware</option><option value="District of Columbia">District of Columbia</option><option value="Florida">Florida</option><option value="Georgia">Georgia</option><option value="Guam">Guam</option><option value="Hawaii">Hawaii</option><option value="Idaho">Idaho</option><option value="Illinois">Illinois</option><option value="Indiana">Indiana</option><option value="Iowa">Iowa</option><option value="Kansas">Kansas</option><option value="Kentucky">Kentucky</option><option value="Louisiana">Louisiana</option><option value="Maine">Maine</option><option value="Maryland">Maryland</option><option value="Massachusetts">Massachusetts</option><option value="Michigan">Michigan</option><option value="Minnesota">Minnesota</option><option value="Mississippi">Mississippi</option><option value="Missouri">Missouri</option><option value="Montana">Montana</option><option value="Nebraska">Nebraska</option><option value="Nevada">Nevada</option><option value="New Hampshire">New Hampshire</option><option value="New Jersey">New Jersey</option><option value="New Mexico">New Mexico</option><option value="New York">New York</option><option value="North Carolina">North Carolina</option><option value="North Dakota">North Dakota</option><option value="Northern Marianas Islands">Northern Marianas Islands</option><option value="Ohio">Ohio</option><option value="Oklahoma">Oklahoma</option><option value="Oregon">Oregon</option><option value="Pennsylvania">Pennsylvania</option><option value="Puerto Rico">Puerto Rico</option><option value="Rhode Island">Rhode Island</option><option value="South Carolina">South Carolina</option><option value="South Dakota">South Dakota</option><option value="Tennessee">Tennessee</option><option value="Texas">Texas</option><option value="Utah">Utah</option><option value="Vermont">Vermont</option><option value="Virginia">Virginia</option><option value="Virgin Islands">Virgin Islands</option><option value="Washington">Washington</option><option value="West Virginia">West Virginia</option><option value="Wisconsin">Wisconsin</option><option value="Wyoming">Wyoming</option></select>
+							<select id="state" name="state" class="form-control"><option
+									value="---">---</option>
+								<option value="Alabama">Alabama</option>
+								<option value="Alaska">Alaska</option>
+								<option value="Arizona">Arizona</option>
+								<option value="Arkansas">Arkansas</option>
+								<option value="California">California</option>
+								<option value="Colorado">Colorado</option>
+								<option value="Connecticut">Connecticut</option>
+								<option value="Delaware">Delaware</option>
+								<option value="District of Columbia">District of
+									Columbia</option>
+								<option value="Florida">Florida</option>
+								<option value="Georgia">Georgia</option>
+								<option value="Guam">Guam</option>
+								<option value="Hawaii">Hawaii</option>
+								<option value="Idaho">Idaho</option>
+								<option value="Illinois">Illinois</option>
+								<option value="Indiana">Indiana</option>
+								<option value="Iowa">Iowa</option>
+								<option value="Kansas">Kansas</option>
+								<option value="Kentucky">Kentucky</option>
+								<option value="Louisiana">Louisiana</option>
+								<option value="Maine">Maine</option>
+								<option value="Maryland">Maryland</option>
+								<option value="Massachusetts">Massachusetts</option>
+								<option value="Michigan">Michigan</option>
+								<option value="Minnesota">Minnesota</option>
+								<option value="Mississippi">Mississippi</option>
+								<option value="Missouri">Missouri</option>
+								<option value="Montana">Montana</option>
+								<option value="Nebraska">Nebraska</option>
+								<option value="Nevada">Nevada</option>
+								<option value="New Hampshire">New Hampshire</option>
+								<option value="New Jersey">New Jersey</option>
+								<option value="New Mexico">New Mexico</option>
+								<option value="New York">New York</option>
+								<option value="North Carolina">North Carolina</option>
+								<option value="North Dakota">North Dakota</option>
+								<option value="Northern Marianas Islands">Northern
+									Marianas Islands</option>
+								<option value="Ohio">Ohio</option>
+								<option value="Oklahoma">Oklahoma</option>
+								<option value="Oregon">Oregon</option>
+								<option value="Pennsylvania">Pennsylvania</option>
+								<option value="Puerto Rico">Puerto Rico</option>
+								<option value="Rhode Island">Rhode Island</option>
+								<option value="South Carolina">South Carolina</option>
+								<option value="South Dakota">South Dakota</option>
+								<option value="Tennessee">Tennessee</option>
+								<option value="Texas">Texas</option>
+								<option value="Utah">Utah</option>
+								<option value="Vermont">Vermont</option>
+								<option value="Virginia">Virginia</option>
+								<option value="Virgin Islands">Virgin Islands</option>
+								<option value="Washington">Washington</option>
+								<option value="West Virginia">West Virginia</option>
+								<option value="Wisconsin">Wisconsin</option>
+								<option value="Wyoming">Wyoming</option></select>
 						</div>
 					</div>
 					<div class="row form-group">
@@ -163,85 +239,99 @@ margin-bottom:5%;
 							<label for="zip">Zip</label>
 						</div>
 						<div class="col-md-8 col-sm-12">
-							<input type="text" class="form-control" name="zip" id="zip"/>
+							<input type="text" class="form-control" name="zip" id="zip" />
 						</div>
 					</div>
-       				<div class="row form-group search-button-row">
-						<div class="col-md-4">
-       					</div>
-       					<div class="col-md-8 col-sm-6">	 
-       						 <input type="submit" class="btn btn-primary" id="searchEvents" value="Search" onclick="clickSearch('inside')"/>
-       					</div>
-       				</div>
+					<div class="row form-group search-button-row">
+						<div class="col-md-4"></div>
+						<div class="col-md-8 col-sm-6">
+							<input type="submit" class="btn btn-primary" id="searchEvents"
+								value="Search" onclick="clickSearch('inside')" />
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="col-md-8" id="box">
 				<div id="wecome-message" class="row message">
 					<div class="col-md-12">
 						<h1>
-							Howdy, Mr. Sponsor!! <small>Find the events worth your money here!! </small>
+							Howdy, Mr. Sponsor!! <small>Find the events worth your
+								money here!! </small>
 						</h1>
 					</div>
 				</div>
-				<div id="sponsor-events" class="row sponsor-events"></div>
+				
+				
+				<div id="sponsor-events" class="row sponsor-events">
+						
+				</div>
 			</div>
 		</div>
 	</div>
-	
-	
-<footer>
-    <div class="footer" id="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h3> About EventAngels </h3>
-                    <ul>
-                        <li> <a href="#"> Blog </a> </li>
-                        <li> <a href="#"> News </a> </li>
-                        <li> <a href="#"> Contact Us </a> </li>
-                        <li> <a href="#"> Offices </a> </li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h3> Careers </h3>
-                    <ul>
-                        <li> <a href="#"> Recruiting </a> </li>
-                        <li> <a href="#"> Apply now </a> </li>
-                        <li> <a href="#"> Benefits </a> </li>
-                    </ul>
-                </div>
-                
-                <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 pull-right">
-                    <h3> Follow us  </h3>
-                    <ul>
-                        <li>
-                            <div class="input-append newsletter-box text-center">
-                                <input type="text" class="full text-center" placeholder="Email "/>
-                                <button class="btn  bg-gray" type="button"> Subscribe Us! <i class="fa fa-long-arrow-right"> </i> </button>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="social">
-                        <li> <a href="#"> <i class=" fa fa-facebook">   </i> </a> </li>
-                        <li> <a href="#"> <i class="fa fa-twitter">   </i> </a> </li>
-                        <li> <a href="#"> <i class="fa fa-google-plus">   </i> </a> </li>
-                        <li> <a href="#"> <i class="fa fa-pinterest">   </i> </a> </li>
-                        <li> <a href="#"> <i class="fa fa-youtube">   </i> </a> </li>
-                    </ul>
-                </div>
-            </div>
-            <!--/.row--> 
-        </div>
-        <!--/.container--> 
-    </div>
-    <!--/.footer-->
-    
-    <div class="footer-bottom">
-        <div class="container">
-            <p class="pull-left"> Copyright © EventAngels 2017. All right reserved. </p>
-        </div>
-    </div>
-    <!--/.footer-bottom--> 
-</footer>
+
+
+	<footer>
+		<div class="footer" id="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+						<h3>About EventAngels</h3>
+						<ul>
+							<li><a href="#"> Blog </a></li>
+							<li><a href="#"> News </a></li>
+							<li><a href="#"> Contact Us </a></li>
+							<li><a href="#"> Offices </a></li>
+						</ul>
+					</div>
+					<div class="col-md-4">
+						<h3>Careers</h3>
+						<ul>
+							<li><a href="#"> Recruiting </a></li>
+							<li><a href="#"> Apply now </a></li>
+							<li><a href="#"> Benefits </a></li>
+						</ul>
+					</div>
+
+					<div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 pull-right">
+						<h3>Follow us</h3>
+						<ul>
+							<li>
+								<div class="input-append newsletter-box text-center">
+									<input type="text" class="full text-center"
+										placeholder="Email " />
+									<button class="btn  bg-gray" type="button">
+										Subscribe Us! <i class="fa fa-long-arrow-right"> </i>
+									</button>
+								</div>
+							</li>
+						</ul>
+						<ul class="social">
+							<li><a href="#"> <i class=" fa fa-facebook"> </i>
+							</a></li>
+							<li><a href="#"> <i class="fa fa-twitter"> </i>
+							</a></li>
+							<li><a href="#"> <i class="fa fa-google-plus"> </i>
+							</a></li>
+							<li><a href="#"> <i class="fa fa-pinterest"> </i>
+							</a></li>
+							<li><a href="#"> <i class="fa fa-youtube"> </i>
+							</a></li>
+						</ul>
+					</div>
+				</div>
+				<!--/.row-->
+			</div>
+			<!--/.container-->
+		</div>
+		<!--/.footer-->
+
+		<div class="footer-bottom">
+			<div class="container">
+				<p class="pull-left">Copyright © EventAngels 2017. All right
+					reserved.</p>
+			</div>
+		</div>
+		<!--/.footer-bottom-->
+	</footer>
 </body>
 </html>
