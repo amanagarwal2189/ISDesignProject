@@ -89,6 +89,9 @@ margin-bottom:5%;
 	.result-title-mini{
 		display:none;
 	}
+	#noEventsFound{
+		width:50%;
+	}
 }
 
 @media screen and (min-width:500px) and (max-width:720px){

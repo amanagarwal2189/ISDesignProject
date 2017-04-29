@@ -75,7 +75,7 @@ function callForEvents(fromDate,toDate,city,state,zip, loc){
  				}
  			}
  			else{
- 				$('#sponsor-events').append('<div class="col-xs-12"><div class="row"><div id="noEventsFound" class=" img-fluid col-xs-12 col-sm-12 col-md-12" style="width:100%; height: auto;"><img src="static/img/notfound.jpeg" width=100% alt="Not found"/></div></div>');
+ 				$('#sponsor-events').append('<div class="col-xs-12"><div class="row"><div id="noEventsFound" class=" img-fluid col-xs-12 col-sm-12 col-md-12" style="text-align:center; height: auto;"><img src="static/img/notfound.jpeg" width=100% alt="Not found"/></div></div>');
  			}
  		},
  		error : function(e) {
