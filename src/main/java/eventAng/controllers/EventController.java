@@ -50,7 +50,6 @@ public class EventController {
 			event.setDate(new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("date")).getTime()));
 			//change this back non-hardcoded
 			//event.setTime(new Time(0));
-			System.out.println(request.getParameter("time"));
 			event.setTime(new Time( new SimpleDateFormat("HH:mm").parse(request.getParameter("time")).getTime()));
 			//change this back to created_on
 			event.setCreated_on(new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("date")).getTime()));
@@ -78,8 +77,6 @@ public class EventController {
 		eventDao.save(event);
 		if(event.getId()!=null||event.getId()!=0){
 		storeSponsorDetails(event.getId(), request);
-		String eventId = String.valueOf(event.getId());
-		System.out.println("Event id created is : "+ eventId );
 		}
 		return "dashboard";
 		

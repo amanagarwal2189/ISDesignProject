@@ -20,8 +20,6 @@ public class SponsorRegister {
 		sponsor.setZip(0);
 		
 		sponsorDao.save(sponsor);
-		String sponsorId = String.valueOf(sponsor.getId());
-		System.out.println("Event id created is : "+ sponsorId );
 		return sponsor;
 	}  
 }

@@ -3,16 +3,22 @@ $(document).ready(function()
 	
 	$('#newPassword').keyup(function()
 	{
+		//alert($('#uname').val());
+		if(($('#newPassword').val() == null)&& ($('#newPassword').val() == '')){
+			$('#result').val('');
+		}
+		else{
 		$('#result').html(checkStrength($('#newPassword').val()))
 		
-    	$("#confpassword").val('');
+    	$("#confpassword").removeClass();
 
     	$('#result2').empty();
     	//$('#result').empty('');
     	$('#registerbtn').prop('disabled', true);
     	$('#registerbtn').removeClass();
         $('#registerbtn').addClass('regButton');
-	})	
+		}
+	});	
 	
 	
 	
@@ -20,10 +26,10 @@ $(document).ready(function()
 	{
 		
 		var strength = 0
-		
+		//alert(password.length);
 		//if the password length is less than 6, return message.
 		if(password.length==0){
-			$('#result').empty()
+			$('#result').val('');
 		}
 		
 		if ((password.length >1) && (password.length < 6)) { 
@@ -77,17 +83,28 @@ $(document).ready(function()
 	$('#confpassword').on('keyup', function () {
 		if(($('#newPassword').val() != null)&& ($('#newPassword').val() != ''))
 		{
-	    if ($('#newPassword').val() == $('#confpassword').val()) {
+			//console.log($('input[name="usermail"]').val());
+	    if (($('#newPassword').val() == $('#confpassword').val()) 
+	    		&& ($('input[name="usermail"]').val()== '') 
+	    		&& (($('#uname').val()!=null) && ($('#uname').val()!=''))) {
 	        $('#result2').html('Matching').css('color', 'white');
 	        $('#result2').html('Matching').css('font-size','0.7em');
 	        $('#registerbtn').prop('disabled', false);
 	        $('#registerbtn').removeClass();
 	        $('#registerbtn').addClass('successButton');
-	    } else 
+	        
+	    }
+	    else if ($('#newPassword').val() == $('#confpassword').val()){
+	    	 $('#result2').html('Matching').css('color', 'white');
+		     $('#result2').html('Matching').css('font-size','0.7em');
+	    }
+	     else {
 	        $('#result2').html('Not Matching').css('color', 'red');
 	    	$('#result2').css('font-size','0.7em');
 		}
+		}
 	else{
+		$('#result').html('')
 			$('#result2').html('Enter password').css('color', 'red');
 			$('#result2').css('font-size','0.7em');
 	}

@@ -22,7 +22,7 @@
 
 <style>
 body{
-	background-image: url("static/img/party22.jpg");
+	background-image: url("img/party22.jpg");
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 }
@@ -128,7 +128,7 @@ body{
 @media only screen and (min-device-width : 321px) and (max-device-width : 580px) {
 body{
 
-background-image: url("static/img/indexBg.jpg");
+background-image: url("img/indexBg.jpg");
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 }
@@ -138,7 +138,7 @@ background-image: url("static/img/indexBg.jpg");
 @media only screen and (max-width : 320px) {
 body{
 
-background-image: url("static/img/indexBgportraint.jpg");
+background-image: url("img/indexBgportraint.jpg");
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 }
@@ -179,16 +179,70 @@ $(document).ready(function() {
                 }
                 else {
                 	
+                	$('#loginError').show();
                 	return false;
                 }
             },
             error: function (xhr, ajaxOptions, thrownError) {
             	$('#loginError').show();
-            	//alert('Hi');
+            	
               }
         });
 
     });
+    
+
+//     $('#newemailId').on('keyup',function() {
+    	
+//     });
+   
+$('#newemailId').on('blur',function() {
+		
+	$('input[name="useremail"]').val('');
+	$('#emailCheck').empty();
+	$("#confpassword").val('');
+	$("#newPassword").val('');
+	$('#result').empty();
+	$('#result2').empty();
+	$('#registerbtn').prop('disabled', true);
+	$('#registerbtn').removeClass();
+    $('#registerbtn').addClass('regButton');
+	
+    	emailId = $("#newemailId").val()
+    	userType = $('input[name=userType]:checked').val()
+    	event.preventDefault();
+        $.ajax({
+            type: "GET",
+            url: '/userCheck',
+            async: true,
+            //dataType:'json',
+        	
+            data:{'emailId':emailId,'userType':userType},
+            
+            success: function(data)
+            {
+            	console.log(data);
+                if (data=='exist') {
+                	
+                	$('input[name="usermail"]').val('exists');
+                	$('#emailCheck').html('User exists').css('color', 'red');
+        	    	$('#emailCheck').css('font-size','0.7em');
+                }
+                else{
+                	$('input[name="usermail"]').val('');
+                	$('#emailCheck').empty();
+                	return false;
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+            	$('input[name="usermail"]').val('');
+            	$('#emailCheck').empty();
+            	return false;
+              }
+        });
+
+    });
+    
     
     
 
@@ -208,7 +262,7 @@ $(document).ready(function() {
 				</button>
 				<a class="navbar-brand" href="/indexPage"> <img alt="Brand"
 					style="height: 100%; width: auto;" class="img-responsive"
-					src="static\img\eventangels.png" />
+					src="img\eventangels.png" />
 				</a>
 			</div>
 			<!--https://getbootstrap.com/components/#navbar-->
@@ -238,16 +292,16 @@ $(document).ready(function() {
 					I am <input type="radio" name="userType"
 						value="organizer" checked="checked" /> an Organizer  
 						<input type="radio" name="userType" value="sponsor"/>  a Sponsor <br /> <input type="text"
-						name="emailId" id="emailId" placeholder="john@gaver.com"
-						required="required" /><br /> <input type="password" id="password"
-						name="password" placeholder="password" required="required" /><br />
+						name="emailId" id="emailId" placeholder="e.g. john@gaver.com"
+						required="required" maxlength="25"/><br /> <input type="password" id="password"
+						name="password" placeholder="password" required="required" maxlength="44"/><br />
 					<button type="submit" class="loginSubmit" id="loginSubmit">Login</button>
 					<br /> <a href="forgotPwd.html">Forgot password!</a>
 				</form>
 				
 				<div id="loginError"><img alt="loginErrorMessage"
 					style="height: 50%; width: auto;" class="img-responsive"
-					src="static/img/incorretCred.png" /></div>
+					src="img/incorretCred.png"/></div>
 				
 			</div>
 			<div class="col-md-1"></div>
@@ -258,18 +312,19 @@ $(document).ready(function() {
 					I am <input type="radio" name="userType"
 						value="organizer" checked="checked" /> an organizer  
 						<input type="radio" name="userType" value="sponsor"/>  a sponsor  <br /> <input type="text" id="uname"
-						name="uname" placeholder="john gaver" required="required" /><br />
-					<input type="text" id="emailId" name="emailId"
-						placeholder="john@gaver.com" required="required" /><br /> <input
+						name="uname" placeholder="e.g. john gaver" required="required" maxlength="25"/><br />
+					<input type="text" id="newemailId" name="newemailId"
+						placeholder="e.g.john@gaver.com" required="required" maxlength="24"/><br />
+						<span id="emailCheck"></span> <input
 						type="password" id="newPassword" name="newPassword"
-						placeholder="password" required="required" /><br />
+						placeholder="password" required="required" maxlength="44"/><br />
 						<span id="result"></span> <input
 						type="password" id="confpassword" name="confpassword"
-						placeholder="confirm password" required="required"/><br />
+						placeholder="confirm password" required="required" maxlength="44"/><br />
 						<span id="result2"></span>
 					<button type="submit" class="regButton" id="registerbtn" disabled="disabled">Register</button>
 				</form>
-				
+				<input type="hidden" value="" name="usermail" />
 			</div>
 			</div>
 		</div>

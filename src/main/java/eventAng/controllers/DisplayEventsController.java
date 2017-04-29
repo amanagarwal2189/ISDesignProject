@@ -37,10 +37,8 @@ public class DisplayEventsController {
 	@RequestMapping(value = "/displayEvents", method = RequestMethod.GET)
     public List<Event> displayEvents() {
 		//List<Object> eventList = new ArrayList<Object>();
-		System.out.println("Success");
 		List<Event> eventList = new ArrayList<Event>();
 		eventList= eventDao.findTop8ByOrderByTitleDesc();
-		System.out.println("Success");
         /*DisplayEvent dspEvent = new DisplayEvent();
         eventList = dspEvent.displayEventForLanding(eventDao);
         //String json = (new JSONArray(eventList)).toString();
@@ -59,12 +57,9 @@ public class DisplayEventsController {
 		List<Event> eventListForOrg = new ArrayList<Event>();
 		// HttpSession session=request.getSession();
 		String userId= (String) request.getSession().getAttribute("user_id");
-		String userEmailId= (String) request.getSession().getAttribute("user_emailId");
-		System.out.println("Host is : " + userId);
-		System.out.println("Host email is : " + userEmailId);
+		//String userEmailId= (String) request.getSession().getAttribute("user_emailId");
 		if (null != userId) {
 			Long host_id = Long.valueOf(userId);
-			//System.out.println("Host : " + host_id);
 			eventListForOrg=eventDao.getEventByHostId(host_id);
 			/*DisplayEvent dspEvent1 = new DisplayEvent();
 			eventListForOrg = dspEvent1.displayEventForOrganizer(eventDao, new Long(hostId));*/
@@ -85,7 +80,6 @@ public class DisplayEventsController {
     public Event displayOneEvent(HttpServletRequest request) {
 		String eventId= (String) request.getSession().getAttribute("eventId");
 		Event event=eventDao.getById(Long.parseLong(eventId));
-		System.out.println("event id is: "+eventId);
         return event;
 	      
     }
@@ -99,7 +93,6 @@ public class DisplayEventsController {
 	@RequestMapping(value = "/changeEventStatus", method = RequestMethod.GET)
     public Event changeEventStatus(HttpServletRequest request) {
 		Event event=eventDao.getById(Long.parseLong(request.getParameter("eventId")));
-		//System.out.println("Look at the "+eventId +"  with "+ currStatus);
 		event.setIs_active(request.getParameter("currStatus").equals("false")?true:false);
 		eventDao.save(event);
 		

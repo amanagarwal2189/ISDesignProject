@@ -59,10 +59,8 @@ public class LoginController {
 				user_name = sponsor.getName();
 			}
 		}
-		// System.out.println(emailId);
 		// users = fetchOrganizerDetails(emailId);
 		// boolean lFlag =validateUsers(password, users.getPassword());
-		System.out.print("Password is " + password);
 
 		if (lFlag) {
 			// httpSession.setAttribute("userid", users);
@@ -80,7 +78,6 @@ public class LoginController {
 			}
 		} else {
 			// request.setAttribute("error","Invalid user");
-			// System.out.println("Invalid");
 			response.setContentType("text/html;charset=UTF-8");
 			response.getWriter().write("False");
 		}
