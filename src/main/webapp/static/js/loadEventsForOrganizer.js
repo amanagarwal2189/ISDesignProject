@@ -9,11 +9,11 @@ $(document).ready(function(){
     			$.each(data,function(i,doc){
     				var publishButton='Unpublish'
     				var class_publish_button='eventUnpublish'
-				var class_publish_event	= 'publishedEvent'
+    				var class_publish_event	= 'publishedEvent'
     				if(doc._active==false){
     					publishButton='Publish'
     					class_publish_button='eventPublish'
-    					class_publish_event= ''
+    					class_publish_event= 'unPublishedEvent'
     				}
     				 $('#org-events').append(
         				'<div class="col-sm-6 col-md-4"><div id = "event_'+doc.id+'" class="thumbnail '+class_publish_event+'"><img src="static/img/event-thumbnail.jpg" alt="..."/><div class="caption" style="text-align:center;">'
