@@ -15,7 +15,7 @@ function changeEventStatus(eventId,currStatus){
     				var class_publish_button=''
     				var publishButton=''
     				if($('#publishButton_event_'+eventId).hasClass('eventUnpublish')){
-    					class_publish_event=''
+    					class_publish_event='unPublishedEvent'
     					class_publish_button='eventPublish'
     					publishButton='Publish'
     				} else {
